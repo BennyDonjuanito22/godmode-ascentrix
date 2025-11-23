@@ -1,0 +1,5 @@
+ascentrix-api-1 (Up 14 minutes)
+ascentrix-postgres-1 (Up 2 days)
+ascentrix-hud-1 (Up 2 days)
+ascentrix-redis-1 (Up 2 days)
+ascentrix-qdrant-1 (Up 2 days)

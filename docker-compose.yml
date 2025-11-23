@@ -1,0 +1,45 @@
+services:
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: ascentrix
+      POSTGRES_PASSWORD: ascentrixpw
+      POSTGRES_DB: ascentrix
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data
+    restart: always
+
+  redis:
+    image: redis:7
+    restart: always
+
+  qdrant:
+    image: qdrant/qdrant:v1.7.3
+    volumes:
+      - ./data/qdrant:/qdrant/storage
+    ports:
+      - "6333:6333"
+    restart: always
+
+  api:
+    image: python:3.12-slim
+    working_dir: /srv
+    volumes:
+      - ./api:/srv
+      - ./logs:/logs
+    command: sh -c "pip install fastapi uvicorn redis qdrant-client && uvicorn app:app --host 0.0.0.0 --port 5051"
+    ports:
+      - "5051:5051"
+    depends_on:
+      - postgres
+      - redis
+      - qdrant
+    restart: always
+
+  hud:
+    image: nginx:1.27-alpine
+    volumes:
+      - ./hud:/usr/share/nginx/html:ro
+    ports:
+      - "5052:80"
+    restart: always

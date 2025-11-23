@@ -1,0 +1,110 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Ascentrix HUD</title>
+<style>
+body{font-family:system-ui;background:#0b1220;color:#e6eefc;margin:20px;display:flex;gap:20px;height:calc(100vh - 40px);}
+.column{flex:1;display:flex;flex-direction:column;gap:10px;}
+.card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:10px 14px;min-height:0;display:flex;flex-direction:column;}
+.card h2{margin:0 0 8px 0;font-size:16px;}
+pre{background:rgba(0,0,0,.35);border-radius:10px;padding:8px;overflow:auto;flex:1;}
+textarea{width:100%;height:80px;background:#020617;color:#e5e7eb;border-radius:8px;border:1px solid rgba(148,163,184,.5);padding:6px;font-family:inherit;}
+button{background:#22c55e;border:none;color:#020617;padding:6px 10px;border-radius:999px;font-size:13px;cursor:pointer;margin-top:6px;}
+button:disabled{background:#4b5563;color:#9ca3af;cursor:not-allowed;}
+.status-row{display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px;}
+.badge{padding:2px 8px;border-radius:999px;font-size:11px;background:#1d4ed8;color:#e5e7eb;}
+</style>
+<body>
+<div class="column">
+  <div class="card">
+    <h2>Global Status</h2>
+    <div class="status-row">
+      <div>API health</div>
+      <div id="health-badge" class="badge">checking…</div>
+    </div>
+    <pre id="health">loading…</pre>
+  </div>
+  <div class="card">
+    <h2>Raw Events</h2>
+    <pre id="events">waiting…</pre>
+  </div>
+</div>
+<div class="column">
+  <div class="card">
+    <h2>Task Queue (God Mode Core)</h2>
+    <pre id="tasks">loading…</pre>
+  </div>
+  <div class="card">
+    <h2>Command Window</h2>
+    <textarea id="cmd" placeholder="Describe a task to enqueue (e.g. `Find customers for X`)…"></textarea>
+    <button id="enqueue">Enqueue Task</button>
+  </div>
+</div>
+<script>
+async function fetchJSON(url){
+  const r = await fetch(url);
+  if(!r.ok) throw new Error("HTTP "+r.status);
+  return await r.json();
+}
+
+async function refreshHealth(){
+  try{
+    const h = await fetchJSON("http://127.0.0.1:5051/health");
+    document.getElementById("health").textContent = JSON.stringify(h,null,2);
+    const badge = document.getElementById("health-badge");
+    badge.textContent = "ok";
+    badge.style.background = "#16a34a";
+  }catch(e){
+    document.getElementById("health").textContent = "error: "+e;
+    const badge = document.getElementById("health-badge");
+    badge.textContent = "error";
+    badge.style.background = "#b91c1c";
+  }
+}
+
+async function refreshEvents(){
+  try{
+    const ev = await fetchJSON("http://127.0.0.1:5051/events");
+    document.getElementById("events").textContent = JSON.stringify(ev,null,2);
+  }catch(e){
+    document.getElementById("events").textContent = "error: "+e;
+  }
+}
+
+async function refreshTasks(){
+  try{
+    const t = await fetchJSON("http://127.0.0.1:5051/tasks");
+    document.getElementById("tasks").textContent = JSON.stringify(t,null,2);
+  }catch(e){
+    document.getElementById("tasks").textContent = "error: "+e;
+  }
+}
+
+async function enqueueTask(){
+  const text = document.getElementById("cmd").value.trim();
+  if(!text) return;
+  const button = document.getElementById("enqueue");
+  button.disabled = true;
+  try{
+    const id = Math.floor(Date.now()/1000);
+    await fetch("http://127.0.0.1:5051/tasks",{
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({id:id,title:text,status:"queued"})
+    });
+    document.getElementById("cmd").value = "";
+    await refreshTasks();
+  }catch(e){
+    alert("Failed to enqueue: "+e);
+  }finally{
+    button.disabled = false;
+  }
+}
+
+document.getElementById("enqueue").addEventListener("click", enqueueTask);
+setInterval(refreshHealth,2000);
+setInterval(refreshEvents,2500);
+setInterval(refreshTasks,3000);
+refreshHealth();
+refreshEvents();
+refreshTasks();
+</script>

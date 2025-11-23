@@ -1,0 +1,3 @@
+[2025-11-14 12:22:52] {'job_id': 1, 'data': {'text': 'example job'}, 'result': {'data': {'text': 'example job'}, 'status': 'processed'}}
+[2025-11-14 12:34:38] {'job_id': 1, 'result': {'data': {'data': 'test'}, 'status': 'processed'}}
+[2025-11-14 13:54:35] {'job_id': 1, 'result': {'data': {'data': 'test payload'}, 'status': 'processed'}}
