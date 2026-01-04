@@ -1,0 +1,2 @@
+=== NEW RUN 20251124T215235 ===
+GOAL: Design and document the God Mode dashboard (HUD) in 'design_docs/dashboard_spec.md'. Define screens for: Home/Overview, Streams/Businesses, Agents, Logs/Memory, and Settings. For each screen, list the key widgets, data sources, and actions. Ensure the spec can be used by a future agent run to implement or refine the HUD code. Use existing docs and repository structure as context.

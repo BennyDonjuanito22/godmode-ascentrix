@@ -1,0 +1,2 @@
+=== NEW RUN 20251125T023655 ===
+GOAL: Extend autopilot so it can schedule builder, fixer, researcher, and promoter agents with unique guardrails and retry policies.

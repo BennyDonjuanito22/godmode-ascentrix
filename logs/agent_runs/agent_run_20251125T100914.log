@@ -1,0 +1,19 @@
+=== NEW RUN 20251125T100914 ===
+ROOT: /workspace
+GOAL: Draft a detailed plan for desktop/mobile/web clients (UI flows, components, tech stack, media/voice features) that can deliver the next-gen experience described by the owner. Store the spec under design_docs/frontend_blueprint.md and link key APIs/features.
+
+Operational guardrails for every task:
+1. Inspect the repository and existing design docs before creating new files.
+2. Prefer editing the canonical HUD/API implementations instead of building duplicates.
+3. Double-check every change by re-reading modified files and summarising the result.
+4. Use store_note/search_notes aggressively so future runs retain context.
+5. When you touch revenue, infra, or memory features, update the relevant design_doc.
+
+
+Agent profile (researcher): Gather and summarize context. Avoid repo edits unless essential; store insights via store_note.
+
+--- STEP 1 RAW REPLY ---
+{"thought":"First, I will inspect the repository root and the design_docs/ directory to find any existing design documents related to frontend, UI flows, or client architecture. This will help me understand the current state and avoid duplicating work. Then, I will search for any mentions of frontend, UI, or client in the repo to gather relevant files or docs. After gathering context, I will summarize the findings and draft a detailed plan for desktop, mobile, and web clients covering UI flows, components, tech stack, and media/voice features as requested. Finally, I will store the spec under design_docs/frontend_blueprint.md and link key APIs/features.","tool":"list_dir","tool_input":""}
+THOUGHT: First, I will inspect the repository root and the design_docs/ directory to find any existing design documents related to frontend, UI flows, or client architecture. This will help me understand the current state and avoid duplicating work. Then, I will search for any mentions of frontend, UI, or client in the repo to gather relevant files or docs. After gathering context, I will summarize the findings and draft a detailed plan for desktop, mobile, and web clients covering UI flows, components, tech stack, and media/voice features as requested. Finally, I will store the spec under design_docs/frontend_blueprint.md and link key APIs/features.
+TOOL: list_dir
+TOOL_INPUT: 

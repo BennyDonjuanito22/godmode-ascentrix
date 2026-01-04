@@ -1,0 +1,6 @@
+2025-11-30T18:32:00Z Autopilot coordinator practice
+- Reviewed api/tasks/roadmap.jsonl: IDs 23-28 closed, ID29 running (promoter practice), ID30 pending. Daily skill tasks now injected via scripts/schedule_skill_tasks.py; no starvation risk.
+- Verified docs/b1_multiplatform_kit.md + docs/marketplaces_research.md exist so marketplace rollout can proceed without new copy work.
+- Confirmed lead automation: scripts/lead_pipeline.py -> reports/lead_pipeline.(md|csv); nurture CLI ready.
+- Security posture references docs/security_infra_audit_20251130.md. Need operator to rerun ./scripts/start_autopilot.sh after edits + re-check docker compose health.
+- Follow-ups queued: publish promo assets + update docs/b1_promo_log.md, execute builder/fixer/researcher/practice outputs daily, schedule lead dashboard cron.

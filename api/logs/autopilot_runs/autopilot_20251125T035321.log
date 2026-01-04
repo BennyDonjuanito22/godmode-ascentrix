@@ -1,0 +1,208 @@
+[2025-11-25T03:53:21.880036] Autopilot booted.
+[2025-11-25T03:53:21.881366] Using tasks file: /workspace/api/tasks/roadmap.jsonl
+[2025-11-25T03:53:21.884029] Starting main loop.
+[2025-11-25T03:53:21.884659] No pending tasks. Cooling down.
+[2025-11-25T03:55:21.892421] No pending tasks. Cooling down.
+[2025-11-25T03:57:21.896904] No pending tasks. Cooling down.
+[2025-11-25T03:59:21.901749] No pending tasks. Cooling down.
+[2025-11-25T04:01:21.904973] No pending tasks. Cooling down.
+[2025-11-25T04:03:21.909881] No pending tasks. Cooling down.
+[2025-11-25T04:05:21.919028] No pending tasks. Cooling down.
+[2025-11-25T04:07:21.924405] No pending tasks. Cooling down.
+[2025-11-25T04:09:21.932508] No pending tasks. Cooling down.
+[2025-11-25T04:11:21.940270] No pending tasks. Cooling down.
+[2025-11-25T04:13:21.951690] No pending tasks. Cooling down.
+[2025-11-25T04:15:21.961561] No pending tasks. Cooling down.
+[2025-11-25T04:17:21.970942] No pending tasks. Cooling down.
+[2025-11-25T04:19:21.979754] No pending tasks. Cooling down.
+[2025-11-25T04:21:21.984938] No pending tasks. Cooling down.
+[2025-11-25T04:23:21.994394] No pending tasks. Cooling down.
+[2025-11-25T04:25:21.998893] No pending tasks. Cooling down.
+[2025-11-25T04:27:22.004623] No pending tasks. Cooling down.
+[2025-11-25T04:29:22.010115] No pending tasks. Cooling down.
+[2025-11-25T04:31:22.016618] No pending tasks. Cooling down.
+[2025-11-25T04:33:22.025057] Running task 15: Wire HUD widgets to live /hud APIs [builder]
+[2025-11-25T04:33:25.300670] Task 15 failed: AttributeError: 'str' object has no attribute 'get'
+[2025-11-25T04:33:55.312005] Running task 15: Wire HUD widgets to live /hud APIs [builder]
+[2025-11-25T04:33:58.364986] Task 15 failed: AttributeError: 'str' object has no attribute 'get'
+[2025-11-25T04:34:28.371561] Running task 15: Wire HUD widgets to live /hud APIs [builder]
+[2025-11-25T04:34:32.988516] Task 15 failed: AttributeError: 'str' object has no attribute 'get'
+[2025-11-25T04:35:02.999394] Running task 16: Upgrade vector memory ingestion [builder]
+[2025-11-25T04:35:07.539394] Task 16 failed: AttributeError: 'str' object has no attribute 'get'
+[2025-11-25T04:35:37.549613] Running task 16: Upgrade vector memory ingestion [builder]
+[2025-11-25T04:35:40.454612] Task 16 failed: AttributeError: 'str' object has no attribute 'get'
+[2025-11-25T04:36:10.458885] Running task 16: Upgrade vector memory ingestion [builder]
+[2025-11-25T04:36:13.329350] Task 16 failed: AttributeError: 'str' object has no attribute 'get'
+[2025-11-25T04:36:43.334803] Running task 17: Security & infra weekly audit [fixer]
+[2025-11-25T04:36:45.196855] Task 17 failed: AttributeError: 'str' object has no attribute 'get'
+[2025-11-25T04:37:15.202923] Running task 17: Security & infra weekly audit [fixer]
+[2025-11-25T04:37:17.637298] Task 17 failed: AttributeError: 'str' object has no attribute 'get'
+[2025-11-25T04:37:47.644021] Running task 18: Frontend architecture blueprint [researcher]
+[2025-11-25T04:37:49.942330] Task 18 failed: AttributeError: 'str' object has no attribute 'get'
+[2025-11-25T04:38:19.951760] Running task 18: Frontend architecture blueprint [researcher]
+[2025-11-25T04:38:23.585494] Task 18 failed: AttributeError: 'str' object has no attribute 'get'
+[2025-11-25T04:38:53.593976] No pending tasks. Cooling down.
+[2025-11-25T04:40:53.601060] No pending tasks. Cooling down.
+[2025-11-25T04:42:53.609490] No pending tasks. Cooling down.
+[2025-11-25T04:44:53.615411] No pending tasks. Cooling down.
+[2025-11-25T04:46:53.624347] No pending tasks. Cooling down.
+[2025-11-25T04:48:53.628599] No pending tasks. Cooling down.
+[2025-11-25T04:50:53.642049] No pending tasks. Cooling down.
+[2025-11-25T04:52:53.653235] No pending tasks. Cooling down.
+[2025-11-25T04:54:53.662344] No pending tasks. Cooling down.
+[2025-11-25T04:56:53.668722] No pending tasks. Cooling down.
+[2025-11-25T04:58:53.675855] No pending tasks. Cooling down.
+[2025-11-25T05:00:53.687552] No pending tasks. Cooling down.
+[2025-11-25T05:02:53.693352] No pending tasks. Cooling down.
+[2025-11-25T05:04:53.698339] No pending tasks. Cooling down.
+[2025-11-25T05:06:53.713066] No pending tasks. Cooling down.
+[2025-11-25T05:08:53.723114] No pending tasks. Cooling down.
+[2025-11-25T05:10:53.745868] No pending tasks. Cooling down.
+[2025-11-25T05:12:53.757832] No pending tasks. Cooling down.
+[2025-11-25T05:14:53.771250] No pending tasks. Cooling down.
+[2025-11-25T05:16:53.778162] No pending tasks. Cooling down.
+[2025-11-25T05:18:53.788474] No pending tasks. Cooling down.
+[2025-11-25T05:20:53.802207] No pending tasks. Cooling down.
+[2025-11-25T05:22:53.807608] No pending tasks. Cooling down.
+[2025-11-25T05:24:53.819030] No pending tasks. Cooling down.
+[2025-11-25T05:26:53.824646] No pending tasks. Cooling down.
+[2025-11-25T05:28:53.836966] No pending tasks. Cooling down.
+[2025-11-25T05:30:53.845484] No pending tasks. Cooling down.
+[2025-11-25T05:32:53.853806] No pending tasks. Cooling down.
+[2025-11-25T05:34:53.862249] No pending tasks. Cooling down.
+[2025-11-25T05:36:53.874675] No pending tasks. Cooling down.
+[2025-11-25T05:38:53.888429] No pending tasks. Cooling down.
+[2025-11-25T05:40:53.902645] No pending tasks. Cooling down.
+[2025-11-25T05:42:53.916580] No pending tasks. Cooling down.
+[2025-11-25T05:44:53.888316] No pending tasks. Cooling down.
+[2025-11-25T05:46:53.891355] No pending tasks. Cooling down.
+[2025-11-25T05:48:53.894703] No pending tasks. Cooling down.
+[2025-11-25T05:50:53.898241] No pending tasks. Cooling down.
+[2025-11-25T05:52:53.902003] No pending tasks. Cooling down.
+[2025-11-25T05:54:53.905944] No pending tasks. Cooling down.
+[2025-11-25T05:56:53.913207] No pending tasks. Cooling down.
+[2025-11-25T05:58:53.918360] No pending tasks. Cooling down.
+[2025-11-25T06:00:53.922577] No pending tasks. Cooling down.
+[2025-11-25T06:02:53.925882] No pending tasks. Cooling down.
+[2025-11-25T06:04:53.925495] No pending tasks. Cooling down.
+[2025-11-25T06:06:53.935637] No pending tasks. Cooling down.
+[2025-11-25T06:08:53.939397] No pending tasks. Cooling down.
+[2025-11-25T06:10:53.944691] No pending tasks. Cooling down.
+[2025-11-25T06:12:53.946807] No pending tasks. Cooling down.
+[2025-11-25T06:14:53.952134] No pending tasks. Cooling down.
+[2025-11-25T06:16:53.955899] No pending tasks. Cooling down.
+[2025-11-25T06:18:53.960559] No pending tasks. Cooling down.
+[2025-11-25T06:20:53.970540] No pending tasks. Cooling down.
+[2025-11-25T06:22:53.974545] No pending tasks. Cooling down.
+[2025-11-25T06:24:53.991630] No pending tasks. Cooling down.
+[2025-11-25T06:26:53.997935] No pending tasks. Cooling down.
+[2025-11-25T06:28:54.004187] No pending tasks. Cooling down.
+[2025-11-25T06:30:54.017595] No pending tasks. Cooling down.
+[2025-11-25T06:32:54.026045] No pending tasks. Cooling down.
+[2025-11-25T06:34:54.032352] No pending tasks. Cooling down.
+[2025-11-25T06:36:54.044568] No pending tasks. Cooling down.
+[2025-11-25T06:38:54.052361] No pending tasks. Cooling down.
+[2025-11-25T06:40:54.067717] No pending tasks. Cooling down.
+[2025-11-25T06:42:54.072754] No pending tasks. Cooling down.
+[2025-11-25T06:44:54.079115] No pending tasks. Cooling down.
+[2025-11-25T06:46:54.089924] No pending tasks. Cooling down.
+[2025-11-25T06:48:54.128502] No pending tasks. Cooling down.
+[2025-11-25T06:50:54.141888] No pending tasks. Cooling down.
+[2025-11-25T06:52:54.150034] No pending tasks. Cooling down.
+[2025-11-25T06:54:54.157590] No pending tasks. Cooling down.
+[2025-11-25T06:56:54.164904] No pending tasks. Cooling down.
+[2025-11-25T06:58:54.174545] No pending tasks. Cooling down.
+[2025-11-25T07:00:54.179703] No pending tasks. Cooling down.
+[2025-11-25T07:02:54.193134] No pending tasks. Cooling down.
+[2025-11-25T07:04:54.200543] No pending tasks. Cooling down.
+[2025-11-25T07:06:54.207846] No pending tasks. Cooling down.
+[2025-11-25T07:08:54.215680] No pending tasks. Cooling down.
+[2025-11-25T07:10:54.228376] No pending tasks. Cooling down.
+[2025-11-25T07:12:54.236603] No pending tasks. Cooling down.
+[2025-11-25T07:14:54.236206] No pending tasks. Cooling down.
+[2025-11-25T07:16:54.242724] No pending tasks. Cooling down.
+[2025-11-25T07:18:54.248836] No pending tasks. Cooling down.
+[2025-11-25T07:20:54.254089] No pending tasks. Cooling down.
+[2025-11-25T07:22:54.263600] No pending tasks. Cooling down.
+[2025-11-25T07:24:54.271751] No pending tasks. Cooling down.
+[2025-11-25T07:26:54.285279] No pending tasks. Cooling down.
+[2025-11-25T07:28:54.295648] No pending tasks. Cooling down.
+[2025-11-25T07:30:54.301377] No pending tasks. Cooling down.
+[2025-11-25T07:32:54.306988] No pending tasks. Cooling down.
+[2025-11-25T07:34:54.319437] No pending tasks. Cooling down.
+[2025-11-25T07:36:54.328427] No pending tasks. Cooling down.
+[2025-11-25T07:38:54.336387] No pending tasks. Cooling down.
+[2025-11-25T07:40:54.325013] No pending tasks. Cooling down.
+[2025-11-25T07:42:54.327464] No pending tasks. Cooling down.
+[2025-11-25T07:44:54.331567] No pending tasks. Cooling down.
+[2025-11-25T07:46:54.340212] No pending tasks. Cooling down.
+[2025-11-25T07:48:54.346522] No pending tasks. Cooling down.
+[2025-11-25T07:50:54.352355] No pending tasks. Cooling down.
+[2025-11-25T07:52:54.360832] No pending tasks. Cooling down.
+[2025-11-25T07:54:54.372382] No pending tasks. Cooling down.
+[2025-11-25T07:56:54.376823] No pending tasks. Cooling down.
+[2025-11-25T07:58:54.387642] No pending tasks. Cooling down.
+[2025-11-25T08:00:54.401033] No pending tasks. Cooling down.
+[2025-11-25T08:02:54.414248] No pending tasks. Cooling down.
+[2025-11-25T08:04:54.427386] No pending tasks. Cooling down.
+[2025-11-25T08:06:54.432630] No pending tasks. Cooling down.
+[2025-11-25T08:08:54.438976] No pending tasks. Cooling down.
+[2025-11-25T08:10:54.444817] No pending tasks. Cooling down.
+[2025-11-25T08:12:54.449039] No pending tasks. Cooling down.
+[2025-11-25T08:14:54.453539] No pending tasks. Cooling down.
+[2025-11-25T08:16:54.458521] No pending tasks. Cooling down.
+[2025-11-25T08:18:54.462467] No pending tasks. Cooling down.
+[2025-11-25T08:20:54.465619] No pending tasks. Cooling down.
+[2025-11-25T08:22:54.470960] No pending tasks. Cooling down.
+[2025-11-25T08:24:54.473587] No pending tasks. Cooling down.
+[2025-11-25T08:26:54.477467] No pending tasks. Cooling down.
+[2025-11-25T08:28:54.481336] No pending tasks. Cooling down.
+[2025-11-25T08:30:54.487584] No pending tasks. Cooling down.
+[2025-11-25T08:32:54.492558] No pending tasks. Cooling down.
+[2025-11-25T08:34:54.499012] No pending tasks. Cooling down.
+[2025-11-25T08:36:54.509300] No pending tasks. Cooling down.
+[2025-11-25T08:38:54.538072] No pending tasks. Cooling down.
+[2025-11-25T08:40:54.558942] No pending tasks. Cooling down.
+[2025-11-25T08:42:54.568979] No pending tasks. Cooling down.
+[2025-11-25T08:44:54.576033] No pending tasks. Cooling down.
+[2025-11-25T08:46:54.587041] No pending tasks. Cooling down.
+[2025-11-25T08:48:54.596914] No pending tasks. Cooling down.
+[2025-11-25T08:50:54.611109] No pending tasks. Cooling down.
+[2025-11-25T08:52:54.624846] No pending tasks. Cooling down.
+[2025-11-25T08:54:54.629469] No pending tasks. Cooling down.
+[2025-11-25T08:56:54.638647] No pending tasks. Cooling down.
+[2025-11-25T08:58:54.645447] No pending tasks. Cooling down.
+[2025-11-25T09:00:54.650432] No pending tasks. Cooling down.
+[2025-11-25T09:02:54.660937] No pending tasks. Cooling down.
+[2025-11-25T09:04:54.671252] No pending tasks. Cooling down.
+[2025-11-25T09:06:54.676856] No pending tasks. Cooling down.
+[2025-11-25T09:08:54.683939] No pending tasks. Cooling down.
+[2025-11-25T09:10:54.690755] No pending tasks. Cooling down.
+[2025-11-25T09:12:54.702220] No pending tasks. Cooling down.
+[2025-11-25T09:14:54.708004] No pending tasks. Cooling down.
+[2025-11-25T09:16:54.722362] No pending tasks. Cooling down.
+[2025-11-25T09:18:54.733624] No pending tasks. Cooling down.
+[2025-11-25T09:20:54.744478] No pending tasks. Cooling down.
+[2025-11-25T09:22:54.750747] No pending tasks. Cooling down.
+[2025-11-25T09:24:54.756954] No pending tasks. Cooling down.
+[2025-11-25T09:26:54.769609] No pending tasks. Cooling down.
+[2025-11-25T09:28:54.775221] No pending tasks. Cooling down.
+[2025-11-25T09:30:54.744271] No pending tasks. Cooling down.
+[2025-11-25T09:32:54.746741] No pending tasks. Cooling down.
+[2025-11-25T09:34:54.755821] No pending tasks. Cooling down.
+[2025-11-25T09:36:54.763957] No pending tasks. Cooling down.
+[2025-11-25T09:38:54.771447] No pending tasks. Cooling down.
+[2025-11-25T09:40:54.782899] No pending tasks. Cooling down.
+[2025-11-25T09:42:54.787791] No pending tasks. Cooling down.
+[2025-11-25T09:44:54.801000] No pending tasks. Cooling down.
+[2025-11-25T09:46:54.808222] No pending tasks. Cooling down.
+[2025-11-25T09:48:54.817676] No pending tasks. Cooling down.
+[2025-11-25T09:50:54.823229] No pending tasks. Cooling down.
+[2025-11-25T09:52:54.834528] No pending tasks. Cooling down.
+[2025-11-25T09:54:54.840256] No pending tasks. Cooling down.
+[2025-11-25T09:56:54.833718] No pending tasks. Cooling down.
+[2025-11-25T09:58:54.842356] No pending tasks. Cooling down.
+[2025-11-25T10:00:54.848527] No pending tasks. Cooling down.
+[2025-11-25T10:02:54.852523] No pending tasks. Cooling down.
+[2025-11-25T10:04:54.861982] Running task 15: Wire HUD widgets to live /hud APIs [builder]
+[2025-11-25T10:04:58.075220] Task 15 failed: AttributeError: 'str' object has no attribute 'get'

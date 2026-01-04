@@ -1,0 +1,62 @@
+{
+  "metadata": {
+    "id": "B4",
+    "name": "AI Content Sprint",
+    "type": "service",
+    "stage": "planned"
+  },
+  "hero": {
+    "title": "Done-for-you AI Content in 72 Hours",
+    "subtitle": "We deliver 30+ pieces using God Mode’s stack so you can focus on sales.",
+    "cta_label": "Book a Sprint",
+    "cta_url": "https://example.com/service-intake",
+    "badge": "Limited slots each week"
+  },
+  "offer": {
+    "description": "Tiered service packages (Starter, Growth, Custom) for rapid content production.",
+    "deliverables": [
+      "Keyword research",
+      "AI-generated drafts",
+      "Delivery folder + summary doc"
+    ],
+    "pricing": "$499 / $1,499 / custom"
+  },
+  "audience": {
+    "target": "Agencies, local businesses, influencers",
+    "pain_points": [
+      "Inconsistent freelancers",
+      "Slow manual workflows"
+    ]
+  },
+  "traffic": {
+    "channels": [
+      "Direct outreach",
+      "LinkedIn/Email",
+      "Cross-sell from B1/B3"
+    ],
+    "content_hooks": [
+      "“30 scripts in 72h”",
+      "“We built your entire funnel while you slept”"
+    ]
+  },
+  "trust": {
+    "testimonials": [
+      "Collect early client proof"
+    ],
+    "guarantees": "Partial refund or redo if SLA missed"
+  },
+  "automation": {
+    "scripts": [
+      "scripts/record_revenue.py --funnel B4"
+    ],
+    "notes": "SOP stored in docs/ai_service_offer.md"
+  },
+  "metrics": {
+    "kpis": [
+      "≥4 sprints/month",
+      "60%+ gross margin",
+      "20% close rate"
+    ],
+    "ledger_funnel_tag": "B4"
+  }
+}

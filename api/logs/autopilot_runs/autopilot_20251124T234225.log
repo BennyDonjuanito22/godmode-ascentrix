@@ -1,0 +1,4 @@
+Starting task 10: Funnel template framework
+Task 10 FAILED: AuthenticationError: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-.... You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+Starting task 11: Autopilot specialised agent types
+Task 9 FAILED: AttributeError: 'str' object has no attribute 'get'

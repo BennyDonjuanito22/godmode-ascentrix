@@ -1,0 +1,60 @@
+{
+  "metadata": {
+    "id": "TEMPLATE_ID",
+    "name": "Placeholder Funnel",
+    "type": "affiliate|ecom|content|service",
+    "stage": "planned|building|live|paused"
+  },
+  "hero": {
+    "title": "Hero headline",
+    "subtitle": "Value prop summary",
+    "cta_label": "Call to Action",
+    "cta_url": "https://example.com",
+    "badge": "Social proof / scarcity"
+  },
+  "offer": {
+    "description": "What is the offer?",
+    "deliverables": [
+      "Deliverable 1",
+      "Deliverable 2"
+    ],
+    "pricing": "Mention price/commission"
+  },
+  "audience": {
+    "target": "ICP overview",
+    "pain_points": [
+      "Pain 1",
+      "Pain 2"
+    ]
+  },
+  "traffic": {
+    "channels": [
+      "TikTok",
+      "IG Reels"
+    ],
+    "content_hooks": [
+      "Hook idea 1",
+      "Hook idea 2"
+    ]
+  },
+  "trust": {
+    "testimonials": [
+      "Add real quotes once live"
+    ],
+    "guarantees": "Optional guarantee text"
+  },
+  "automation": {
+    "scripts": [
+      "scripts/record_revenue.py",
+      "scripts/ingest_memory.py"
+    ],
+    "notes": "Document workflows agents run for this funnel."
+  },
+  "metrics": {
+    "kpis": [
+      "Conversion rate target",
+      "Daily revenue target"
+    ],
+    "ledger_funnel_tag": "B1|B2|B3|B4"
+  }
+}

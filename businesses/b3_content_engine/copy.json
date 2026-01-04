@@ -1,0 +1,63 @@
+{
+  "metadata": {
+    "id": "B3",
+    "name": "AI Hustle Content Engine",
+    "type": "content",
+    "stage": "live"
+  },
+  "hero": {
+    "title": "Daily AI Hustle Playbooks",
+    "subtitle": "Short-form scripts + newsletter that route traffic to B1/B2 offers.",
+    "cta_label": "Join the Channel",
+    "cta_url": "https://example.com/link-in-bio",
+    "badge": "100+ clips shipped monthly"
+  },
+  "offer": {
+    "description": "Free media channel teaching playbooks and nudging viewers into funnels.",
+    "deliverables": [
+      "Daily short-form scripts",
+      "Newsletter recap",
+      "Community invite"
+    ],
+    "pricing": "Free (top of funnel)"
+  },
+  "audience": {
+    "target": "Aspiring online earners",
+    "pain_points": [
+      "Too many conflicting playbooks",
+      "Need actionable prompts"
+    ]
+  },
+  "traffic": {
+    "channels": [
+      "TikTok",
+      "IG Reels",
+      "YT Shorts",
+      "Twitter/X"
+    ],
+    "content_hooks": [
+      "“I asked AI to build a $100/day income stream”",
+      "“If I had 1 hour/day, here’s how I’d deploy AI”"
+    ]
+  },
+  "trust": {
+    "testimonials": [
+      "Use B1/B2 testimonials once available"
+    ],
+    "guarantees": ""
+  },
+  "automation": {
+    "scripts": [
+      "scripts/ingest_memory.py"
+    ],
+    "notes": "Scheduler csv stored under content/output/b3/"
+  },
+  "metrics": {
+    "kpis": [
+      "≥5 pieces/day",
+      "Bio CTR ≥ 12%",
+      "100+ newsletter subs/day"
+    ],
+    "ledger_funnel_tag": "B3"
+  }
+}

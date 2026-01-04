@@ -1,0 +1,47 @@
+=== NEW RUN 20251130T171604 ===
+ROOT: /workspace
+GOAL: Pick a new market hypothesis, apply design_docs/research_agent_playbook.md workflow, log summary + sources in memory/notes.jsonl with tags ['research','practice'].
+
+Operational guardrails for every task:
+1. Inspect the repository and existing design docs before creating new files.
+2. Prefer editing the canonical HUD/API implementations instead of building duplicates.
+3. Double-check every change by re-reading modified files and summarising the result.
+4. Use store_note/search_notes aggressively so future runs retain context.
+5. When you touch revenue, infra, or memory features, update the relevant design_doc.
+
+
+Agent profile (researcher): Gather and summarize context. Avoid repo edits unless essential; store insights via store_note.
+
+--- STEP 1 RAW REPLY ---
+{"thought":"First, I will locate and read the 'design_docs/research_agent_playbook.md' to understand the workflow for picking a new market hypothesis and conducting research. This will guide the next steps to apply the workflow properly.","tool":"read_file","tool_input":{"path":"design_docs/research_agent_playbook.md"}}
+THOUGHT: First, I will locate and read the 'design_docs/research_agent_playbook.md' to understand the workflow for picking a new market hypothesis and conducting research. This will guide the next steps to apply the workflow properly.
+TOOL: read_file
+TOOL_INPUT: {'path': 'design_docs/research_agent_playbook.md'}
+TOOL_RESULT: {'content': '# Research Agent Playbook\n\nThis playbook tells every builder/researcher agent how to run due diligence, collect data, and translate findings into trusted tasks. Autopilot should reference this file before executing R&D tickets.\n\n## Core Principles\n1. **Define the question clearly** – restate the objective, success criteria, and constraints (budget, time, target persona).\n2. **Layered sourcing**:\n   - Primary: official docs, pricing pages, investor decks.\n   - Secondary: analyst blogs, comparison posts, community answers.\n   - Tertiary: social chatter (Twitter/Reddit) for qualitative signals.\n3. **Triangulate** – never trust a single link. Capture at least two corroborating sources for claims (fees, timelines, conversion data).\n4. **Quantify + qualify** – pair numbers (CAGR, CPM, payout) with narrative (why it matters).\n5. **Log sources** – every insight gets a markdown bullet and URL so other agents can audit or refresh later.\n6. **Produce actionable output** – end each research session with:\n   - Snapshot summary (TL;DR).\n   - Risks / unknowns.\n   - Proposed next steps / tasks to add to roadmap.\n\n## Step-by-step Workflow\n1. **Frame** – write a 2–3 sentence research brief at the top of your notes (goal, context).\n2. **Seed terms** – list 5–8 keywords/phrases to search (e.g., “Gumroad fee structure 2025”, “AI toolkit marketplaces”).\n3. **Source sweep** – for each term:\n   - Use `search_repo`, `search_design_docs`, or external web context (if available) to gather links.\n   - Save metadata: URL, publish date, key quote/stat.\n4. **Evaluate** – score sources for credibility (official = high, forum = medium, random blog = low). Note contradictions.\n5. **Synthesize** – group insights under headings (Pricing, Requirements, Demand signals, Competitors).\n6. **Recommend** – convert findings into decisions or tasks (e.g., “Add Lemon Squeezy listing after Gumroad due to lower fee”).\n7. **Log** – drop summary + source list into `memory/notes.jsonl` (tags `research`, `stream:<id>`).\n\n## Prompt Template (for LLM agents)\n```\nYou are the Research & Development agent for God Mode.\nObjective: {goal}\nConstraints: {budget/time/market}\n\nFollow this loop:\n1. Restate the goal and list hypotheses.\n2. Draft search keywords.\n3. Gather sources (cite links + credibility).\n4. Summarize quantitative + qualitative insights.\n5. Recommend concrete next steps/tasks.\n\nOutput strictly in JSON:\n{\n  "goal": "...",\n  "hypotheses": [],\n  "sources": [{"url": "...", "credibility": "high/med/low", "summary": "..."}],\n  "insights": [{"category": "...", "details": "..."}],\n  "recommendations": []\n}\n```\n\nAgents must attach this JSON to their run log and add at least one summary note to memory for continuity.\n'}
+
+--- STEP 2 RAW REPLY ---
+{"thought":"I have read the 'design_docs/research_agent_playbook.md' which provides a detailed workflow for conducting research on a new market hypothesis. The workflow involves framing the research brief, listing seed terms, sourcing information, evaluating credibility, synthesizing insights, recommending next steps, and logging the summary with sources tagged appropriately. Next, I will pick a new market hypothesis to research. To do this, I will first check existing notes and design docs for any potential market hypotheses or areas of interest to avoid duplication and ensure relevance. I will search notes and design docs for 'market hypothesis' or related terms to find candidates.","tool":"search_notes","tool_input":{"query":"market hypothesis"}}
+THOUGHT: I have read the 'design_docs/research_agent_playbook.md' which provides a detailed workflow for conducting research on a new market hypothesis. The workflow involves framing the research brief, listing seed terms, sourcing information, evaluating credibility, synthesizing insights, recommending next steps, and logging the summary with sources tagged appropriately. Next, I will pick a new market hypothesis to research. To do this, I will first check existing notes and design docs for any potential market hypotheses or areas of interest to avoid duplication and ensure relevance. I will search notes and design docs for 'market hypothesis' or related terms to find candidates.
+TOOL: search_notes
+TOOL_INPUT: {'query': 'market hypothesis'}
+TOOL_RESULT: {'notes': []}
+
+--- STEP 3 RAW REPLY ---
+{"thought":"No existing notes mention 'market hypothesis', so no direct candidates are found there. Next, I will search the design_docs directory for 'market hypothesis' or related terms to identify any documented hypotheses or market areas of interest to explore.","tool":"search_design_docs","tool_input":{"query":"market hypothesis"}}
+THOUGHT: No existing notes mention 'market hypothesis', so no direct candidates are found there. Next, I will search the design_docs directory for 'market hypothesis' or related terms to identify any documented hypotheses or market areas of interest to explore.
+TOOL: search_design_docs
+TOOL_INPUT: {'query': 'market hypothesis'}
+TOOL_RESULT: {'hits': []}
+
+--- STEP 4 RAW REPLY ---
+{
+  "thought": "No explicit market hypotheses are documented in notes or design docs. I will now brainstorm potential new market hypotheses relevant to the repository context and AI growth tools, then select one to research using the playbook workflow. Given the recent memory about AI Growth Toolkit for solopreneurs and creators, a promising hypothesis could be: 'There is a growing market demand for AI-powered productivity toolkits tailored for solopreneurs and creators that bundle templates, prompts, and SOPs.' I will frame this hypothesis and proceed with the research workflow.",
+  "tool": null,
+  "tool_input": null
+}
+[STRUCTURE ERROR] tool_input was not an object; coercing to empty dict
+THOUGHT: No explicit market hypotheses are documented in notes or design docs. I will now brainstorm potential new market hypotheses relevant to the repository context and AI growth tools, then select one to research using the playbook workflow. Given the recent memory about AI Growth Toolkit for solopreneurs and creators, a promising hypothesis could be: 'There is a growing market demand for AI-powered productivity toolkits tailored for solopreneurs and creators that bundle templates, prompts, and SOPs.' I will frame this hypothesis and proceed with the research workflow.
+TOOL: None
+TOOL_INPUT: {}
+AGENT SIGNALLED COMPLETION.
+FINAL THOUGHT: No explicit market hypotheses are documented in notes or design docs. I will now brainstorm potential new market hypotheses relevant to the repository context and AI growth tools, then select one to research using the playbook workflow. Given the recent memory about AI Growth Toolkit for solopreneurs and creators, a promising hypothesis could be: 'There is a growing market demand for AI-powered productivity toolkits tailored for solopreneurs and creators that bundle templates, prompts, and SOPs.' I will frame this hypothesis and proceed with the research workflow.

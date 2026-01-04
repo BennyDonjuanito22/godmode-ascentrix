@@ -1,0 +1,2 @@
+Starting task 4: Implement core HUD screens from spec
+Task 4 FAILED: AuthenticationError: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-.... You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'code': 'invalid_api_key', 'param': None}}

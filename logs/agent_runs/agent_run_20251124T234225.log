@@ -1,0 +1,10 @@
+=== NEW RUN 20251124T234225 ===
+GOAL: Build a reusable template under 'businesses/' that defines structure, copy blocks, assets, and deployment steps for revenue funnels. B1-B4 should each reference this template to speed replication.
+=== NEW RUN 20251124T234225 ===
+GOAL: Extend autopilot so it can schedule builder, fixer, researcher, and promoter agents with unique guardrails and retry policies. Update docs to describe how new agent types are configured and launched.
+
+--- STEP 1 RAW REPLY ---
+{"thought":"To begin, I will search the design documents for references to 'autopilot' and the agent types 'builder', 'fixer', 'researcher', and 'promoter'. This will help me understand the current architecture and how agents are scheduled, as well as any existing guardrails and retry policies. This information is crucial before making any code changes.","tool":"search_design_docs","tool_input":"autopilot builder fixer researcher promoter"}
+THOUGHT: To begin, I will search the design documents for references to 'autopilot' and the agent types 'builder', 'fixer', 'researcher', and 'promoter'. This will help me understand the current architecture and how agents are scheduled, as well as any existing guardrails and retry policies. This information is crucial before making any code changes.
+TOOL: search_design_docs
+TOOL_INPUT: autopilot builder fixer researcher promoter

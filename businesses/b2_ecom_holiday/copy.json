@@ -1,0 +1,62 @@
+{
+  "metadata": {
+    "id": "B2",
+    "name": "Holiday Micro-Store",
+    "type": "ecom",
+    "stage": "building"
+  },
+  "hero": {
+    "title": "Limited AI-Designed Holiday Gifts",
+    "subtitle": "Personalized ornaments and prints that ship before peak rush.",
+    "cta_label": "Reserve Yours",
+    "cta_url": "https://example.com/holiday-store",
+    "badge": "Ships within 5 days"
+  },
+  "offer": {
+    "description": "Print-on-demand catalog (ornaments/posters) with AI customizations.",
+    "deliverables": [
+      "3–10 curated SKUs",
+      "Personalization instructions",
+      "Shipping timelines"
+    ],
+    "pricing": "AOV target ≥ $40"
+  },
+  "audience": {
+    "target": "Gift buyers (pet owners, gamers, techies)",
+    "pain_points": [
+      "Generic gifts",
+      "Late shipping"
+    ]
+  },
+  "traffic": {
+    "channels": [
+      "Pinterest",
+      "IG Ads",
+      "TikTok"
+    ],
+    "content_hooks": [
+      "“Custom AI ornament in 3 clicks”",
+      "“Holiday poster generated from your pet photo”"
+    ]
+  },
+  "trust": {
+    "testimonials": [
+      "Placeholder for holiday testimonials."
+    ],
+    "guarantees": "Order cutoff + shipping guarantee copy"
+  },
+  "automation": {
+    "scripts": [
+      "scripts/record_revenue.py --funnel B2"
+    ],
+    "notes": "Sync Shopify/Printful orders nightly."
+  },
+  "metrics": {
+    "kpis": [
+      "Conversion ≥ 3%",
+      "Margin ≥ 25%",
+      "Break-even ads < 48h"
+    ],
+    "ledger_funnel_tag": "B2"
+  }
+}

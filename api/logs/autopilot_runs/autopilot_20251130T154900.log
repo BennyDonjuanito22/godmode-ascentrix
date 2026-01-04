@@ -1,0 +1,9 @@
+[2025-11-30T15:49:00.562616+00:00] Autopilot booted.
+[2025-11-30T15:49:00.562865+00:00] Using tasks file: /workspace/api/tasks/roadmap.jsonl
+[2025-11-30T15:49:00.563229+00:00] Starting main loop.
+[2025-11-30T15:49:00.563733+00:00] Running task 23: Build multi-platform listing kit [builder]
+[2025-11-30T15:49:00.564426+00:00] Task 23 failed: KeyError: 'text'
+[2025-11-30T15:49:30.567687+00:00] Running task 24: Marketplace requirements research [researcher]
+[2025-11-30T15:49:30.571029+00:00] Task 24 failed: KeyError: 'text'
+[2025-11-30T15:50:00.577446+00:00] Running task 24: Marketplace requirements research [researcher]
+[2025-11-30T15:50:00.580899+00:00] Task 24 failed: KeyError: 'text'

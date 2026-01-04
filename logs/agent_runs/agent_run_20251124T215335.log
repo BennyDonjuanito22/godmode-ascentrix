@@ -1,0 +1,2 @@
+=== NEW RUN 20251124T215335 ===
+GOAL: Using 'design_docs/businesses_plan.md', implement a minimal version of the first revenue funnel (B1) inside this codebase. Create a simple landing page or endpoint, wired into the HUD/API, with a placeholder for an affiliate or product URL and basic copy. Document how to configure the real URL and change the copy in docs or comments.

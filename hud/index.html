@@ -2,109 +2,590 @@
 <meta charset="utf-8">
 <title>Ascentrix HUD</title>
 <style>
-body{font-family:system-ui;background:#0b1220;color:#e6eefc;margin:20px;display:flex;gap:20px;height:calc(100vh - 40px);}
-.column{flex:1;display:flex;flex-direction:column;gap:10px;}
-.card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:10px 14px;min-height:0;display:flex;flex-direction:column;}
-.card h2{margin:0 0 8px 0;font-size:16px;}
-pre{background:rgba(0,0,0,.35);border-radius:10px;padding:8px;overflow:auto;flex:1;}
-textarea{width:100%;height:80px;background:#020617;color:#e5e7eb;border-radius:8px;border:1px solid rgba(148,163,184,.5);padding:6px;font-family:inherit;}
-button{background:#22c55e;border:none;color:#020617;padding:6px 10px;border-radius:999px;font-size:13px;cursor:pointer;margin-top:6px;}
-button:disabled{background:#4b5563;color:#9ca3af;cursor:not-allowed;}
-.status-row{display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px;}
-.badge{padding:2px 8px;border-radius:999px;font-size:11px;background:#1d4ed8;color:#e5e7eb;}
+:root{
+  color-scheme:dark;
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+body{
+  margin:0;
+  background:#050b18;
+  color:#e2e8f0;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+}
+header{
+  padding:18px 28px;
+  border-bottom:1px solid rgba(148,163,184,.2);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.brand{
+  font-weight:600;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+  color:#60a5fa;
+}
+.nav{
+  display:flex;
+  gap:12px;
+}
+.nav button{
+  background:transparent;
+  border:1px solid rgba(148,163,184,.4);
+  color:#e2e8f0;
+  padding:6px 14px;
+  border-radius:10px;
+  cursor:pointer;
+  font-size:14px;
+}
+.nav button.active{
+  background:#2563eb;
+  border-color:#3b82f6;
+}
+.status-pill{
+  background:#1e293b;
+  padding:6px 12px;
+  border-radius:20px;
+  font-size:13px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.pill-dot{
+  width:8px;
+  height:8px;
+  border-radius:999px;
+  background:#22c55e;
+}
+main{
+  flex:1;
+  padding:30px;
+}
+.screen{
+  display:none;
+}
+.screen.active{
+  display:block;
+}
+.grid{
+  display:grid;
+  gap:16px;
+}
+.grid-cols-2{grid-template-columns:repeat(auto-fit,minmax(320px,1fr));}
+.grid-cols-3{grid-template-columns:repeat(auto-fit,minmax(280px,1fr));}
+.card{
+  background:rgba(15,23,42,.9);
+  border:1px solid rgba(100,116,139,.4);
+  border-radius:16px;
+  padding:16px;
+  min-height:140px;
+  display:flex;
+  flex-direction:column;
+}
+.card h2{
+  margin:0 0 8px;
+  font-size:16px;
+  color:#bfdbfe;
+}
+.metric{
+  font-size:26px;
+  font-weight:600;
+}
+.subtext{
+  color:#94a3b8;
+  font-size:13px;
+}
+.table{
+  width:100%;
+  border-collapse:collapse;
+  font-size:13px;
+}
+.table th, .table td{
+  padding:8px 6px;
+  border-bottom:1px solid rgba(148,163,184,.2);
+}
+.badge{
+  display:inline-flex;
+  align-items:center;
+  padding:2px 8px;
+  border-radius:999px;
+  font-size:11px;
+  background:#1d4ed8;
+}
+.badge.warn{background:#b45309;}
+.badge.ok{background:#166534;}
+.badge.error{background:#b91c1c;}
+.list{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  font-size:14px;
+}
+.list-item{
+  border-left:3px solid #2563eb;
+  padding-left:10px;
+}
+.log-container{
+  background:#0f172a;
+  border-radius:10px;
+  padding:10px;
+  font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size:12px;
+  max-height:220px;
+  overflow:auto;
+}
+.tabs{
+  display:flex;
+  gap:8px;
+  margin-bottom:10px;
+}
+.tabs button{
+  background:#0f172a;
+  border:1px solid rgba(148,163,184,.3);
+  color:#cbd5f5;
+  padding:6px 12px;
+  border-radius:999px;
+  cursor:pointer;
+  font-size:12px;
+}
+.tabs button.active{
+  background:#1d4ed8;
+  border-color:#3b82f6;
+}
+@media (max-width:900px){
+  main{padding:20px;}
+}
 </style>
 <body>
-<div class="column">
-  <div class="card">
-    <h2>Global Status</h2>
-    <div class="status-row">
-      <div>API health</div>
-      <div id="health-badge" class="badge">checking…</div>
+<header>
+  <div class="brand">Ascentrix HUD</div>
+  <div class="nav">
+    <button class="nav-btn active" data-screen="home">Home</button>
+    <button class="nav-btn" data-screen="streams">Streams</button>
+    <button class="nav-btn" data-screen="agents">Agents</button>
+    <button class="nav-btn" data-screen="logs">Logs / Memory</button>
+    <button class="nav-btn" data-screen="settings">Settings</button>
+  </div>
+  <div class="status-pill" id="autopilot-pill">
+    <span class="pill-dot"></span>
+    <div>
+      <div style="font-size:12px;color:#94a3b8;">Autopilot</div>
+      <div id="autopilot-status">Loading…</div>
     </div>
-    <pre id="health">loading…</pre>
   </div>
-  <div class="card">
-    <h2>Raw Events</h2>
-    <pre id="events">waiting…</pre>
-  </div>
-</div>
-<div class="column">
-  <div class="card">
-    <h2>Task Queue (God Mode Core)</h2>
-    <pre id="tasks">loading…</pre>
-  </div>
-  <div class="card">
-    <h2>Command Window</h2>
-    <textarea id="cmd" placeholder="Describe a task to enqueue (e.g. `Find customers for X`)…"></textarea>
-    <button id="enqueue">Enqueue Task</button>
-  </div>
-</div>
+</header>
+<main>
+  <section id="screen-home" class="screen active">
+    <div class="grid grid-cols-3" id="home-metrics"></div>
+    <div class="grid grid-cols-3" style="margin-top:20px;">
+      <div class="card" id="home-streams"></div>
+      <div class="card" id="home-tasks"></div>
+      <div class="card" id="home-agents"></div>
+      <div class="card" id="home-leads"></div>
+      <div class="card" id="home-promos"></div>
+      <div class="card" id="home-alerts"></div>
+    </div>
+  </section>
+
+  <section id="screen-streams" class="screen">
+    <div class="card">
+      <h2>Streams Overview</h2>
+      <table class="table" id="streams-table"></table>
+    </div>
+    <div class="grid grid-cols-2" style="margin-top:18px;">
+      <div class="card" id="stream-detail"></div>
+      <div class="card" id="stream-queue"></div>
+    </div>
+  </section>
+
+  <section id="screen-agents" class="screen">
+    <div class="grid grid-cols-3" id="agents-grid"></div>
+    <div class="card" style="margin-top:20px;" id="agent-detail"></div>
+  </section>
+
+  <section id="screen-logs" class="screen">
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="agent-logs">Agent Logs</button>
+      <button class="tab-btn" data-tab="autopilot-logs">Autopilot Logs</button>
+      <button class="tab-btn" data-tab="memory">Memory Search</button>
+      <button class="tab-btn" data-tab="history">Autopilot History</button>
+    </div>
+    <div id="logs-content"></div>
+  </section>
+
+  <section id="screen-settings" class="screen">
+    <div class="grid grid-cols-2">
+      <div class="card" id="settings-goals"></div>
+      <div class="card" id="settings-integrations"></div>
+      <div class="card" id="settings-streams"></div>
+      <div class="card" id="settings-maintenance"></div>
+    </div>
+  </section>
+</main>
 <script>
-async function fetchJSON(url){
-  const r = await fetch(url);
-  if(!r.ok) throw new Error("HTTP "+r.status);
-  return await r.json();
-}
+const API_BASE = "http://127.0.0.1:5051";
 
-async function refreshHealth(){
+const placeholders = {
+  home: {
+    revenue:{today:320,d7:2150,d30:8700,delta:12},
+    streams:[
+      {name:"B1 Toolkit",status:"live",trend:"+18%",type:"Digital",revenue:820},
+      {name:"B2 Holiday",status:"building",trend:"-3%",type:"Ecom",revenue:120},
+      {name:"B3 Content",status:"live",trend:"+5%",type:"Traffic",revenue:0}
+    ],
+    autopilot:{
+      status:"idle",
+      task:null,
+      attempts:0,
+      elapsed:0
+    },
+    tasks:{pending:6,running:1,done:14,blocked:2},
+    agents:[
+      {type:"builder",goal:"Update HUD spec",status:"done",duration:"6m"},
+      {type:"autopilot",goal:"Task 5",status:"running",duration:"2m"},
+      {type:"fixer",goal:"Repair tests",status:"idle",duration:"—"}
+    ],
+  alerts:[
+      {severity:"warn",title:"Ledger empty",desc:"No B1 revenue entries recorded in last 24h."},
+      {severity:"error",title:"Missing OPENAI_API_KEY",desc:"Set env var for autopilot runs."}
+    ],
+    leads:{total:12,landing:9,affiliate:2,partner:1},
+    promotions:{published:1,scheduled:4,latest_url:"https://godmode.gumroad.com/l/aigrowthtoolkit",next_hook:"Wave 2: chaos spreadsheets",next_time:"2025-11-30T19:00:00Z"}
+  },
+  streams:{
+    list:[
+      {name:"B1 Toolkit",type:"affiliate",status:"live",owner:"builder",revenue:820,traffic:["TikTok","IG"],nextTask:"Polish testimonials"},
+      {name:"B2 Holiday",type:"ecom",status:"building",owner:"builder",revenue:120,traffic:["Pinterest"],nextTask:"Upload SKU mockups"},
+      {name:"B3 Audience",type:"content",status:"live",owner:"researcher",revenue:0,traffic:["YT","Threads"],nextTask:"Schedule next 10 hooks"},
+      {name:"B4 Service",type:"service",status:"planned",owner:"promoter",revenue:0,traffic:["Email"],nextTask:"Draft outreach templates"}
+    ],
+    detail:{
+      name:"B1 Toolkit",
+      offer:"AI Growth Toolkit (Notion + prompts)",
+      icp:"Solo-founders who need faster content.",
+      urls:["http://127.0.0.1:5051/funnels/b1/landing","https://linktr.ee/ascentrix"],
+      notes:["Need real testimonals","Swap hero copy this week"],
+      metrics:{conversion:"2.7%",ctr:"14%",cadence:"4 posts/day"}
+    },
+    queue:[
+      {id:7,name:"Update landing page copy",status:"pending"},
+      {id:8,name:"Film testimonial reel",status:"pending"},
+      {id:9,name:"Wire B1 revenue API",status:"running"}
+    ]
+  },
+  agents:{
+    status:[
+      {type:"builder",state:"running",goal:"Wire HUD endpoints",success:82,lastRun:"5m ago"},
+      {type:"autopilot",state:"idle",goal:"",success:71,lastRun:"20m ago"},
+      {type:"fixer",state:"blocked",goal:"Repair ledger script",success:54,lastRun:"2h ago"},
+      {type:"researcher",state:"idle",goal:"",success:88,lastRun:"1h ago"},
+      {type:"promoter",state:"idle",goal:"",success:33,lastRun:"1d ago"}
+    ],
+    detail:{
+      type:"builder",
+      history:[
+        {goal:"Implement agent shell guardrails",status:"done",duration:"14m"},
+        {goal:"Draft blueprint doc",status:"done",duration:"9m"},
+        {goal:"Fix autopilot crash",status:"failed",duration:"3m"}
+      ],
+      notes:[
+        "Remember to log outputs into notes.jsonl",
+        "HUD endpoints still stubbed"
+      ],
+      logSample:"[2025-11-24T23:40Z] STEP 4: run_shell -> git status\n..."
+    }
+  },
+  logs:{
+    agent:["agent_run_20251124T085547.log","agent_run_20251124T215235.log"],
+    autopilot:["autopilot_20251124T174716.log","autopilot_20251124T215205.log"],
+    memory:[
+      {ts:"2025-11-24T21:10Z",tags:["stream:B1"],text:"Toolkit CTA variant B increased CTR 4%."},
+      {ts:"2025-11-24T21:30Z",tags:["agent"],text:"Autopilot fails without OPENAI_API_KEY."}
+    ],
+    history:[
+      {id:5,status:"done",summary:"Implemented revenue funnel placeholder"},
+      {id:6,status:"blocked",summary:"Financial logging waiting on credentials"}
+    ]
+  },
+  settings:{
+    goals:{daily:500,weekly:2500,monthly:12000,focus:"B1 launch"},
+    integrations:[
+      {name:"OpenAI",status:"missing"},
+      {name:"Stripe",status:"ok"},
+      {name:"Qdrant",status:"ok"},
+      {name:"Shopify",status:"pending"}
+    ],
+    streams:[
+      {name:"B1 Toolkit",state:"live"},
+      {name:"B2 Holiday",state:"building"},
+      {name:"B3 Audience",state:"live"},
+      {name:"B4 Service",state:"paused"}
+    ],
+    maintenance:[
+      {name:"Cron jobs",status:"pending",detail:"config/cron/godmode.cron"},
+      {name:"Lead pipeline",status:"manual",detail:"Run scripts/lead_pipeline.py --output both"},
+      {name:"Nurture CLI",status:"manual",detail:"python3 scripts/nurture_leads.py send --limit 25"}
+    ]
+  }
+};
+
+async function fetchWithFallback(path, fallback){
   try{
-    const h = await fetchJSON("http://127.0.0.1:5051/health");
-    document.getElementById("health").textContent = JSON.stringify(h,null,2);
-    const badge = document.getElementById("health-badge");
-    badge.textContent = "ok";
-    badge.style.background = "#16a34a";
-  }catch(e){
-    document.getElementById("health").textContent = "error: "+e;
-    const badge = document.getElementById("health-badge");
-    badge.textContent = "error";
-    badge.style.background = "#b91c1c";
+    const res = await fetch(`${API_BASE}${path}`);
+    if(!res.ok) throw new Error(res.statusText);
+    return await res.json();
+  }catch(err){
+    console.warn("Using placeholder for", path, err);
+    return fallback;
   }
 }
 
-async function refreshEvents(){
-  try{
-    const ev = await fetchJSON("http://127.0.0.1:5051/events");
-    document.getElementById("events").textContent = JSON.stringify(ev,null,2);
-  }catch(e){
-    document.getElementById("events").textContent = "error: "+e;
+function renderHome(data){
+  const metrics = document.getElementById("home-metrics");
+  metrics.innerHTML = "";
+  const cards = [
+    {title:"Revenue Today",value:`$${data.revenue.today.toLocaleString()}`,sub:`Δ ${data.revenue.delta}% vs yesterday`},
+    {title:"7-Day Revenue",value:`$${data.revenue.d7.toLocaleString()}`,sub:"Rolling window"},
+    {title:"30-Day Revenue",value:`$${data.revenue.d30.toLocaleString()}`,sub:"Rolling window"}
+  ];
+  cards.forEach(card=>{
+    const div = document.createElement("div");
+    div.className="card";
+    div.innerHTML = `<h2>${card.title}</h2><div class="metric">${card.value}</div><div class="subtext">${card.sub}</div>`;
+    metrics.appendChild(div);
+  });
+  const streamsCard = document.getElementById("home-streams");
+  streamsCard.innerHTML = "<h2>Active Streams</h2>" + data.streams.map(s=>`
+    <div class="status-row">
+      <div>${s.name} <span class="badge">${s.status}</span></div>
+      <div>${s.trend}</div>
+    </div>
+  `).join("");
+  const tasksCard = document.getElementById("home-tasks");
+  tasksCard.innerHTML = `<h2>Task Status</h2>
+    <div class="list">
+      <div>Pending: ${data.tasks.pending}</div>
+      <div>Running: ${data.tasks.running}</div>
+      <div>Done: ${data.tasks.done}</div>
+      <div>Blocked: ${data.tasks.blocked}</div>
+    </div>`;
+  const agentsCard = document.getElementById("home-agents");
+  agentsCard.innerHTML = `<h2>Recent Agent Runs</h2>` + data.agents.map(a=>`
+    <div class="list-item">
+      <div><strong>${a.type.toUpperCase()}</strong> – ${a.goal || "Idle"}</div>
+      <div class="subtext">${a.status} · ${a.duration}</div>
+    </div>`).join("");
+  const leadsCard = document.getElementById("home-leads");
+  const leadData = data.leads || {total:0,landing:0,affiliate:0,partner:0};
+  leadsCard.innerHTML = `<h2>Lead Pipeline</h2>
+    <div>Total: ${leadData.total}</div>
+    <div>Landing: ${leadData.landing}</div>
+    <div>Affiliate: ${leadData.affiliate}</div>
+    <div>Partner: ${leadData.partner}</div>`;
+  const promoCard = document.getElementById("home-promos");
+  const promo = data.promotions || {};
+  promoCard.innerHTML = `<h2>Promo Queue</h2>
+    <div>Published: ${promo.published ?? 0}</div>
+    <div>Scheduled: ${promo.scheduled ?? 0}</div>
+    <div class="subtext">Next: ${(promo.next_hook || "—")} @ ${(promo.next_time || "")}</div>
+    ${promo.latest_url ? `<a href=\"${promo.latest_url}\" target=\"_blank\">Latest live asset</a>` : "<div class='subtext'>No live links yet</div>"}`;
+  const alertsCard = document.getElementById("home-alerts");
+  alertsCard.innerHTML = `<h2>Alerts</h2>` + (data.alerts.length ? data.alerts.map(al=>`
+    <div class="list-item">
+      <div><span class="badge ${al.severity}">${al.severity}</span> ${al.title}</div>
+      <div class="subtext">${al.desc}</div>
+    </div>`).join("") : "<div class='subtext'>No alerts 🎉</div>");
+}
+
+function renderStreams(data){
+  const table = document.getElementById("streams-table");
+  table.innerHTML = `
+    <tr><th>Name</th><th>Type</th><th>Status</th><th>Owner</th><th>7d Revenue</th><th>Traffic</th><th>Next Task</th></tr>
+  ` + data.list.map(row=>`
+    <tr>
+      <td>${row.name}</td>
+      <td>${row.type}</td>
+      <td><span class="badge">${row.status}</span></td>
+      <td>${row.owner}</td>
+      <td>$${row.revenue}</td>
+      <td>${row.traffic.join(", ")}</td>
+      <td>${row.nextTask}</td>
+    </tr>`).join("");
+  const detail = document.getElementById("stream-detail");
+  const d = data.detail;
+  detail.innerHTML = `<h2>${d.name} – Detail</h2>
+    <div class="subtext">${d.offer}</div>
+    <div style="margin-top:8px;">ICP: ${d.icp}</div>
+    <div style="margin-top:8px;">Key URLs:<br>${d.urls.map(u=>`<a href="${u}" target="_blank">${u}</a>`).join("<br>")}</div>
+    <div style="margin-top:8px;">Metrics: Conv ${d.metrics.conversion}, CTR ${d.metrics.ctr}, Cadence ${d.metrics.cadence}</div>
+    <div style="margin-top:8px;">Notes:<br>${d.notes.map(n=>`• ${n}`).join("<br>")}</div>`;
+  const queue = document.getElementById("stream-queue");
+  queue.innerHTML = `<h2>Stream Queue</h2>` + data.queue.map(item=>`
+    <div class="list-item">
+      <div>#${item.id} – ${item.name}</div>
+      <div class="subtext">Status: ${item.status}</div>
+    </div>`).join("");
+}
+
+function renderAgents(data){
+  const grid = document.getElementById("agents-grid");
+  grid.innerHTML = "";
+  data.status.forEach(agent=>{
+    const card = document.createElement("div");
+    card.className = "card";
+    card.innerHTML = `<h2>${agent.type.toUpperCase()}</h2>
+      <div>Status: <span class="badge">${agent.state}</span></div>
+      <div class="subtext">Success rate ${agent.success}%</div>
+      <div class="subtext">Last run ${agent.lastRun}</div>
+      <div class="subtext">Goal: ${agent.goal || "—"}</div>`;
+    grid.appendChild(card);
+  });
+  const detail = document.getElementById("agent-detail");
+  const d = data.detail;
+  detail.innerHTML = `<h2>${d.type.toUpperCase()} Agent Detail</h2>
+    <div><strong>Recent Runs</strong></div>
+    ${d.history.map(run=>`<div class="list-item">${run.goal} – ${run.status} (${run.duration})</div>`).join("")}
+    <div style="margin-top:12px;"><strong>Notes</strong></div>
+    ${d.notes.map(note=>`<div class="list-item">${note}</div>`).join("")}
+    <div style="margin-top:12px;"><strong>Log Sample</strong></div>
+    <div class="log-container">${d.logSample}</div>`;
+}
+
+function renderLogs(data){
+  const container = document.getElementById("logs-content");
+  const activeTab = document.querySelector(".tab-btn.active").dataset.tab;
+  if(activeTab === "agent-logs"){
+    container.innerHTML = `<div class="card"><h2>Agent Logs</h2>${data.agent.map(f=>`<div class="list-item">${f}</div>`).join("")}</div>`;
+  }else if(activeTab === "autopilot-logs"){
+    container.innerHTML = `<div class="card"><h2>Autopilot Logs</h2>${data.autopilot.map(f=>`<div class="list-item">${f}</div>`).join("")}</div>`;
+  }else if(activeTab === "memory"){
+    container.innerHTML = `<div class="card"><h2>Memory Notes</h2>${data.memory.map(n=>`
+      <div class="list-item">
+        <div>${n.text}</div>
+        <div class="subtext">${n.ts} · ${n.tags.join(", ")}</div>
+      </div>`).join("")}</div>`;
+  }else{
+    container.innerHTML = `<div class="card"><h2>Autopilot History</h2>${data.history.map(h=>`
+      <div class="list-item">
+        <div>Task #${h.id} – <span class="badge ${h.status === "done" ? "ok" : "warn"}">${h.status}</span></div>
+        <div class="subtext">${h.summary}</div>
+      </div>`).join("")}</div>`;
   }
 }
 
-async function refreshTasks(){
-  try{
-    const t = await fetchJSON("http://127.0.0.1:5051/tasks");
-    document.getElementById("tasks").textContent = JSON.stringify(t,null,2);
-  }catch(e){
-    document.getElementById("tasks").textContent = "error: "+e;
+function renderSettings(data){
+  document.getElementById("settings-goals").innerHTML = `<h2>Revenue Targets</h2>
+    <div>Daily: $${data.goals.daily}</div>
+    <div>Weekly: $${data.goals.weekly}</div>
+    <div>Monthly: $${data.goals.monthly}</div>
+    <div class="subtext">Current focus: ${data.goals.focus}</div>`;
+  document.getElementById("settings-integrations").innerHTML = `<h2>Integrations</h2>
+    ${data.integrations.map(int=>`
+      <div class="list-item">
+        <div>${int.name}</div>
+        <div class="subtext">${int.status}</div>
+      </div>`).join("")}`;
+  document.getElementById("settings-streams").innerHTML = `<h2>Stream Toggles</h2>
+    ${data.streams.map(stream=>`
+      <div class="list-item">
+        ${stream.name} – <span class="badge">${stream.state}</span>
+      </div>`).join("")}`;
+  const maintenance = data.maintenance || [];
+  document.getElementById("settings-maintenance").innerHTML = `<h2>Automation</h2>
+    ${maintenance.map(item=>`
+      <div class="list-item">
+        <div>${item.name} – <span class="badge">${item.status}</span></div>
+        <div class="subtext">${item.detail}</div>
+      </div>`).join("")}`;
+}
+
+async function refreshAutopilotPill(){
+  const pill = document.getElementById("autopilot-pill");
+  const statusEl = document.getElementById("autopilot-status");
+  const data = await fetchWithFallback("/hud/autopilot/status", placeholders.home.autopilot);
+  statusEl.textContent = data.task ? `${data.status} – #${data.task.id} ${data.task.name}` : data.status;
+  pill.querySelector(".pill-dot").style.background = data.status === "running" ? "#facc15" : data.status === "error" ? "#ef4444" : "#22c55e";
+}
+
+function showLoading(id, message="Loading…"){
+  const el = document.getElementById(id);
+  if (el){
+    el.innerHTML = `<div class="subtext">${message}</div>`;
   }
 }
 
-async function enqueueTask(){
-  const text = document.getElementById("cmd").value.trim();
-  if(!text) return;
-  const button = document.getElementById("enqueue");
-  button.disabled = true;
-  try{
-    const id = Math.floor(Date.now()/1000);
-    await fetch("http://127.0.0.1:5051/tasks",{
-      method:"POST",
-      headers:{"Content-Type":"application/json"},
-      body:JSON.stringify({id:id,title:text,status:"queued"})
-    });
-    document.getElementById("cmd").value = "";
-    await refreshTasks();
-  }catch(e){
-    alert("Failed to enqueue: "+e);
-  }finally{
-    button.disabled = false;
-  }
+async function loadHome(){
+  showLoading("home-metrics");
+  showLoading("home-streams");
+  showLoading("home-tasks");
+  showLoading("home-agents");
+  showLoading("home-leads");
+  showLoading("home-promos");
+  showLoading("home-alerts");
+  const data = await fetchWithFallback("/hud/home", placeholders.home);
+  renderHome(data);
 }
 
-document.getElementById("enqueue").addEventListener("click", enqueueTask);
-setInterval(refreshHealth,2000);
-setInterval(refreshEvents,2500);
-setInterval(refreshTasks,3000);
-refreshHealth();
-refreshEvents();
-refreshTasks();
+async function loadStreams(){
+  showLoading("streams-table");
+  showLoading("stream-detail");
+  showLoading("stream-queue");
+  const data = await fetchWithFallback("/hud/streams", placeholders.streams);
+  renderStreams(data);
+}
+
+async function loadAgents(){
+  showLoading("agents-grid");
+  showLoading("agent-detail");
+  const data = await fetchWithFallback("/hud/agents", placeholders.agents);
+  renderAgents(data);
+}
+
+async function loadLogs(){
+  document.getElementById("logs-content").innerHTML = "<div class='subtext'>Loading logs…</div>";
+  const data = await fetchWithFallback("/hud/logs", placeholders.logs);
+  renderLogs(data);
+}
+
+async function loadSettings(){
+  showLoading("settings-goals");
+  showLoading("settings-integrations");
+  showLoading("settings-streams");
+  showLoading("settings-maintenance");
+  const data = await fetchWithFallback("/hud/settings", placeholders.settings);
+  renderSettings(data);
+}
+
+document.querySelectorAll(".nav-btn").forEach(btn=>{
+  btn.addEventListener("click", ()=>{
+    document.querySelectorAll(".nav-btn").forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");
+    const screen = btn.dataset.screen;
+    document.querySelectorAll(".screen").forEach(sec=>sec.classList.remove("active"));
+    document.getElementById(`screen-${screen}`).classList.add("active");
+    if(screen==="home") loadHome();
+    if(screen==="streams") loadStreams();
+    if(screen==="agents") loadAgents();
+    if(screen==="logs") loadLogs();
+    if(screen==="settings") loadSettings();
+  });
+});
+
+document.querySelectorAll(".tab-btn").forEach(btn=>{
+  btn.addEventListener("click", async ()=>{
+    document.querySelectorAll(".tab-btn").forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");
+    await loadLogs();
+  });
+});
+
+loadHome();
+loadStreams();
+loadAgents();
+loadLogs();
+loadSettings();
+refreshAutopilotPill();
+setInterval(refreshAutopilotPill, 5000);
 </script>

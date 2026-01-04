@@ -1,0 +1,5 @@
+[2025-11-30T14:58:51.416368+00:00] Autopilot booted.
+[2025-11-30T14:58:51.416681+00:00] Using tasks file: /workspace/api/tasks/roadmap.jsonl
+[2025-11-30T14:58:51.416954+00:00] Starting main loop.
+[2025-11-30T14:58:51.417201+00:00] No pending tasks. Cooling down.
+[2025-11-30T15:00:51.421615+00:00] No pending tasks. Cooling down.

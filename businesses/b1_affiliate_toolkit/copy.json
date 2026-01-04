@@ -1,0 +1,63 @@
+{
+  "metadata": {
+    "id": "B1",
+    "name": "AI Growth Toolkit",
+    "type": "affiliate",
+    "stage": "live"
+  },
+  "hero": {
+    "title": "Unlock the AI Growth Toolkit",
+    "subtitle": "Plug-and-play prompts, SOPs, and automations to spin up revenue in days, not months.",
+    "cta_label": "Get Early Access",
+    "cta_url": "https://example.com/replace-with-affiliate-or-product-link",
+    "badge": "Next cohort ships in under 7 days"
+  },
+  "offer": {
+    "description": "Bundle of Notion systems, prompt packs, and launch checklists used by God Mode internally.",
+    "deliverables": [
+      "20+ Notion templates",
+      "Prompt packs for content + sales",
+      "Launch checklist"
+    ],
+    "pricing": "$37–$97 or affiliate commission"
+  },
+  "audience": {
+    "target": "Solo founders, creators, agencies",
+    "pain_points": [
+      "Manual content workflows",
+      "Analysis paralysis around AI tools"
+    ]
+  },
+  "traffic": {
+    "channels": [
+      "TikTok",
+      "IG Reels",
+      "YouTube Shorts"
+    ],
+    "content_hooks": [
+      "“AI playbook that prints $1k/mo in 30 days”",
+      "“What I ship with one prompt stack”"
+    ]
+  },
+  "trust": {
+    "testimonials": [
+      "Placeholder – swap once real social proof captured"
+    ],
+    "guarantees": "30-day satisfaction or credit toward services"
+  },
+  "automation": {
+    "scripts": [
+      "scripts/record_revenue.py --funnel B1",
+      "scripts/ingest_memory.py"
+    ],
+    "notes": "HUD stream detail references /funnels/b1 endpoints."
+  },
+  "metrics": {
+    "kpis": [
+      "Conversion ≥ 2.5%",
+      "$200/day revenue target",
+      "3–5 content pieces/day"
+    ],
+    "ledger_funnel_tag": "B1"
+  }
+}
