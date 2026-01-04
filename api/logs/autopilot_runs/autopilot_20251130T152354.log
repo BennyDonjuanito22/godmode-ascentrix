@@ -1,0 +1,21 @@
+[2025-11-30T15:23:54.351852+00:00] Autopilot booted.
+[2025-11-30T15:23:54.352167+00:00] Using tasks file: /workspace/api/tasks/roadmap.jsonl
+[2025-11-30T15:23:54.352497+00:00] Starting main loop.
+[2025-11-30T15:23:54.353003+00:00] Running task 21: Execute 72-hour B1 promo blitz [promoter]
+[2025-11-30T15:25:33.084064+00:00] Task 21 completed.
+[2025-11-30T15:26:03.094875+00:00] Running task 22: Close warm partners / affiliates [promoter]
+[2025-11-30T15:27:38.937223+00:00] Task 22 completed.
+[2025-11-30T15:28:08.942660+00:00] No pending tasks. Cooling down.
+[2025-11-30T15:30:08.945757+00:00] No pending tasks. Cooling down.
+[2025-11-30T15:32:08.952111+00:00] No pending tasks. Cooling down.
+[2025-11-30T15:34:08.958436+00:00] No pending tasks. Cooling down.
+[2025-11-30T15:36:08.967299+00:00] No pending tasks. Cooling down.
+[2025-11-30T15:38:08.970405+00:00] No pending tasks. Cooling down.
+[2025-11-30T15:40:08.975352+00:00] No pending tasks. Cooling down.
+[2025-11-30T15:42:08.979875+00:00] No pending tasks. Cooling down.
+[2025-11-30T15:44:08.974243+00:00] No pending tasks. Cooling down.
+[2025-11-30T15:46:08.966963+00:00] No pending tasks. Cooling down.
+[2025-11-30T15:48:08.971140+00:00] Running task 23: Build multi-platform listing kit [builder]
+[2025-11-30T15:48:08.974462+00:00] Task 23 failed: KeyError: 'text'
+[2025-11-30T15:48:38.980930+00:00] Running task 23: Build multi-platform listing kit [builder]
+[2025-11-30T15:48:38.984117+00:00] Task 23 failed: KeyError: 'text'

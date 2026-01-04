@@ -1,0 +1,2 @@
+=== NEW RUN 20251124T234154 ===
+GOAL: Create a memory ingestion service that reads design docs, notes, and logs, generates embeddings, and stores them in Qdrant (or a local stand-in). Provide a recall API endpoint plus agent tools to query it.

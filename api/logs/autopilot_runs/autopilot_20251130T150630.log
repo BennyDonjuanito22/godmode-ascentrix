@@ -1,0 +1,4 @@
+[2025-11-30T15:06:30.523689+00:00] Autopilot booted.
+[2025-11-30T15:06:30.523978+00:00] Using tasks file: /workspace/api/tasks/roadmap.jsonl
+[2025-11-30T15:06:30.524331+00:00] Starting main loop.
+[2025-11-30T15:06:30.524848+00:00] Running task 15: Wire HUD widgets to live /hud APIs [builder]

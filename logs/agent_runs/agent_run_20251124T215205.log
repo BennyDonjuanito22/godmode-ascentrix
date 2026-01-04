@@ -1,0 +1,2 @@
+=== NEW RUN 20251124T215205 ===
+GOAL: Read the repository structure and any existing design docs. Create or refine 'design_docs/godmode_overview.md' so that it clearly describes the God Mode system, including: services (api, hud, postgres, redis, qdrant), agent runtime, memory, and autopilot. Add sections for: (1) overall mission, (2) technical architecture, (3) current capabilities, (4) planned capabilities. Use list_dir, read_file, write_file, search_design_docs, store_note, and search_notes as needed.

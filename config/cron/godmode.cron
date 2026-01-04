@@ -1,0 +1,12 @@
+SHELL=/bin/zsh
+PATH=/usr/local/bin:/usr/bin:/bin
+GODMODE=/Users/ianschaefer/Ascentrix
+
+# Daily skill tasks at 00:05
+5 0 * * * $GODMODE/scripts/cron_schedule_skill_tasks.sh
+
+# Refresh lead/partner dashboards at 00:15
+15 0 * * * $GODMODE/scripts/cron_lead_pipeline.sh
+
+# Hourly nurture follow-ups (limit override via NURTURE_LIMIT env)
+0 * * * * NURTURE_LIMIT=25 $GODMODE/scripts/cron_nurture_followups.sh

@@ -1,0 +1,19 @@
+=== NEW RUN 20251125T043643 ===
+ROOT: /workspace
+GOAL: Run through the weekly security/infra checklist (docs/operations_cadence.md). Verify secrets, backups, ledger health, and capture findings in memory/notes.jsonl. Create follow-up tasks for any gaps.
+
+Operational guardrails for every task:
+1. Inspect the repository and existing design docs before creating new files.
+2. Prefer editing the canonical HUD/API implementations instead of building duplicates.
+3. Double-check every change by re-reading modified files and summarising the result.
+4. Use store_note/search_notes aggressively so future runs retain context.
+5. When you touch revenue, infra, or memory features, update the relevant design_doc.
+
+
+Agent profile (fixer): Diagnose regressions quickly. Limit scope to repairs, capture root cause, and verify fixes before closing.
+
+--- STEP 1 RAW REPLY ---
+{"thought":"First, I will locate and read the 'docs/operations_cadence.md' file to understand the weekly security/infra checklist requirements. This will guide the verification steps for secrets, backups, ledger health, and how to capture findings and create follow-up tasks.","tool":"read_file","tool_input":"docs/operations_cadence.md"}
+THOUGHT: First, I will locate and read the 'docs/operations_cadence.md' file to understand the weekly security/infra checklist requirements. This will guide the verification steps for secrets, backups, ledger health, and how to capture findings and create follow-up tasks.
+TOOL: read_file
+TOOL_INPUT: docs/operations_cadence.md

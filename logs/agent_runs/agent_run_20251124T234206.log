@@ -1,0 +1,2 @@
+=== NEW RUN 20251124T234206 ===
+GOAL: Add structured endpoints under api/app.py that feed the HUD: task summaries, autopilot status, recent memory notes, and financial metrics. Include tests or examples that demonstrate payload shapes.

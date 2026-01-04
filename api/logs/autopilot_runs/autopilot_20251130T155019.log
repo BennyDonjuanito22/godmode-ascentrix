@@ -1,0 +1,145 @@
+[2025-11-30T15:50:19.833596+00:00] Autopilot booted.
+[2025-11-30T15:50:19.833905+00:00] Using tasks file: /workspace/api/tasks/roadmap.jsonl
+[2025-11-30T15:50:19.834250+00:00] Starting main loop.
+[2025-11-30T15:50:19.834756+00:00] Running task 25: Lead & partner CRM automation [builder]
+[2025-11-30T15:51:26.378613+00:00] Task 25 completed.
+[2025-11-30T15:51:56.386349+00:00] No pending tasks. Cooling down.
+[2025-11-30T15:53:56.393712+00:00] No pending tasks. Cooling down.
+[2025-11-30T15:55:56.399766+00:00] No pending tasks. Cooling down.
+[2025-11-30T15:57:56.401873+00:00] No pending tasks. Cooling down.
+[2025-11-30T15:59:56.407362+00:00] No pending tasks. Cooling down.
+[2025-11-30T16:01:56.414438+00:00] No pending tasks. Cooling down.
+[2025-11-30T16:03:56.420525+00:00] No pending tasks. Cooling down.
+[2025-11-30T16:05:56.427115+00:00] No pending tasks. Cooling down.
+[2025-11-30T16:07:56.429107+00:00] No pending tasks. Cooling down.
+[2025-11-30T16:09:56.435089+00:00] No pending tasks. Cooling down.
+[2025-11-30T16:11:56.439055+00:00] No pending tasks. Cooling down.
+[2025-11-30T16:13:56.441365+00:00] No pending tasks. Cooling down.
+[2025-11-30T16:15:56.444715+00:00] No pending tasks. Cooling down.
+[2025-11-30T16:17:56.446744+00:00] No pending tasks. Cooling down.
+[2025-11-30T16:19:56.450235+00:00] No pending tasks. Cooling down.
+[2025-11-30T16:21:56.453193+00:00] No pending tasks. Cooling down.
+[2025-11-30T16:23:56.536530+00:00] No pending tasks. Cooling down.
+[2025-11-30T16:25:56.543581+00:00] No pending tasks. Cooling down.
+[2025-11-30T16:27:56.553103+00:00] No pending tasks. Cooling down.
+[2025-11-30T16:29:56.561727+00:00] No pending tasks. Cooling down.
+[2025-11-30T16:31:56.567145+00:00] No pending tasks. Cooling down.
+[2025-11-30T16:33:56.575039+00:00] No pending tasks. Cooling down.
+[2025-11-30T16:35:56.581635+00:00] No pending tasks. Cooling down.
+[2025-11-30T16:37:56.591124+00:00] No pending tasks. Cooling down.
+[2025-11-30T16:39:56.595648+00:00] No pending tasks. Cooling down.
+[2025-11-30T16:41:56.601064+00:00] No pending tasks. Cooling down.
+[2025-11-30T16:43:56.605261+00:00] No pending tasks. Cooling down.
+[2025-11-30T16:45:56.609588+00:00] No pending tasks. Cooling down.
+[2025-11-30T16:47:56.615547+00:00] No pending tasks. Cooling down.
+[2025-11-30T16:49:56.647026+00:00] No pending tasks. Cooling down.
+[2025-11-30T16:51:56.653913+00:00] No pending tasks. Cooling down.
+[2025-11-30T16:53:56.663310+00:00] No pending tasks. Cooling down.
+[2025-11-30T16:55:56.669439+00:00] No pending tasks. Cooling down.
+[2025-11-30T16:57:56.674866+00:00] No pending tasks. Cooling down.
+[2025-11-30T16:59:56.681266+00:00] No pending tasks. Cooling down.
+[2025-11-30T17:01:56.687638+00:00] No pending tasks. Cooling down.
+[2025-11-30T17:03:56.694396+00:00] No pending tasks. Cooling down.
+[2025-11-30T17:05:56.699888+00:00] No pending tasks. Cooling down.
+[2025-11-30T17:07:56.709067+00:00] No pending tasks. Cooling down.
+[2025-11-30T17:09:56.716620+00:00] No pending tasks. Cooling down.
+[2025-11-30T17:11:56.722930+00:00] No pending tasks. Cooling down.
+[2025-11-30T17:13:56.730907+00:00] Running task 26: Builder practice block – 2025-11-30 [builder]
+[2025-11-30T17:14:40.786458+00:00] Task 26 completed.
+[2025-11-30T17:15:10.794124+00:00] Running task 27: Fixer practice block – 2025-11-30 [fixer]
+[2025-11-30T17:15:34.714582+00:00] Task 27 completed.
+[2025-11-30T17:16:04.723916+00:00] Running task 28: Researcher practice block – 2025-11-30 [researcher]
+[2025-11-30T17:16:11.086185+00:00] Task 28 completed.
+[2025-11-30T17:16:41.093335+00:00] Running task 29: Promoter practice block – 2025-11-30 [promoter]
+[2025-11-30T17:17:11.402633+00:00] Task 29 completed.
+[2025-11-30T17:17:41.411661+00:00] Running task 30: Autopilot coordinator practice – 2025-11-30 [autopilot]
+[2025-11-30T17:18:04.091836+00:00] Task 30 completed.
+[2025-11-30T17:18:34.097054+00:00] No pending tasks. Cooling down.
+[2025-11-30T17:20:34.106830+00:00] Running task 31: Builder practice block – 2025-12-01 [builder]
+[2025-11-30T17:20:49.987020+00:00] Task 31 completed.
+[2025-11-30T17:21:19.959484+00:00] Running task 32: Fixer practice block – 2025-12-01 [fixer]
+[2025-11-30T17:21:51.136042+00:00] Task 32 completed.
+[2025-11-30T17:22:21.142370+00:00] Running task 33: Researcher practice block – 2025-12-01 [researcher]
+[2025-11-30T17:22:58.189817+00:00] Task 33 completed.
+[2025-11-30T17:23:28.203089+00:00] Running task 34: Promoter practice block – 2025-12-01 [promoter]
+[2025-11-30T17:24:00.366335+00:00] Task 34 completed.
+[2025-11-30T17:24:30.373720+00:00] Running task 35: Autopilot coordinator practice – 2025-12-01 [autopilot]
+[2025-11-30T17:24:54.830634+00:00] Task 35 completed.
+[2025-11-30T17:25:24.845872+00:00] No pending tasks. Cooling down.
+[2025-11-30T17:27:24.851796+00:00] No pending tasks. Cooling down.
+[2025-11-30T17:29:24.865435+00:00] No pending tasks. Cooling down.
+[2025-11-30T17:31:24.873190+00:00] No pending tasks. Cooling down.
+[2025-11-30T17:33:24.881098+00:00] No pending tasks. Cooling down.
+[2025-11-30T17:35:24.886448+00:00] No pending tasks. Cooling down.
+[2025-11-30T17:37:24.896862+00:00] No pending tasks. Cooling down.
+[2025-11-30T17:39:24.905701+00:00] No pending tasks. Cooling down.
+[2025-11-30T17:41:24.908068+00:00] No pending tasks. Cooling down.
+[2025-11-30T17:43:24.912158+00:00] No pending tasks. Cooling down.
+[2025-11-30T17:45:24.921565+00:00] No pending tasks. Cooling down.
+[2025-11-30T17:47:24.904862+00:00] No pending tasks. Cooling down.
+[2025-11-30T17:49:24.909537+00:00] No pending tasks. Cooling down.
+[2025-11-30T17:51:24.913302+00:00] No pending tasks. Cooling down.
+[2025-11-30T17:53:24.917811+00:00] No pending tasks. Cooling down.
+[2025-11-30T17:55:24.922041+00:00] No pending tasks. Cooling down.
+[2025-11-30T17:57:24.929379+00:00] No pending tasks. Cooling down.
+[2025-11-30T17:59:24.933049+00:00] No pending tasks. Cooling down.
+[2025-11-30T18:01:24.936642+00:00] No pending tasks. Cooling down.
+[2025-11-30T18:03:24.944440+00:00] No pending tasks. Cooling down.
+[2025-11-30T18:05:24.951706+00:00] No pending tasks. Cooling down.
+[2025-11-30T18:07:24.961878+00:00] No pending tasks. Cooling down.
+[2025-11-30T18:09:24.969188+00:00] No pending tasks. Cooling down.
+[2025-11-30T18:11:24.973816+00:00] No pending tasks. Cooling down.
+[2025-11-30T18:13:24.984456+00:00] No pending tasks. Cooling down.
+[2025-11-30T18:15:24.997275+00:00] No pending tasks. Cooling down.
+[2025-11-30T18:17:25.002372+00:00] No pending tasks. Cooling down.
+[2025-11-30T18:19:25.011674+00:00] No pending tasks. Cooling down.
+[2025-11-30T18:21:25.017796+00:00] No pending tasks. Cooling down.
+[2025-11-30T18:23:25.094006+00:00] No pending tasks. Cooling down.
+[2025-11-30T18:25:25.102324+00:00] No pending tasks. Cooling down.
+[2025-11-30T18:27:25.110694+00:00] No pending tasks. Cooling down.
+[2025-11-30T18:29:25.116252+00:00] No pending tasks. Cooling down.
+[2025-11-30T18:31:25.122058+00:00] No pending tasks. Cooling down.
+[2025-11-30T18:33:25.131306+00:00] No pending tasks. Cooling down.
+[2025-11-30T18:35:25.139185+00:00] No pending tasks. Cooling down.
+[2025-11-30T18:37:25.144908+00:00] No pending tasks. Cooling down.
+[2025-11-30T18:39:25.149819+00:00] No pending tasks. Cooling down.
+[2025-11-30T18:41:25.153231+00:00] No pending tasks. Cooling down.
+[2025-11-30T18:43:25.168294+00:00] No pending tasks. Cooling down.
+[2025-11-30T18:45:25.182769+00:00] No pending tasks. Cooling down.
+[2025-11-30T18:47:25.189642+00:00] No pending tasks. Cooling down.
+[2025-11-30T18:49:25.195090+00:00] No pending tasks. Cooling down.
+[2025-11-30T18:51:25.200623+00:00] No pending tasks. Cooling down.
+[2025-11-30T18:53:25.206760+00:00] No pending tasks. Cooling down.
+[2025-11-30T18:55:25.208078+00:00] No pending tasks. Cooling down.
+[2025-11-30T18:57:25.167349+00:00] No pending tasks. Cooling down.
+[2025-11-30T18:59:25.171133+00:00] No pending tasks. Cooling down.
+[2025-11-30T19:01:25.174966+00:00] No pending tasks. Cooling down.
+[2025-11-30T19:03:25.181673+00:00] Running task 36: Builder practice block – 2025-12-02 [builder]
+[2025-11-30T19:04:22.441928+00:00] Task 36 completed.
+[2025-11-30T19:04:52.450575+00:00] Running task 37: Fixer practice block – 2025-12-02 [fixer]
+[2025-11-30T19:05:31.563482+00:00] Task 37 completed.
+[2025-11-30T19:06:01.575622+00:00] Running task 38: Researcher practice block – 2025-12-02 [researcher]
+[2025-11-30T19:06:22.863725+00:00] Task 38 completed.
+[2025-11-30T19:06:52.870837+00:00] Running task 39: Promoter practice block – 2025-12-02 [promoter]
+[2025-11-30T19:07:26.497895+00:00] Task 39 completed.
+[2025-11-30T19:07:56.509428+00:00] Running task 40: Autopilot coordinator practice – 2025-12-02 [autopilot]
+[2025-11-30T19:08:23.184742+00:00] Task 40 completed.
+[2025-11-30T19:08:53.190760+00:00] No pending tasks. Cooling down.
+[2025-11-30T19:10:53.199262+00:00] No pending tasks. Cooling down.
+[2025-11-30T19:12:53.205209+00:00] No pending tasks. Cooling down.
+[2025-11-30T19:14:53.208068+00:00] No pending tasks. Cooling down.
+[2025-11-30T19:16:53.215812+00:00] No pending tasks. Cooling down.
+[2025-11-30T19:18:53.218851+00:00] No pending tasks. Cooling down.
+[2025-11-30T19:20:53.223135+00:00] No pending tasks. Cooling down.
+[2025-11-30T19:22:53.277727+00:00] No pending tasks. Cooling down.
+[2025-11-30T19:24:53.282998+00:00] No pending tasks. Cooling down.
+[2025-11-30T19:26:53.290812+00:00] No pending tasks. Cooling down.
+[2025-11-30T19:28:53.298989+00:00] No pending tasks. Cooling down.
+[2025-11-30T19:30:53.309975+00:00] Running task 41: Builder practice block – 2025-12-03 [builder]
+[2025-11-30T19:31:39.628169+00:00] Task 41 completed.
+[2025-11-30T19:32:09.636251+00:00] Running task 42: Fixer practice block – 2025-12-03 [fixer]
+[2025-11-30T19:32:52.181319+00:00] Task 42 completed.
+[2025-11-30T19:33:22.191263+00:00] Running task 43: Researcher practice block – 2025-12-03 [researcher]
+[2025-11-30T19:33:40.332467+00:00] Task 43 completed.
+[2025-11-30T19:34:10.344031+00:00] Running task 44: Promoter practice block – 2025-12-03 [promoter]
+[2025-11-30T19:34:41.646800+00:00] Task 44 completed.

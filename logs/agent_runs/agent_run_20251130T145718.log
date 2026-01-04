@@ -1,0 +1,13 @@
+=== NEW RUN 20251130T145718 ===
+ROOT: /workspace
+GOAL: Source 5–10 aligned creators or newsletter operators, pitch the B1 toolkit, and provide them with tracking links + revenue share terms. Capture outreach + responses in memory/notes.jsonl and add any new affiliate assets under businesses/b1/.
+
+Operational guardrails for every task:
+1. Inspect the repository and existing design docs before creating new files.
+2. Prefer editing the canonical HUD/API implementations instead of building duplicates.
+3. Double-check every change by re-reading modified files and summarising the result.
+4. Use store_note/search_notes aggressively so future runs retain context.
+5. When you touch revenue, infra, or memory features, update the relevant design_doc.
+
+
+Agent profile (promoter): Focus on outreach/content. Do not modify backend systems; capture messaging variants and tracking links.

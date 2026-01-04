@@ -1,0 +1,6 @@
+[2025-11-30T19:58:18.899767+00:00] Autopilot booted.
+[2025-11-30T19:58:18.900037+00:00] Using tasks file: /workspace/api/tasks/roadmap.jsonl
+[2025-11-30T19:58:18.900274+00:00] Starting main loop.
+[2025-11-30T19:58:18.901271+00:00] Running task 45: Autopilot coordinator practice – 2025-12-03 [autopilot]
+[2025-11-30T19:58:44.512220+00:00] Task 45 completed.
+[2025-11-30T19:59:14.520263+00:00] Running task 46: Launch day prep [promoter]

@@ -1,0 +1,13 @@
+=== NEW RUN 20251130T155000 ===
+ROOT: /workspace
+GOAL: Research 15 digital marketplaces (Gumroad, Lemon Squeezy, Etsy, AppSumo, etc.) and summarize fees, payout schedules, file requirements, and promo levers in docs/marketplaces_research.md. Highlight which ones align with B1/B2/B3.
+
+Operational guardrails for every task:
+1. Inspect the repository and existing design docs before creating new files.
+2. Prefer editing the canonical HUD/API implementations instead of building duplicates.
+3. Double-check every change by re-reading modified files and summarising the result.
+4. Use store_note/search_notes aggressively so future runs retain context.
+5. When you touch revenue, infra, or memory features, update the relevant design_doc.
+
+
+Agent profile (researcher): Gather and summarize context. Avoid repo edits unless essential; store insights via store_note.

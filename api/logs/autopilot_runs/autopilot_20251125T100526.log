@@ -1,0 +1,22 @@
+[2025-11-25T10:05:26.685136] Autopilot booted.
+[2025-11-25T10:05:26.685450] Using tasks file: /workspace/api/tasks/roadmap.jsonl
+[2025-11-25T10:05:26.685809] Starting main loop.
+[2025-11-25T10:05:26.686285] Running task 15: Wire HUD widgets to live /hud APIs [builder]
+[2025-11-25T10:05:28.819031] Task 15 failed: AttributeError: 'str' object has no attribute 'get'
+[2025-11-25T10:05:58.827133] Running task 15: Wire HUD widgets to live /hud APIs [builder]
+[2025-11-25T10:06:01.766566] Task 15 failed: AttributeError: 'str' object has no attribute 'get'
+[2025-11-25T10:06:31.776791] Running task 16: Upgrade vector memory ingestion [builder]
+[2025-11-25T10:06:34.228349] Task 16 failed: AttributeError: 'str' object has no attribute 'get'
+[2025-11-25T10:07:04.239050] Running task 16: Upgrade vector memory ingestion [builder]
+[2025-11-25T10:07:07.199448] Task 16 failed: AttributeError: 'str' object has no attribute 'get'
+[2025-11-25T10:07:37.209566] Running task 16: Upgrade vector memory ingestion [builder]
+[2025-11-25T10:07:40.480509] Task 16 failed: AttributeError: 'str' object has no attribute 'get'
+[2025-11-25T10:08:10.487393] Running task 17: Security & infra weekly audit [fixer]
+[2025-11-25T10:08:12.050677] Task 17 failed: AttributeError: 'str' object has no attribute 'get'
+[2025-11-25T10:08:42.061153] Running task 17: Security & infra weekly audit [fixer]
+[2025-11-25T10:08:44.480041] Task 17 failed: AttributeError: 'str' object has no attribute 'get'
+[2025-11-25T10:09:14.487688] Running task 18: Frontend architecture blueprint [researcher]
+[2025-11-25T10:09:17.710620] Task 18 failed: AttributeError: 'str' object has no attribute 'get'
+[2025-11-25T10:09:47.718879] Running task 18: Frontend architecture blueprint [researcher]
+[2025-11-25T10:09:49.913289] Task 18 failed: AttributeError: 'str' object has no attribute 'get'
+[2025-11-25T10:10:19.917095] No pending tasks. Cooling down.
