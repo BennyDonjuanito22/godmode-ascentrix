@@ -7,7 +7,11 @@ import os
 from pathlib import Path
 from typing import Dict, Iterable, List, Tuple
 
-from openai import OpenAI
+try:
+    from openai import OpenAI
+except Exception:  # pragma: no cover - allow running without openai package
+    OpenAI = None  # type: ignore
+
 from qdrant_client import QdrantClient
 from qdrant_client.http import models as qmodels
 
@@ -20,13 +24,19 @@ QDRANT_URL = os.getenv("QDRANT_URL", "http://qdrant:6333")
 QDRANT_COLLECTION = os.getenv("QDRANT_COLLECTION", "memory_chunks")
 EMBEDDING_MODEL = os.getenv("MEMORY_EMBEDDINGS_MODEL", "text-embedding-3-small")
 
-_openai_client: OpenAI | None = None
+_openai_client: "OpenAI" | None = None
 _qdrant_client: QdrantClient | None = None
 
 
 def _get_openai() -> OpenAI:
     global _openai_client
+    if OpenAI is None:
+        raise RuntimeError("OpenAI package is not installed or unavailable")
+    global _openai_client
     if _openai_client is None:
+        # OpenAI client will pick up API key from env in most modern SDKs
+        if not os.getenv("OPENAI_API_KEY"):
+            raise RuntimeError("OPENAI_API_KEY is not set")
         _openai_client = OpenAI()
     return _openai_client
 
@@ -79,9 +89,31 @@ def iter_notes() -> Iterable[Tuple[str, str]]:
 def _embed_batch(texts: List[str]) -> List[List[float]]:
     if not texts:
         return []
-    client = _get_openai()
-    response = client.embeddings.create(model=EMBEDDING_MODEL, input=texts)
-    return [item.embedding for item in response.data]
+    # Use OpenAI embeddings when configured; otherwise produce deterministic
+    # lightweight fallback embeddings so local runs still function.
+    if os.getenv("OPENAI_API_KEY") and OpenAI is not None:
+        client = _get_openai()
+        response = client.embeddings.create(model=EMBEDDING_MODEL, input=texts)
+        return [item.embedding for item in response.data]
+
+    # Fallback: deterministic hash-based embeddings (size=64)
+    import hashlib
+
+    vec_size = int(os.getenv("FALLBACK_EMBED_SIZE", "64"))
+    out: List[List[float]] = []
+    for t in texts:
+        h = hashlib.sha256(t.encode("utf-8")).digest()
+        # Expand digest to desired size by repeating
+        rep = (h * ((vec_size * 4) // len(h) + 1))[: vec_size * 4]
+        vals: List[float] = []
+        for i in range(0, len(rep), 4):
+            chunk = rep[i : i + 4]
+            val = int.from_bytes(chunk, "big") / (2 ** 32)
+            vals.append(val * 2.0 - 1.0)
+            if len(vals) >= vec_size:
+                break
+        out.append(vals)
+    return out
 
 
 def build_index() -> Dict[str, int]:
@@ -93,37 +125,46 @@ def build_index() -> Dict[str, int]:
     if not records:
         return {"records": 0}
 
-    client = _get_qdrant()
-    embeddings = []
-    batch_size = 16
+    # Attempt to build embeddings and upload to Qdrant; if Qdrant or OpenAI
+    # are not available, fall back to writing a local JSONL index for searching.
     vectors = []
+    batch_size = 16
     for i in range(0, len(records), batch_size):
         batch = records[i : i + batch_size]
         vectors.extend(_embed_batch([item["text"] for item in batch]))
 
-    vector_size = len(vectors[0]) if vectors else 0
-    client.recreate_collection(
-        collection_name=QDRANT_COLLECTION,
-        vectors_config=qmodels.VectorParams(size=vector_size, distance=qmodels.Distance.COSINE),
-    )
-
-    points = []
-    for record, vector in zip(records, vectors):
-        points.append(
-            qmodels.PointStruct(
-                id=record["id"],
-                vector=vector,
-                payload={"source": record["source"], "text": record["text"]},
-            )
-        )
-    client.upsert(collection_name=QDRANT_COLLECTION, wait=True, points=points)
-
-    # Keep JSONL as fallback/reference.
     INDEX_PATH.parent.mkdir(parents=True, exist_ok=True)
-    with INDEX_PATH.open("w", encoding="utf-8") as handle:
+    try:
+        client = _get_qdrant()
+        vector_size = len(vectors[0]) if vectors else 0
+        client.recreate_collection(
+            collection_name=QDRANT_COLLECTION,
+            vectors_config=qmodels.VectorParams(size=vector_size, distance=qmodels.Distance.COSINE),
+        )
+
+        points = []
         for record, vector in zip(records, vectors):
-            data = {**record, "embedding": vector}
-            handle.write(json.dumps(data) + "\n")
+            points.append(
+                qmodels.PointStruct(
+                    id=record["id"],
+                    vector=vector,
+                    payload={"source": record["source"], "text": record["text"]},
+                )
+            )
+        if points:
+            client.upsert(collection_name=QDRANT_COLLECTION, wait=True, points=points)
+
+        # Keep JSONL as fallback/reference.
+        with INDEX_PATH.open("w", encoding="utf-8") as handle:
+            for record, vector in zip(records, vectors):
+                data = {**record, "embedding": vector}
+                handle.write(json.dumps(data) + "\n")
+    except Exception:
+        # Qdrant or network not available — write JSONL without attempting upload.
+        with INDEX_PATH.open("w", encoding="utf-8") as handle:
+            for record, vector in zip(records, vectors):
+                data = {**record, "embedding": vector}
+                handle.write(json.dumps(data) + "\n")
 
     return {"records": len(records)}
 

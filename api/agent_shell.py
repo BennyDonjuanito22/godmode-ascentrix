@@ -7,22 +7,43 @@ import json
 import os
 import subprocess
 import threading
-from dataclasses import dataclass, field
+import time
+from dataclasses import asdict, dataclass, field
 from pathlib import Path
 from typing import Any, Callable, Dict, List, Optional
+from urllib import request as urlrequest
+from urllib.error import URLError, HTTPError
+from urllib.parse import urljoin
 
-from openai import OpenAI
+# OpenAI is imported lazily inside _get_client() so the codebase can run
+# without the `openai` package or an API key when using a local backend.
+
+from api.agent_schedule import load_default_profile
+from api.brain_core import load_brain_state, summarize_brain_for_prompt
+from api.business_research import get_top_ideas, load_ideas, rank_ideas, register_new_idea
+from api.llm_metrics import LlmEvent, log_event
+from godmode.human_help import service as human_service
 
 # --------------------------------------------------------------------------- #
 # LLM plumbing
 # --------------------------------------------------------------------------- #
 
-_client: Optional[OpenAI] = None
+_client: Optional[Any] = None
 
 
-def _get_client() -> OpenAI:
+def _get_client() -> Any:
+    """
+    Lazily import and construct the OpenAI client. This keeps the runtime
+    working when the `openai` package isn't installed (local-first mode).
+    """
     global _client
     if _client is None:
+        try:
+            from openai import OpenAI
+        except Exception as e:
+            raise RuntimeError(
+                "OpenAI client not available. Install the 'openai' package and set OPENAI_API_KEY to use the OpenAI backend."
+            ) from e
         api_key = os.getenv("OPENAI_API_KEY")
         if not api_key:
             raise RuntimeError("OPENAI_API_KEY is not set")
@@ -30,17 +51,104 @@ def _get_client() -> OpenAI:
     return _client
 
 
+def _current_backend() -> str:
+    # Default to a local Ollama-compatible backend unless explicitly overridden.
+    return os.getenv("LLM_BACKEND_DEFAULT", "ollama").strip().lower()
+
+
+def _resolve_model(backend: str) -> str:
+    if backend == "openai":
+        return os.getenv("LLM_MODEL_OPENAI", "gpt-4.1-mini")
+    if backend == "qwen":
+        return os.getenv("LLM_MODEL_QWEN", os.getenv("LLM_MODEL_OLLAMA_DEFAULT", "qwen3:4b"))
+    if backend == "phi":
+        return os.getenv("LLM_MODEL_PHI", os.getenv("LLM_MODEL_OLLAMA_DEFAULT", "phi3.5"))
+    if backend == "mistral":
+        return os.getenv("LLM_MODEL_MISTRAL", os.getenv("LLM_MODEL_OLLAMA_DEFAULT", "mistral:instruct"))
+    if backend == "llama":
+        return os.getenv("LLM_MODEL_LLAMA", os.getenv("LLM_MODEL_OLLAMA_DEFAULT", "llama3:8b"))
+    # Fallback to default Ollama model
+    return os.getenv("LLM_MODEL_OLLAMA_DEFAULT", "qwen3:4b")
+
+
+def _ollama_chat(model: str, system_prompt: str, messages: List[Dict[str, str]]) -> str:
+    """
+    Minimal Ollama chat wrapper via HTTP API to keep dependencies light.
+    """
+    base_url = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434").rstrip("/") + "/"
+    url = urljoin(base_url, "api/chat")
+    payload = {
+        "model": model,
+        "stream": False,
+        "messages": [{"role": "system", "content": system_prompt}] + messages,
+    }
+    data = json.dumps(payload).encode("utf-8")
+    req = urlrequest.Request(url, data=data, headers={"Content-Type": "application/json"})
+    try:
+        with urlrequest.urlopen(req, timeout=60) as resp:
+            body = resp.read().decode("utf-8")
+    except HTTPError as e:
+        raise RuntimeError(f"Ollama HTTP error: {e.code} {e.reason}") from e
+    except URLError as e:
+        raise RuntimeError(f"Ollama connection error: {e.reason}") from e
+    try:
+        parsed = json.loads(body)
+    except json.JSONDecodeError as e:
+        raise RuntimeError(f"Ollama returned non-JSON response: {body}") from e
+    message = parsed.get("message") or {}
+    content = message.get("content")
+    if not content:
+        raise RuntimeError(f"Ollama response missing content: {parsed}")
+    return content
+
+
 def llm_call(system_prompt: str, messages: List[Dict[str, str]]) -> str:
     """
     Centralised LLM call so we can easily swap models or log usage later.
     """
-    client = _get_client()
-    response = client.chat.completions.create(
-        model="gpt-4.1-mini",
-        messages=[{"role": "system", "content": system_prompt}] + messages,
-        temperature=0.2,
-    )
-    return response.choices[0].message.content
+    backend = _current_backend()
+    model = _resolve_model(backend)
+    start = time.time()
+    prompt_chars = len(system_prompt) + sum(len(m.get("content", "")) for m in messages)
+    try:
+        if backend == "openai":
+            client = _get_client()
+            response = client.chat.completions.create(
+                model=model,
+                messages=[{"role": "system", "content": system_prompt}] + messages,
+                temperature=0.2,
+            )
+            content = response.choices[0].message.content
+        else:
+            content = _ollama_chat(model=model, system_prompt=system_prompt, messages=messages)
+        elapsed_ms = (time.time() - start) * 1000
+        log_event(
+            LlmEvent(
+                ts=start,
+                backend=backend,
+                model=model,
+                status="ok",
+                latency_ms=elapsed_ms,
+                prompt_chars=prompt_chars,
+                source=os.getenv("GODMODE_ENV", "development"),
+            )
+        )
+        return content
+    except Exception as exc:
+        elapsed_ms = (time.time() - start) * 1000
+        log_event(
+            LlmEvent(
+                ts=start,
+                backend=backend,
+                model=model,
+                status="error",
+                latency_ms=elapsed_ms,
+                prompt_chars=prompt_chars,
+                error=str(exc),
+                source=os.getenv("GODMODE_ENV", "development"),
+            )
+        )
+        raise
 
 
 # --------------------------------------------------------------------------- #
@@ -183,6 +291,28 @@ class MemoryStore:
 
 MEMORY_STORE = MemoryStore(_DEFAULT_ROOT)
 _set_project_root(os.fspath(_DEFAULT_ROOT))
+
+_AGENT_CONTEXT = threading.local()
+
+
+def _ensure_context() -> None:
+    if not hasattr(_AGENT_CONTEXT, "value"):
+        _AGENT_CONTEXT.value = {}
+
+
+def set_agent_runtime_context(context: Dict[str, Any]) -> None:
+    _ensure_context()
+    _AGENT_CONTEXT.value = dict(context)
+
+
+def get_agent_runtime_context() -> Dict[str, Any]:
+    _ensure_context()
+    return dict(_AGENT_CONTEXT.value)
+
+
+def clear_agent_runtime_context() -> None:
+    _ensure_context()
+    _AGENT_CONTEXT.value = {}
 
 
 # --------------------------------------------------------------------------- #
@@ -418,6 +548,86 @@ def recall_notes(params: Dict[str, Any]) -> Dict[str, Any]:
 
 
 # --------------------------------------------------------------------------- #
+# Brain + business portfolio tools
+# --------------------------------------------------------------------------- #
+
+
+@tool("tool_get_brain_summary")
+def tool_get_brain_summary(_: Dict[str, Any]) -> Dict[str, Any]:
+    goals, values, principles, emotional = load_brain_state()
+    summary = summarize_brain_for_prompt()
+    return {
+        "summary": summary,
+        "goals": [asdict(goal) for goal in goals],
+        "values": [asdict(value) for value in values],
+        "principles": [asdict(principle) for principle in principles],
+        "emotional_context": [asdict(item) for item in emotional],
+    }
+
+
+@tool("tool_list_business_ideas")
+def tool_list_business_ideas(_: Dict[str, Any]) -> Dict[str, Any]:
+    ideas = load_ideas()
+    ranked = rank_ideas(ideas)
+    return {"ideas": ranked}
+
+
+@tool("tool_get_top_business_ideas")
+def tool_get_top_business_ideas(params: Dict[str, Any]) -> Dict[str, Any]:
+    count = 10
+    if isinstance(params, dict):
+        try:
+            count = int(params.get("n", count))
+        except (TypeError, ValueError):
+            pass
+    ideas = load_ideas()
+    top = get_top_ideas(ideas, n=count)
+    return {"top_ideas": top}
+
+
+@tool("tool_register_business_idea")
+def tool_register_business_idea(params: Dict[str, Any]) -> Dict[str, Any]:
+    payload: Any = params
+    if isinstance(payload, dict) and "payload" in payload and len(payload) == 1:
+        payload = payload["payload"]
+    if isinstance(payload, str):
+        payload = json.loads(payload)
+    if not isinstance(payload, dict):
+        return {"error": "idea payload must be a JSON object"}
+    idea = register_new_idea(payload)
+    return {"status": "ok", "idea": asdict(idea)}
+
+
+@tool("tool_get_default_agent_schedule")
+def tool_get_default_agent_schedule(_: Dict[str, Any]) -> Dict[str, Any]:
+    profile = load_default_profile()
+    return {"profile": asdict(profile)}
+
+
+@tool("request_human_help")
+def tool_request_human_help(args: Dict[str, Any]) -> Dict[str, Any]:
+    instructions = (args.get("instructions") or args.get("message") or "").strip()
+    if not instructions:
+        return {"error": "instructions field is required"}
+    context = get_agent_runtime_context()
+    request = human_service.create_human_help_request(
+        business_id=context.get("business_id"),
+        task_id=context.get("task_id"),
+        agent_name=context.get("worker_id"),
+        request_type=args.get("request_type") or "manual_step",
+        source_system=args.get("source_system") or context.get("task_name") or "autopilot_task",
+        priority=int(args.get("priority") or 10),
+        instructions_for_user=instructions,
+        additional_context=args.get("additional_context") or {},
+    )
+    return {
+        "request_id": request.id,
+        "status": request.status,
+        "note": "Human assistance requested; task paused until resolved.",
+    }
+
+
+# --------------------------------------------------------------------------- #
 # Agent runtime + logging
 # --------------------------------------------------------------------------- #
 
@@ -438,13 +648,17 @@ class AgentState:
 
 
 AGENT_RULES = (
-    "You are the God Mode build agent. Study the repository and the design docs "
-    "in 'design_docs/' to make concrete progress. Follow these guardrails:\n"
+    "You are the God Mode build agent. Study the repository and design docs "
+    "in 'design_docs/' to make concrete progress while staying aligned with the "
+    "God Mode Brain (goals, values, principles, emotional context). Follow these guardrails:\n"
     "1. Inspect existing files and docs before declaring something missing.\n"
     "2. Break large goals into smaller steps and explain your plan when non-trivial.\n"
     "3. After modifying files, re-open them to verify the changes.\n"
     "4. Capture durable insights with store_note so future runs have full recall.\n"
-    "5. Prefer precise tool calls over speculation; if blocked, explain the blocker."
+    "5. Prefer precise tool calls over speculation; if blocked, explain the blocker.\n"
+    "6. Use tool_get_brain_summary and the business ranking tools before major strategy/prioritization.\n"
+    "7. Honor value constraints; avoid proposals that conflict with the brain's guardrails.\n"
+    "8. When a manual-only verification step appears (SMS code, 2FA, CAPTCHA), call request_human_help with exact instructions so the operator can finish it while you continue other work."
 )
 
 
