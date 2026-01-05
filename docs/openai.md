@@ -18,7 +18,7 @@ How to enable OpenAI/ChatGPT mode:
 
 4. Start the API (example):
 
-   .venv311/bin/python -m uvicorn api.app:app --host 127.0.0.1 --port 8000
+   .venv311/bin/python -m uvicorn api.app:app --host 127.0.0.1 --port ${GODMODE_API_PORT_HOST:-5051}
 
 Notes:
 - The codebase will raise a clear error if OpenAI is not configured. The `api/agent_shell.py` file lazy-loads the OpenAI client.

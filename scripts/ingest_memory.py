@@ -5,9 +5,12 @@ from __future__ import annotations
 
 import argparse
 
+import os
 import requests
 
-API_URL = "http://127.0.0.1:5051/memory/ingest"
+API_PORT = os.environ.get("GODMODE_API_PORT_HOST", "5051")
+API_BASE = os.environ.get("GODMODE_API_URL", f"http://127.0.0.1:{API_PORT}")
+API_URL = f"{API_BASE.rstrip('/')}/memory/ingest"
 
 
 def main() -> None:

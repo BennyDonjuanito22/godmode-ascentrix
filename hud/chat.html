@@ -12,6 +12,9 @@ body { font-family: system-ui; background: #111; color: #eee; padding: 20px; }
 <script>
 const chatbox = document.getElementById("chatbox");
 const input = document.getElementById("inputbox");
+const API_HOST = window.location.hostname || "127.0.0.1";
+const API_PORT = localStorage.getItem("godmode_api_port") || "5051";
+const API_BASE = localStorage.getItem("godmode_api_url") || `http://${API_HOST}:${API_PORT}`;
 
 function append(text, from="user") {
   const msg = document.createElement("div");
@@ -26,14 +29,14 @@ input.addEventListener("keydown", async e => {
     if (!text) return;
     append(text, "user");
     input.value = "";
-    const res = await fetch("http://127.0.0.1:5051/task", {
+    const res = await fetch(`${API_BASE}/task`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ data: text })
     }).then(r => r.json());
 
     setTimeout(async () => {
-      const out = await fetch(`http://127.0.0.1:5051/result/${res.job_id}`).then(r => r.json());
+      const out = await fetch(`${API_BASE}/result/${res.job_id}`).then(r => r.json());
       append(out.result?.data || JSON.stringify(out), "ai");
     }, 3000);
   }

@@ -17,7 +17,7 @@ This document explains how to customize and deploy the placeholder landing page/
    - `cta_url`: **replace this with the real Stripe/Gumroad checkout link** (the landing page button and nurture emails both use it).
    - `proof`, `testimonial_label`, `fine_print`: trust elements and disclaimers.
 2. Save the file and restart the API service (or trigger a reload) so FastAPI reads the new values.
-3. Hit `http://127.0.0.1:5051/funnels/b1/landing` in a browser to verify the page renders with the updated copy.
+3. Hit `http://127.0.0.1:${GODMODE_API_PORT_HOST:-5051}/funnels/b1/landing` in a browser to verify the page renders with the updated copy.
 
 ## Checkout + Lead Capture
 
@@ -28,7 +28,7 @@ This document explains how to customize and deploy the placeholder landing page/
 
 ### Verifying the flow
 
-1. Open `http://127.0.0.1:5051/funnels/b1/landing`.
+1. Open `http://127.0.0.1:${GODMODE_API_PORT_HOST:-5051}/funnels/b1/landing`.
 2. Submit an email; confirm the toast appears.
 3. Check `finance/leads.jsonl` (or `GET /funnels/b1/lead`) to ensure the entry exists.
 4. Once a lead pays, run `python scripts/nurture_leads.py convert --email bob@example.com --amount 97 --source gumroad --notes "Launch day sale"` to log the conversion and auto-call the ledger CLI.

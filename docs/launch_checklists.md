@@ -4,7 +4,7 @@ Use this list when we want the B1 Automation toolkit live and generating cash wi
 
 ## Immediate “Go Live” Steps
 1. **Swap CTA URL** – Replace `config/funnels/b1.json` → `cta_url` (and every staged asset) with the real Stripe/Gumroad checkout. Commit the change and redeploy `api`.
-2. **Smoke-test funnel** – `python3 -m http.client localhost:5051` or hit the landing page to confirm the CTA points to the production checkout and `/funnels/b1/lead` writes to `finance/leads.jsonl`.
+2. **Smoke-test funnel** – `python3 -m http.client localhost:${GODMODE_API_PORT_HOST:-5051}` or hit the landing page to confirm the CTA points to the production checkout and `/funnels/b1/lead` writes to `finance/leads.jsonl`.
 3. **Publish promo wave #1** – Ship the TikTok/Shorts/LinkedIn/email pieces under `content/output/b1/*`, capture live URLs + metrics, and update `docs/b1_promo_log.md`.
 4. **Trigger nurture + ledger logging** – `python3 scripts/nurture_leads.py send --limit 25`, then record actual conversions with `python3 scripts/nurture_leads.py convert --email <lead> --amount <price> --source <platform>`.
 5. **Refresh dashboards** – `python3 scripts/lead_pipeline.py --output both` so HUD + partners see fresh stats; add a cron/Autopilot task to run nightly.
@@ -53,4 +53,3 @@ This list covers everything we still need for the “100% automated, multi-busin
 2. Version the learning outputs (practice reports, research notes) and surface them in HUD > Agents for quick onboarding.
 
 Work this list top-to-bottom whenever you ask “what’s next?” – it keeps us laser-focused on making the system earn autonomously while it learns every day.
-

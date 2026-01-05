@@ -2,6 +2,8 @@
 
 Use this doc to systematize the “close warm partners” task. Every outreach touchpoint should create a corresponding lead (for tracking) and a note in `memory/notes.jsonl`.
 
+> **Instant payout directive:** Until marketplace payouts accelerate, every partner CTA must point at `https://pay.godmodehq.com/instant/b1` (add `?aff=AFFID&utm_source=...`). That redirect is updated in `docs/instant_payout_plan.md` to whichever Stripe/PayPal/Cash App rail settles cash the same day.
+
 ## Target Partner Shortlist
 
 | Partner | Audience | Pitch Angle | Contact Info |
@@ -28,8 +30,8 @@ I'd love to give you:
 • Early drop content you can repurpose
 • Callouts inside the HUD + promos
 
-Demo + checkout: https://godmode.gumroad.com/l/aigrowthtoolkit
-Affiliate tracking: https://127.0.0.1:5051/funnels/b1/lead?tag={{partner_code}}
+Demo + checkout: https://pay.godmodehq.com/instant/b1
+Affiliate tracking: https://127.0.0.1:${GODMODE_API_PORT_HOST:-5051}/funnels/b1/lead?tag={{partner_code}}
 
 If it's a fit I'll spin up your assets in under a day.
 - Ascentrix
@@ -47,10 +49,10 @@ If it's a fit I'll spin up your assets in under a day.
 
 | Partner | Platform | Affiliate ID | Tracking URL | Status | Next Step |
 | --- | --- | --- | --- | --- | --- |
-| Alice Johnson | Twitter (AI creator) | aff001 | https://godmode.gumroad.com/l/aigrowthtoolkit?aff=aff001 | Sent 2025-11-30 | Await reply, follow up in 48h |
-| Ben Thompson | Newsletter (growth marketing) | aff002 | https://godmode.gumroad.com/l/aigrowthtoolkit?aff=aff002 | Sent 2025-11-30 | Offer Loom walkthrough |
-| Cara Lee | TikTok (automation tips) | aff003 | https://godmode.gumroad.com/l/aigrowthtoolkit?aff=aff003 | Sent 2025-11-30 | Share short-form assets once she responds |
-| David Kim | Newsletter (AI founders) | aff004 | https://godmode.gumroad.com/l/aigrowthtoolkit?aff=aff004 | Sent 2025-11-30 | Send performance stats after first sales |
-| Emma Garcia | Twitter (creator ops) | aff005 | https://godmode.gumroad.com/l/aigrowthtoolkit?aff=aff005 | Sent 2025-11-30 | DM follow-up if no reply in 3 days |
+| Alice Johnson | Twitter (AI creator) | aff001 | https://pay.godmodehq.com/instant/b1?aff=aff001 | Sent 2025-11-30 | Await reply, follow up in 48h |
+| Ben Thompson | Newsletter (growth marketing) | aff002 | https://pay.godmodehq.com/instant/b1?aff=aff002 | Sent 2025-11-30 | Offer Loom walkthrough |
+| Cara Lee | TikTok (automation tips) | aff003 | https://pay.godmodehq.com/instant/b1?aff=aff003 | Sent 2025-11-30 | Share short-form assets once she responds |
+| David Kim | Newsletter (AI founders) | aff004 | https://pay.godmodehq.com/instant/b1?aff=aff004 | Sent 2025-11-30 | Send performance stats after first sales |
+| Emma Garcia | Twitter (creator ops) | aff005 | https://pay.godmodehq.com/instant/b1?aff=aff005 | Sent 2025-11-30 | DM follow-up if no reply in 3 days |
 
 All outreach JSONL entries live in `memory/notes.jsonl` (tags: `stream:B1`, `partner`). Use `python scripts/nurture_leads.py send --limit N` to deliver updates to any partner who opts into the lead capture form.

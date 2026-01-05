@@ -5,11 +5,14 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import time
 import urllib.error
 import urllib.request
 
-API_URL = "http://127.0.0.1:5051/finance/ledger"
+API_PORT = os.environ.get("GODMODE_API_PORT_HOST", "5051")
+API_BASE = os.environ.get("GODMODE_API_URL", f"http://127.0.0.1:{API_PORT}")
+API_URL = f"{API_BASE.rstrip('/')}/finance/ledger"
 
 
 def post_json(url: str, payload: dict) -> dict:
