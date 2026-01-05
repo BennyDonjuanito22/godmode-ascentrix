@@ -8,6 +8,29 @@ The existing HUD remains the canonical UI for surfacing stream KPIs and controls
 
 ---
 
+## Portfolio States & Ranking Queue
+
+**Total revenue streams:** 4 (B1–B4)
+
+**Build now (Phase 1):** B1 + B3  
+**Build next (Phase 2):** B2 + B4
+
+**Portfolio states (single source of truth required):**
+- **LAUNCH:** B1, B3
+- **BUILD:** B2, B4
+- **RANK:** Research ideas scored and queued for future streams
+
+**Ranking queue sources:**
+- `research/business_ideas.jsonl` (idea records + status)
+- `research/business_scoring_config.json` (weights/normalization)
+- `api/business_research.py` (ranking helpers + status enum)
+
+**Idea status values (from `api/business_research.py`):** `candidate`, `active`, `live`, `retired`
+
+**Requirement:** Store LAUNCH/BUILD/RANK with counts and IDs in one visible location (HUD + docs) so the operator can audit state without scanning multiple files.
+
+---
+
 ## B1 – Affiliate / Digital Product Funnel
 
 **Type:** Affiliate promotion or internally produced digital product bundle  
@@ -202,3 +225,14 @@ When a major pivot occurs (e.g., switching the B1 offer), agents must:
 - Update HUD labels and documentation.
 - Archive or annotate deprecated assets to avoid confusion.
 - Ensure autopilot roadmap tasks reflect the new objectives.
+
+---
+
+## Platform Requirements (HUD + Studio)
+
+These requirements apply across all businesses and must be reflected in the HUD layout and documentation:
+
+1. **Per-business persistent chat thread** shared across all subpages for that business.
+2. **Per-business live agent stream + queue** (ETA/%/status) visible on the business landing page and reusable on subpages.
+3. **God Mode landing page** dedicated to security + infrastructure (global view, not tied to a single business).
+4. **Design/Dev Studio module** for editing images/video/audio/docs, generating demo prototypes, and saving reusable tools so improvements replicate across businesses.

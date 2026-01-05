@@ -106,6 +106,18 @@ main{
   padding:8px 6px;
   border-bottom:1px solid rgba(148,163,184,.2);
 }
+.progress{
+  height:6px;
+  border-radius:999px;
+  background:rgba(148,163,184,.2);
+  overflow:hidden;
+  margin-top:6px;
+}
+.progress span{
+  display:block;
+  height:100%;
+  background:#22c55e;
+}
 .badge{
   display:inline-flex;
   align-items:center;
@@ -136,6 +148,77 @@ main{
   max-height:220px;
   overflow:auto;
 }
+.business-dock{
+  position:fixed;
+  right:20px;
+  bottom:20px;
+  width:360px;
+  max-height:70vh;
+  overflow:hidden;
+  background:#0b1324;
+  border:1px solid rgba(96,165,250,.4);
+  border-radius:16px;
+  box-shadow:0 20px 40px rgba(0,0,0,.4);
+  display:flex;
+  flex-direction:column;
+  z-index:60;
+}
+.business-dock.hidden{display:none;}
+.dock-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:10px 14px;
+  border-bottom:1px solid rgba(148,163,184,.2);
+}
+.dock-tabs{
+  display:flex;
+  gap:6px;
+  padding:8px 14px;
+  border-bottom:1px solid rgba(148,163,184,.2);
+}
+.dock-tab{
+  background:#0f172a;
+  border:1px solid rgba(148,163,184,.3);
+  color:#cbd5f5;
+  padding:4px 10px;
+  border-radius:999px;
+  cursor:pointer;
+  font-size:11px;
+}
+.dock-tab.active{
+  background:#1d4ed8;
+  border-color:#3b82f6;
+}
+.dock-body{
+  padding:12px 14px;
+  overflow:auto;
+}
+.dock-body.hidden{display:none;}
+.business-chat-log{
+  background:#0f172a;
+  border:1px solid rgba(148,163,184,.3);
+  border-radius:10px;
+  padding:10px;
+  font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size:12px;
+  max-height:240px;
+  overflow:auto;
+}
+.business-chat-row{
+  display:flex;
+  gap:8px;
+  margin-top:10px;
+}
+.business-chat-input{
+  flex:1;
+  background:#0f172a;
+  border:1px solid rgba(148,163,184,.3);
+  color:#e2e8f0;
+  border-radius:8px;
+  padding:8px;
+  font-size:12px;
+}
 .tabs{
   display:flex;
   gap:8px;
@@ -154,6 +237,211 @@ main{
   background:#1d4ed8;
   border-color:#3b82f6;
 }
+.copy-btn{
+  border:none;
+  background:#1d4ed8;
+  color:#fff;
+  border-radius:6px;
+  padding:2px 8px;
+  font-size:12px;
+  cursor:pointer;
+  margin-left:6px;
+}
+.copy-btn.secondary{
+  background:#0f172a;
+  border:1px solid rgba(148,163,184,.3);
+  color:#cbd5f5;
+}
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(5,11,24,.85);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:50;
+}
+.modal.hidden{display:none;}
+.hidden{display:none!important;}
+.modal-content{
+  background:#0b1324;
+  border:1px solid rgba(96,165,250,.4);
+  border-radius:16px;
+  width:90%;
+  max-width:1100px;
+  max-height:90%;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+}
+.modal-header{
+  padding:16px;
+  border-bottom:1px solid rgba(148,163,184,.2);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.modal-body{
+  display:flex;
+  flex:1;
+  overflow:hidden;
+}
+.toast{
+  position:fixed;
+  right:24px;
+  bottom:24px;
+  background:rgba(15,23,42,.95);
+  border:1px solid rgba(96,165,250,.5);
+  border-radius:14px;
+  padding:12px 18px;
+  z-index:60;
+  display:none;
+  box-shadow:0 10px 35px rgba(0,0,0,.4);
+}
+.toast.visible{display:flex;}
+.toast strong{color:#93c5fd;margin-right:6px;}
+.human-item{
+  border-left:3px solid #ef4444;
+  padding-left:10px;
+  margin-bottom:12px;
+}
+.human-actions{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-top:8px;
+}
+.email-pane{
+  flex:1;
+  border-right:1px solid rgba(148,163,184,.2);
+  overflow:auto;
+  padding:16px;
+}
+.email-pane:last-child{border-right:none;}
+.email-account{
+  padding:8px;
+  border-radius:8px;
+  border:1px solid rgba(148,163,184,.3);
+  margin-bottom:8px;
+  cursor:pointer;
+}
+.email-account.active{
+  border-color:#38bdf8;
+  background:rgba(56,189,248,.1);
+}
+.email-message{
+  padding:8px;
+  border-bottom:1px solid rgba(148,163,184,.1);
+  cursor:pointer;
+}
+.email-message:hover{
+  background:rgba(59,130,246,.1);
+}
+.progress-wrap{
+  margin-top:10px;
+  background:rgba(148,163,184,.2);
+  border-radius:999px;
+  overflow:hidden;
+  height:10px;
+}
+.progress-bar{
+  height:100%;
+  background:linear-gradient(120deg,#0ea5e9,#38bdf8);
+  width:0%;
+}
+.workshop-layout{
+  display:grid;
+  grid-template-columns:280px 1fr;
+  gap:18px;
+}
+.workshop-sidebar{
+  background:rgba(15,23,42,.8);
+  border:1px solid rgba(148,163,184,.3);
+  border-radius:16px;
+  padding:16px;
+  min-height:480px;
+}
+.workshop-main{
+  background:rgba(15,23,42,.8);
+  border:1px solid rgba(148,163,184,.3);
+  border-radius:16px;
+  padding:16px;
+  min-height:480px;
+  display:flex;
+  flex-direction:column;
+}
+.workshop-preview{
+  background:#020617;
+  border:1px solid rgba(59,130,246,.4);
+  border-radius:12px;
+  padding:12px;
+  min-height:220px;
+  margin-bottom:16px;
+  overflow:auto;
+}
+.workshop-mockups{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+}
+.mockup-card{
+  border:1px solid rgba(148,163,184,.3);
+  border-radius:12px;
+  padding:10px;
+  width:180px;
+  background:rgba(30,41,59,.7);
+}
+.mockup-card.selected{
+  border-color:#38bdf8;
+  box-shadow:0 0 0 1px #38bdf8;
+}
+.mockup-card button{
+  margin-top:8px;
+  width:100%;
+}
+.workshop-editor{
+  width:100%;
+  min-height:160px;
+  border-radius:12px;
+  border:1px solid rgba(148,163,184,.3);
+  background:#020617;
+  color:#f8fafc;
+  padding:12px;
+  font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono";
+}
+.workshop-save{
+  align-self:flex-end;
+  margin-top:12px;
+}
+.landing-table{
+  width:100%;
+  border-collapse:collapse;
+  font-size:13px;
+}
+.landing-table th,
+.landing-table td{
+  padding:8px;
+  border-bottom:1px solid rgba(148,163,184,.2);
+}
+.landing-modal-body{
+  padding:16px;
+  overflow:auto;
+  max-height:75vh;
+}
+.landing-form{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-bottom:12px;
+}
+.landing-form input,
+.landing-form select{
+  padding:6px 10px;
+  border-radius:8px;
+  border:1px solid rgba(148,163,184,.3);
+  background:#020617;
+  color:#e2e8f0;
+}
 @media (max-width:900px){
   main{padding:20px;}
 }
@@ -163,9 +451,16 @@ main{
   <div class="brand">Ascentrix HUD</div>
   <div class="nav">
     <button class="nav-btn active" data-screen="home">Home</button>
+    <button class="nav-btn" data-screen="godmode">God Mode</button>
     <button class="nav-btn" data-screen="streams">Streams</button>
+    <button class="nav-btn" data-screen="offers">Offers</button>
     <button class="nav-btn" data-screen="agents">Agents</button>
+    <button class="nav-btn" data-screen="analytics">Analytics</button>
     <button class="nav-btn" data-screen="logs">Logs / Memory</button>
+    <button class="nav-btn" data-screen="workshop">Workshop</button>
+    <button class="nav-btn" data-screen="studio">Studio</button>
+    <button class="nav-btn" data-screen="blitz">Blitz</button>
+    <button class="nav-btn" data-screen="human">Human Queue</button>
     <button class="nav-btn" data-screen="settings">Settings</button>
   </div>
   <div class="status-pill" id="autopilot-pill">
@@ -181,11 +476,58 @@ main{
     <div class="grid grid-cols-3" id="home-metrics"></div>
     <div class="grid grid-cols-3" style="margin-top:20px;">
       <div class="card" id="home-streams"></div>
+      <div class="card" id="home-portfolio"></div>
       <div class="card" id="home-tasks"></div>
       <div class="card" id="home-agents"></div>
       <div class="card" id="home-leads"></div>
       <div class="card" id="home-promos"></div>
       <div class="card" id="home-alerts"></div>
+      <div class="card" id="home-notifications"></div>
+      <div class="card" id="home-human"></div>
+      <div class="card" id="home-vault"></div>
+      <div class="card" id="home-blitz"></div>
+      <div class="card" id="home-llm"></div>
+      <div class="card" id="home-master-checklist"></div>
+      <div class="card" id="home-work-queue"></div>
+      <div class="card" id="home-autopilot-proof"></div>
+    </div>
+  </section>
+
+  <section id="screen-godmode" class="screen">
+    <div class="grid grid-cols-2">
+      <div class="card">
+        <h2>Security</h2>
+        <div class="subtext">Security posture, key rotation, and incident notes.</div>
+        <div class="list">
+          <div>Secrets: pending rotation</div>
+          <div>Incidents: none logged</div>
+          <div>Audit cadence: weekly</div>
+        </div>
+      </div>
+      <div class="card">
+        <h2>Infrastructure</h2>
+        <div class="subtext">Health checks, storage, and uptime.</div>
+        <div class="list">
+          <div>API: /health</div>
+          <div>HUD: /health</div>
+          <div>Backups: verify scripts/ascentrix-backup.sh</div>
+        </div>
+      </div>
+      <div class="card">
+        <h2>Alerts & Risks</h2>
+        <div class="subtext">Critical infra alerts and open risks.</div>
+        <div class="list">
+          <div>No critical alerts yet.</div>
+        </div>
+      </div>
+      <div class="card">
+        <h2>Compliance Notes</h2>
+        <div class="subtext">Audit artifacts and policies.</div>
+        <div class="list">
+          <div>docs/security_infra_audit_2025-12-07.md</div>
+          <div>docs/security_infra_audit_20251130.md</div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -197,12 +539,35 @@ main{
     <div class="grid grid-cols-2" style="margin-top:18px;">
       <div class="card" id="stream-detail"></div>
       <div class="card" id="stream-queue"></div>
+      <div class="card" id="stream-financials"></div>
+    </div>
+    <div class="grid grid-cols-2" style="margin-top:18px;">
+      <div class="card" id="business-live-stream"></div>
+      <div class="card" id="business-chat"></div>
+    </div>
+  </section>
+
+  <section id="screen-offers" class="screen">
+    <div class="card" id="offers-list">
+      <h2>Offers</h2>
+      <div class="subtext">Loading offers…</div>
+    </div>
+    <div class="card" style="margin-top:18px;" id="offers-funnels">
+      <h2>Funnels</h2>
+      <div class="subtext">Loading funnels…</div>
     </div>
   </section>
 
   <section id="screen-agents" class="screen">
     <div class="grid grid-cols-3" id="agents-grid"></div>
     <div class="card" style="margin-top:20px;" id="agent-detail"></div>
+  </section>
+
+  <section id="screen-analytics" class="screen">
+    <div class="grid grid-cols-2">
+      <div class="card" id="analytics-llm"></div>
+      <div class="card" id="analytics-models"></div>
+    </div>
   </section>
 
   <section id="screen-logs" class="screen">
@@ -215,6 +580,13 @@ main{
     <div id="logs-content"></div>
   </section>
 
+  <section id="screen-human" class="screen">
+    <div class="card" id="human-queue-card">
+      <h2>Human Task Queue</h2>
+      <div id="human-queue-list" class="list"></div>
+    </div>
+  </section>
+
   <section id="screen-settings" class="screen">
     <div class="grid grid-cols-2">
       <div class="card" id="settings-goals"></div>
@@ -223,12 +595,191 @@ main{
       <div class="card" id="settings-maintenance"></div>
     </div>
   </section>
+
+  <section id="screen-blitz" class="screen">
+    <div class="card" id="blitz-summary"></div>
+    <div class="grid grid-cols-2" style="margin-top:18px;">
+      <div class="card" id="blitz-offers"></div>
+      <div class="card" id="blitz-channels"></div>
+      <div class="card" id="blitz-tuning"></div>
+    </div>
+  </section>
+
+  <section id="screen-workshop" class="screen">
+    <div class="workshop-layout">
+      <div class="workshop-sidebar">
+        <h2>Workshop Context</h2>
+        <div id="workshop-context-info" class="subtext">Select a landing page to begin.</div>
+        <div style="margin-top:16px;">
+          <button class="copy-btn secondary" id="workshop-open-landing-pages">Manage Landing Pages</button>
+        </div>
+        <div style="margin-top:24px;">
+          <h3 style="margin:0 0 8px;">Context Log</h3>
+          <div id="workshop-log-stream" class="log-container">No context selected.</div>
+        </div>
+      </div>
+      <div class="workshop-main">
+        <div class="tabs" id="workshop-tabs">
+          <button class="workshop-tab-btn active" data-tab="preview">Preview</button>
+          <button class="workshop-tab-btn" data-tab="mockups">Mockups</button>
+          <button class="workshop-tab-btn" data-tab="diffs">Diffs</button>
+          <button class="workshop-tab-btn" data-tab="decisions">Decisions</button>
+        </div>
+        <div class="workshop-tab-content" data-tab="preview">
+          <div id="workshop-preview-area" class="workshop-preview">No landing page selected.</div>
+          <textarea id="workshop-editor" class="workshop-editor" placeholder="Edit landing page HTML or notes..."></textarea>
+          <button class="copy-btn workshop-save" id="workshop-save">Save Landing Page</button>
+        </div>
+        <div class="workshop-tab-content hidden" data-tab="mockups">
+          <div class="workshop-mockups" id="workshop-mockups">Select a landing page to view mockups.</div>
+        </div>
+        <div class="workshop-tab-content hidden" data-tab="diffs">
+          <div id="workshop-diffs" class="log-container">Diff history will appear here once edits are captured.</div>
+        </div>
+        <div class="workshop-tab-content hidden" data-tab="decisions">
+          <div id="workshop-decisions" class="log-container">Document design decisions for this landing page.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="screen-studio" class="screen">
+    <div class="grid grid-cols-2">
+      <div class="card">
+        <h2>Design/Dev Studio</h2>
+        <div class="subtext">Edit media + docs and generate demo prototypes.</div>
+        <div class="list">
+          <div>Image editor: pending</div>
+          <div>Video editor: pending</div>
+          <div>Audio editor: pending</div>
+          <div>Document editor: pending</div>
+        </div>
+      </div>
+      <div class="card">
+        <h2>Prototype Generator</h2>
+        <div class="subtext">Create visual demos for new tools/features.</div>
+        <div class="list">
+          <div>Storyboard templates: pending</div>
+          <div>Mock device frames: pending</div>
+        </div>
+      </div>
+      <div class="card">
+        <h2>Reusable Tools Library</h2>
+        <div class="subtext">Save improvements once; reuse across businesses.</div>
+        <div class="list">
+          <div>No tools saved yet.</div>
+        </div>
+      </div>
+      <div class="card">
+        <h2>Studio Queue</h2>
+        <div class="subtext">Upcoming media + prototype tasks.</div>
+        <div class="list">
+          <div>Queue empty.</div>
+        </div>
+      </div>
+    </div>
+  </section>
 </main>
+<div id="business-dock" class="business-dock hidden">
+  <div class="dock-header">
+    <div id="business-dock-title">Business Workspace</div>
+    <button class="copy-btn secondary" id="business-dock-close">Hide</button>
+  </div>
+  <div class="dock-tabs">
+    <button class="dock-tab active" data-dock-tab="stream">Stream</button>
+    <button class="dock-tab" data-dock-tab="chat">Chat</button>
+  </div>
+  <div class="dock-body" id="business-dock-stream"></div>
+  <div class="dock-body hidden" id="business-dock-chat"></div>
+</div>
+<div id="email-dashboard" class="modal hidden">
+  <div class="modal-content">
+    <div class="modal-header">
+      <div>Email Dashboard</div>
+      <button id="email-dashboard-close" class="copy-btn secondary">Close</button>
+    </div>
+    <div class="modal-body">
+      <div class="email-pane" style="flex:0.8;" id="email-dashboard-accounts">Loading…</div>
+      <div class="email-pane" id="email-dashboard-messages">Select an account</div>
+      <div class="email-pane" id="email-dashboard-detail">Message detail</div>
+    </div>
+  </div>
+</div>
+<div id="landing-pages-modal" class="modal hidden">
+  <div class="modal-content">
+    <div class="modal-header">
+      <div>Landing Pages</div>
+      <button id="landing-pages-close" class="copy-btn secondary">Close</button>
+    </div>
+    <div class="landing-modal-body">
+      <form id="landing-pages-form" class="landing-form">
+        <input type="text" id="landing-new-slug" placeholder="slug" required />
+        <input type="text" id="landing-new-template" placeholder="template (e.g., default_landing_v1)" required />
+        <button class="copy-btn" type="submit">Create</button>
+      </form>
+      <table class="landing-table" id="landing-pages-table"></table>
+    </div>
+  </div>
+</div>
+<div id="funnels-modal" class="modal hidden">
+  <div class="modal-content">
+    <div class="modal-header">
+      <div>Funnels</div>
+      <button id="funnels-close" class="copy-btn secondary">Close</button>
+    </div>
+    <div class="landing-modal-body">
+      <form id="funnels-form" class="landing-form">
+        <select id="funnel-offer-select" required></select>
+        <select id="funnel-landing-select" required></select>
+        <input type="text" id="funnel-traffic" placeholder="traffic sources (comma separated)" />
+        <select id="funnel-status">
+          <option value="active">active</option>
+          <option value="draft">draft</option>
+          <option value="paused">paused</option>
+        </select>
+        <button class="copy-btn" type="submit">Create</button>
+      </form>
+      <table class="landing-table" id="funnels-table"></table>
+    </div>
+  </div>
+</div>
+<div id="notification-toast" class="toast"></div>
 <script>
-const API_BASE = "http://127.0.0.1:5051";
+const API_HOST = window.location.hostname || "127.0.0.1";
+const API_PORT = localStorage.getItem("godmode_api_port") || "5051";
+const API_BASE = localStorage.getItem("godmode_api_url") || `http://${API_HOST}:${API_PORT}`;
+const emailDashboard = document.getElementById("email-dashboard");
+const emailAccountsPane = document.getElementById("email-dashboard-accounts");
+const emailMessagesPane = document.getElementById("email-dashboard-messages");
+const emailDetailPane = document.getElementById("email-dashboard-detail");
+const emailState = {businessId:null, accountId:null};
+const landingPagesModal = document.getElementById("landing-pages-modal");
+const landingPagesTable = document.getElementById("landing-pages-table");
+const landingPagesForm = document.getElementById("landing-pages-form");
+const landingPagesClose = document.getElementById("landing-pages-close");
+const landingSlugInput = document.getElementById("landing-new-slug");
+const landingTemplateInput = document.getElementById("landing-new-template");
+const funnelsModal = document.getElementById("funnels-modal");
+const funnelsTable = document.getElementById("funnels-table");
+const funnelsForm = document.getElementById("funnels-form");
+const funnelsClose = document.getElementById("funnels-close");
+const funnelOfferSelect = document.getElementById("funnel-offer-select");
+const funnelLandingSelect = document.getElementById("funnel-landing-select");
+const funnelTrafficInput = document.getElementById("funnel-traffic");
+const funnelStatusSelect = document.getElementById("funnel-status");
+const workshopTabs = document.querySelectorAll(".workshop-tab-btn");
+const workshopTabContents = document.querySelectorAll(".workshop-tab-content");
+const workshopPreviewArea = document.getElementById("workshop-preview-area");
+const workshopEditor = document.getElementById("workshop-editor");
+const workshopContextInfo = document.getElementById("workshop-context-info");
+const workshopMockupsPane = document.getElementById("workshop-mockups");
+const workshopLogStream = document.getElementById("workshop-log-stream");
+const workshopSaveButton = document.getElementById("workshop-save");
+const workshopLandingButton = document.getElementById("workshop-open-landing-pages");
 
 const placeholders = {
   home: {
+    mode:"factory",
     revenue:{today:320,d7:2150,d30:8700,delta:12},
     streams:[
       {name:"B1 Toolkit",status:"live",trend:"+18%",type:"Digital",revenue:820},
@@ -252,7 +803,35 @@ const placeholders = {
       {severity:"error",title:"Missing OPENAI_API_KEY",desc:"Set env var for autopilot runs."}
     ],
     leads:{total:12,landing:9,affiliate:2,partner:1},
-    promotions:{published:1,scheduled:4,latest_url:"https://godmode.gumroad.com/l/aigrowthtoolkit",next_hook:"Wave 2: chaos spreadsheets",next_time:"2025-11-30T19:00:00Z"}
+    promotions:{published:1,scheduled:4,latest_url:"https://pay.godmodehq.com/instant/b1",next_hook:"Wave 2: chaos spreadsheets",next_time:"2025-11-30T19:00:00Z"},
+    vault:[
+      {id:"1",service:"Gmail",username:"ops@godmode.com",password:"superSecret!",url:"https://mail.google.com"},
+      {id:"2",service:"TikTok",username:"@godmodeops",password:"anotherSecret!",url:"https://tiktok.com/login"}
+    ],
+    notifications:[
+      {id:"demo1",title:"Verify TikTok",message:"Enter the SMS code we just sent to finish TikTok signup.",status:"unread"},
+      {id:"demo2",title:"Gumroad payout confirmation",message:"Confirm the payout in Gmail inbox.",status:"unread"}
+    ],
+    humanQueue:[
+      {id:"demo-human",source_system:"tiktok_signup",priority:15,status:"pending",instructions_for_user:"Open TikTok signup tab and type the SMS code that arrived.",request_type:"account_verification",first_required_at:Date.now()/1000}
+    ],
+    blitz:null
+  },
+  metrics:{
+    totals:{ytd:0,qtd:0,mtd:0,wtd:0,last_24h:0},
+    by_business:[],
+    by_platform:[]
+  },
+  llm:{
+    totals:{count:0,errors:0,avg_latency_ms:0},
+    by_backend:[],
+    by_model:[],
+    latest_ts:null
+  },
+  businessMetrics:{
+    totals:{today:0,last_7_days:0,month_to_date:0},
+    payouts:{pending:0,paid:0},
+    platform_breakdown:[]
   },
   streams:{
     list:[
@@ -265,7 +844,7 @@ const placeholders = {
       name:"B1 Toolkit",
       offer:"AI Growth Toolkit (Notion + prompts)",
       icp:"Solo-founders who need faster content.",
-      urls:["http://127.0.0.1:5051/funnels/b1/landing","https://linktr.ee/ascentrix"],
+      urls:[`${API_BASE}/funnels/b1/landing`,"https://linktr.ee/ascentrix"],
       notes:["Need real testimonals","Swap hero copy this week"],
       metrics:{conversion:"2.7%",ctr:"14%",cadence:"4 posts/day"}
     },
@@ -328,8 +907,184 @@ const placeholders = {
       {name:"Lead pipeline",status:"manual",detail:"Run scripts/lead_pipeline.py --output both"},
       {name:"Nurture CLI",status:"manual",detail:"python3 scripts/nurture_leads.py send --limit 25"}
     ]
-  }
+  },
+  blitzStatus:{
+    total_blitz_income:0,
+    total_deposited_to_boa:0,
+    total_confirmed_third_party:0,
+    primary_deadline:new Date().toISOString(),
+    secondary_deadline:new Date().toISOString()
+  },
+  blitzReport:{
+    totals:{total_blitz_income:0,total_offers_running:0},
+    per_offer:[],
+    per_channel:[],
+    double_down_candidates:[],
+    underperformers:[]
+  },
+  offers:{offers:[]},
+  funnels:{funnels:[]}
 };
+
+const formatCurrency = (value) => {
+  const amount = Number(value || 0);
+  return `$${amount.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+};
+
+let notificationCache = placeholders.home.notifications || [];
+let humanQueueCache = placeholders.home.humanQueue || [];
+let latestNotificationIds = new Set(notificationCache.map(n=>n.id));
+let notificationStreamSource = null;
+let notificationStreamBackoff = 2000;
+const notificationToast = document.getElementById("notification-toast");
+let audioCtx = null;
+let businessMetricsCache = placeholders.businessMetrics;
+let businessIdIndex = {};
+let businessSlugIndex = {};
+let currentDetailBusiness = null;
+const landingPagesState = {businessId:null, slug:null, pages:[]};
+const funnelsState = {businessId:null, slug:null, funnels:[], offers:[], landingPages:[]};
+const workshopState = {context:null, landingPage:null, mockups:[], selectedTab:"preview"};
+let llmAnalyticsCache = placeholders.llm;
+
+async function loadBusinessChat(businessId, logId="business-chat-log"){
+  const log = document.getElementById(logId);
+  if(!log) return;
+  if(!businessId){
+    log.innerHTML = "<div class='subtext'>Select a business to view its chat.</div>";
+    return;
+  }
+  try{
+    const res = await fetch(`${API_BASE}/hud/businesses/${businessId}/chat?limit=200`);
+    if(!res.ok){
+      throw new Error("Chat fetch failed");
+    }
+    const data = await res.json();
+    const messages = data.messages || [];
+    if(!messages.length){
+      log.innerHTML = "<div class='subtext'>No messages yet.</div>";
+      return;
+    }
+    log.innerHTML = messages.map(item=>`<div><strong>${item.role}</strong>: ${item.text}</div>`).join("");
+    log.scrollTop = log.scrollHeight;
+  }catch(err){
+    log.innerHTML = "<div class='subtext'>Unable to load chat.</div>";
+  }
+}
+
+async function saveBusinessChatMessage(businessId, role, text){
+  if(!businessId) return;
+  try{
+    await fetch(`${API_BASE}/hud/businesses/${businessId}/chat`, {
+      method: "POST",
+      headers: {"Content-Type":"application/json"},
+      body: JSON.stringify({role, text})
+    });
+  }catch(err){
+    return;
+  }
+  loadBusinessChat(businessId, "business-chat-log");
+  loadBusinessChat(businessId, "business-dock-chat-log");
+}
+
+async function loadBusinessQueue(businessId){
+  if(!businessId) return [];
+  try{
+    const res = await fetch(`${API_BASE}/hud/businesses/${businessId}/queue?limit=12`);
+    if(!res.ok){
+      return [];
+    }
+    const data = await res.json();
+    return data.tasks || [];
+  }catch(err){
+    return [];
+  }
+}
+
+function renderBusinessWorkspace(detail){
+  const stream = document.getElementById("business-live-stream");
+  const chat = document.getElementById("business-chat");
+  const dock = document.getElementById("business-dock");
+  const dockTitle = document.getElementById("business-dock-title");
+  const dockStream = document.getElementById("business-dock-stream");
+  const dockChat = document.getElementById("business-dock-chat");
+  if(!stream || !chat) return;
+  const businessName = detail?.name || "No business selected";
+  const businessId = detail?.business_id || null;
+  stream.innerHTML = `<h2>${businessName} Live Agent Stream</h2>
+    ${businessId ? "<div class='subtext'>Loading queue…</div>" : "<div class='subtext'>Select a business to view its live stream.</div>"}`;
+
+  chat.innerHTML = `<h2>${businessName} Chat Thread</h2>
+    <div class="subtext">Persistent per-business thread.</div>
+    <div id="business-chat-log" class="business-chat-log"></div>
+    <div class="business-chat-row">
+      <input id="business-chat-input" class="business-chat-input" type="text" placeholder="Message Jarvis about this business">
+      <button class="copy-btn" id="business-chat-send">Send</button>
+    </div>`;
+  if(dock && dockStream && dockChat && dockTitle){
+    dockTitle.textContent = `${businessName} Workspace`;
+    dockStream.innerHTML = businessId ? "<div class='subtext'>Loading queue…</div>" : "<div class='subtext'>Select a business to view its live stream.</div>";
+    dockChat.innerHTML = `<div class="subtext">Persistent per-business thread.</div>
+      <div id="business-dock-chat-log" class="business-chat-log"></div>
+      <div class="business-chat-row">
+        <input id="business-dock-chat-input" class="business-chat-input" type="text" placeholder="Message Jarvis about this business">
+        <button class="copy-btn" id="business-dock-chat-send">Send</button>
+      </div>`;
+    dock.classList.toggle("hidden", !businessId);
+  }
+  loadBusinessChat(businessId, "business-chat-log");
+  loadBusinessChat(businessId, "business-dock-chat-log");
+  if(businessId){
+    loadBusinessQueue(businessId).then(tasks=>{
+      const queueRows = tasks.length ? tasks.map(item=>{
+        const status = (item.status || "pending").toLowerCase();
+        const progress = item.progress ?? (status === "done" ? 100 : (status === "blocked" ? 5 : (status === "waiting_on_human" ? 20 : (status === "in_progress" || status === "running" ? 55 : 0))));
+        const eta = item.eta || "n/a";
+        return `<div class="list-item">
+          <div>${item.name || "Untitled task"}</div>
+          <div class="subtext">Status: ${item.status || "pending"} · ETA: ${eta} · ${progress}%</div>
+          <div class="progress"><span style="width:${progress}%"></span></div>
+        </div>`;
+      }).join("") : "<div class='subtext'>No tasks loaded.</div>";
+      stream.innerHTML = `<h2>${businessName} Live Agent Stream</h2>${queueRows}`;
+      if(dockStream){
+        dockStream.innerHTML = queueRows;
+      }
+    });
+  }
+  const sendBtn = document.getElementById("business-chat-send");
+  const input = document.getElementById("business-chat-input");
+  if(sendBtn && input){
+    sendBtn.onclick = ()=>{
+      if(!businessId) return;
+      const text = input.value.trim();
+      if(!text) return;
+      saveBusinessChatMessage(businessId, "You", text);
+      input.value = "";
+    };
+    input.onkeydown = (event)=>{
+      if(event.key === "Enter"){
+        sendBtn.click();
+      }
+    };
+  }
+  const dockSend = document.getElementById("business-dock-chat-send");
+  const dockInput = document.getElementById("business-dock-chat-input");
+  if(dockSend && dockInput){
+    dockSend.onclick = ()=>{
+      if(!businessId) return;
+      const text = dockInput.value.trim();
+      if(!text) return;
+      saveBusinessChatMessage(businessId, "You", text);
+      dockInput.value = "";
+    };
+    dockInput.onkeydown = (event)=>{
+      if(event.key === "Enter"){
+        dockSend.click();
+      }
+    };
+  }
+}
 
 async function fetchWithFallback(path, fallback){
   try{
@@ -342,27 +1097,133 @@ async function fetchWithFallback(path, fallback){
   }
 }
 
-function renderHome(data){
-  const metrics = document.getElementById("home-metrics");
-  metrics.innerHTML = "";
+function playChime(){
+  try{
+    if(!audioCtx){
+      const Ctx = window.AudioContext || window.webkitAudioContext;
+      audioCtx = Ctx ? new Ctx() : null;
+    }
+    if(!audioCtx) return;
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    osc.type = "triangle";
+    osc.frequency.value = 880;
+    gain.gain.value = 0.15;
+    osc.connect(gain).connect(audioCtx.destination);
+    osc.start();
+    osc.stop(audioCtx.currentTime + 0.25);
+  }catch(err){
+    console.warn("Unable to play chime", err);
+  }
+}
+
+function showToast(message){
+  if(!notificationToast) return;
+  notificationToast.textContent = message;
+  notificationToast.classList.add("visible");
+  setTimeout(()=>notificationToast.classList.remove("visible"), 3500);
+}
+
+function renderNotificationCard(){
+  const card = document.getElementById("home-notifications");
+  if(!card) return;
+  if(!notificationCache.length){
+    card.innerHTML = "<h2>Notifications</h2><div class='subtext'>No unread alerts.</div>";
+    return;
+  }
+  card.innerHTML = `<h2>Notifications</h2>` + notificationCache.slice(0,4).map(n=>`
+    <div class="list-item">
+      <div><strong>${n.title || "Alert"}</strong></div>
+      <div class="subtext">${n.message || ""}</div>
+    </div>`).join("");
+}
+
+function renderHumanSummary(){
+  const card = document.getElementById("home-human");
+  if(!card) return;
+  if(!humanQueueCache.length){
+    card.innerHTML = "<h2>Human Tasks</h2><div class='subtext'>All systems running autonomously.</div>";
+    return;
+  }
+  const top = humanQueueCache.slice(0,3);
+  card.innerHTML = `<h2>Human Tasks (${humanQueueCache.length})</h2>` + top.map(item=>`
+    <div class="list-item">
+      <div><strong>${item.source_system || "Task"}</strong> – priority ${item.priority}</div>
+      <div class="subtext">${item.instructions_for_user || ""}</div>
+    </div>`).join("");
+}
+
+function renderHumanQueueTable(){
+  const list = document.getElementById("human-queue-list");
+  if(!list) return;
+  if(!humanQueueCache.length){
+    list.innerHTML = "<div class='subtext'>No pending human steps.</div>";
+    return;
+  }
+  list.innerHTML = humanQueueCache.map(item=>`
+    <div class="human-item">
+      <div><strong>${item.source_system || "Task"}</strong> · ${item.request_type || ""}</div>
+      <div class="subtext">Priority ${item.priority} · Status ${item.status}</div>
+      <div>${item.instructions_for_user || ""}</div>
+      <div class="human-actions">
+        <button class="copy-btn" data-human-action="completed" data-request-id="${item.id}">Completed</button>
+        <button class="copy-btn secondary" data-human-action="in_progress" data-request-id="${item.id}">In Progress</button>
+        <button class="copy-btn secondary" data-human-action="dismissed" data-request-id="${item.id}">Dismiss</button>
+      </div>
+    </div>
+  `).join("");
+}
+
+function renderHome(data, metricsData, llmData){
+  const metricsContainer = document.getElementById("home-metrics");
+  metricsContainer.innerHTML = "";
+  const totals = metricsData?.totals || placeholders.metrics.totals;
   const cards = [
-    {title:"Revenue Today",value:`$${data.revenue.today.toLocaleString()}`,sub:`Δ ${data.revenue.delta}% vs yesterday`},
-    {title:"7-Day Revenue",value:`$${data.revenue.d7.toLocaleString()}`,sub:"Rolling window"},
-    {title:"30-Day Revenue",value:`$${data.revenue.d30.toLocaleString()}`,sub:"Rolling window"}
+    {title:"Year to Date", value: formatCurrency(totals.ytd), sub:"Total paid revenue this year"},
+    {title:"Quarter to Date", value: formatCurrency(totals.qtd), sub:"Current quarter"},
+    {title:"Month to Date", value: formatCurrency(totals.mtd), sub:"Current month"},
+    {title:"Week to Date", value: formatCurrency(totals.wtd), sub:"Since Monday"},
+    {title:"Last 24 Hours", value: formatCurrency(totals.last_24h), sub:"Rolling 24h window"}
   ];
   cards.forEach(card=>{
     const div = document.createElement("div");
     div.className="card";
     div.innerHTML = `<h2>${card.title}</h2><div class="metric">${card.value}</div><div class="subtext">${card.sub}</div>`;
-    metrics.appendChild(div);
+    metricsContainer.appendChild(div);
   });
   const streamsCard = document.getElementById("home-streams");
-  streamsCard.innerHTML = "<h2>Active Streams</h2>" + data.streams.map(s=>`
-    <div class="status-row">
-      <div>${s.name} <span class="badge">${s.status}</span></div>
-      <div>${s.trend}</div>
-    </div>
-  `).join("");
+  const groups = data.business_groups || {};
+  const groupMarkup = Object.keys(groups).length === 0
+    ? "<div class='subtext'>No businesses yet.</div>"
+    : Object.entries(groups).map(([group, rows])=>`
+        <div style="margin-top:10px;">
+          <div style="font-weight:600;text-transform:uppercase;font-size:12px;color:#94a3b8;">${group}</div>
+          ${rows.map(item=>`
+            <div class="list-item">
+              <div>${item.name} <span class="badge">${item.status}</span></div>
+              <div class="subtext">Revenue: $${(item.revenue || 0).toLocaleString()}</div>
+              <div class="subtext">Dashboard · Landing Pages · CRM · Accounting</div>
+            </div>
+          `).join("")}
+        </div>
+      `).join("");
+  streamsCard.innerHTML = `<h2>Businesses</h2>${groupMarkup}`;
+  const portfolioCard = document.getElementById("home-portfolio");
+  if(portfolioCard){
+    const portfolio = data.portfolio || {};
+    const states = portfolio.states || {};
+    const launch = states.LAUNCH || [];
+    const build = states.BUILD || [];
+    const rank = states.RANK || [];
+    portfolioCard.innerHTML = `<h2>Portfolio States</h2>
+      <div><strong>LAUNCH</strong> (${launch.length})</div>
+      <div class="subtext">${launch.map(item=>item.id || item.name).join(", ") || "—"}</div>
+      <div style="margin-top:8px;"><strong>BUILD</strong> (${build.length})</div>
+      <div class="subtext">${build.map(item=>item.id || item.name).join(", ") || "—"}</div>
+      <div style="margin-top:8px;"><strong>RANK</strong> (${rank.length})</div>
+      <div class="subtext">${rank.map(item=>item.id || item.name).join(", ") || "—"}</div>
+      <div class="subtext" style="margin-top:8px;">Updated: ${portfolio.generated_at || "—"}</div>`;
+  }
   const tasksCard = document.getElementById("home-tasks");
   tasksCard.innerHTML = `<h2>Task Status</h2>
     <div class="list">
@@ -397,36 +1258,318 @@ function renderHome(data){
       <div><span class="badge ${al.severity}">${al.severity}</span> ${al.title}</div>
       <div class="subtext">${al.desc}</div>
     </div>`).join("") : "<div class='subtext'>No alerts 🎉</div>");
+  const vaultCard = document.getElementById("home-vault");
+  const vaultEntries = data.vault || [];
+  if(vaultEntries.length === 0){
+    vaultCard.innerHTML = `<h2>Password Vault</h2><div class="subtext">No entries yet. Run scripts/store_credential.py to capture new accounts.</div>`;
+  }else{
+    vaultCard.innerHTML = `<h2>Password Vault</h2>` + vaultEntries.map(entry=>`
+      <div class="list-item">
+        <div><strong>${entry.service}</strong></div>
+        <div class="subtext">Username: ${entry.username}
+          <button class="copy-btn secondary" data-copy="${entry.username}">Copy</button>
+        </div>
+        <div class="subtext">Password:
+          <button class="copy-btn" data-copy="${entry.password}">Copy</button>
+        </div>
+      </div>`).join("");
+  }
+  const blitzCard = document.getElementById("home-blitz");
+  if(data.mode === "blitz_all_out_1" && data.blitz){
+    const blitz = data.blitz;
+    blitzCard.innerHTML = `<h2>Blitz Status</h2>
+      <div>Total Blitz Income: $${blitz.total_blitz_income?.toLocaleString() ?? 0}</div>
+      <div class="subtext">BOA deposits: $${blitz.total_deposited_to_boa?.toLocaleString() ?? 0}</div>
+      <div class="subtext">3rd-party confirmed: $${blitz.total_confirmed_third_party?.toLocaleString() ?? 0}</div>
+      <div class="subtext">Primary deadline: ${new Date(blitz.primary_deadline).toLocaleString()}</div>
+      <div class="subtext">Secondary deadline: ${new Date(blitz.secondary_deadline).toLocaleString()}</div>`;
+  }else{
+    blitzCard.innerHTML = `<h2>Blitz Status</h2><div class="subtext">Factory mode active.</div>`;
+  }
+  renderLlmCard(document.getElementById("home-llm"), llmData || placeholders.llm);
+  renderMasterChecklistCard();
+  renderWorkQueueCard();
+  renderAutopilotProofCard();
+  renderNotificationCard();
+  renderHumanSummary();
+}
+
+let masterChecklistCache = null;
+let workQueueCache = null;
+let autopilotMetricsCache = null;
+let autopilotTrendCache = null;
+
+function renderMasterChecklistCard(){
+  const card = document.getElementById("home-master-checklist");
+  if(!card) return;
+  const data = masterChecklistCache;
+  if(!data || !data.core_items){
+    card.innerHTML = "<h2>Master Checklist</h2><div class='subtext'>Checklist not generated yet.</div>";
+    return;
+  }
+  const items = (data.core_items || []).slice(0,8);
+  const rows = items.map(item=>{
+    const pct = item.status || 0;
+    const color = pct>=100 ? "ok" : (pct===0 ? "warn" : "info");
+    return `<div class="list-item">
+      <div><span class="badge ${color}">${pct}%</span> ${item.title}</div>
+      <div class="subtext">${item.notes || ""}</div>
+    </div>`;
+  }).join("");
+  card.innerHTML = `<h2>Master Checklist</h2>
+    <div class="subtext">Updated: ${data.generated_at || "—"}</div>
+    ${rows || "<div class='subtext'>No items yet.</div>"}
+    <div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap;">
+      <button class="copy-btn secondary" data-open-checklist="true">Open full checklist</button>
+      <button class="copy-btn secondary" data-open-link="/finance/ledger">Ledger</button>
+      <button class="copy-btn secondary" data-open-link="/finance/summary">Finance Summary</button>
+      <button class="copy-btn secondary" data-open-link="/hud/channel_summary">Channel Summary</button>
+      <button class="copy-btn secondary" data-open-link="/accounting/businesses">Businesses</button>
+    </div>`;
+  const btn = card.querySelector("[data-open-checklist]");
+  if(btn){
+    btn.onclick = ()=>{ window.open("/docs/system_blueprint_checklist.pdf", "_blank"); };
+  }
+  card.querySelectorAll("[data-open-link]").forEach(button=>{
+    button.onclick = ()=>{ window.open(button.getAttribute("data-open-link"), "_blank"); };
+  });
+}
+
+function renderWorkQueueCard(){
+  const card = document.getElementById("home-work-queue");
+  if(!card) return;
+  const data = workQueueCache;
+  if(!data || !data.tasks){
+    card.innerHTML = "<h2>Live Work Queue</h2><div class='subtext'>Queue not loaded yet.</div>";
+    return;
+  }
+  if(!data.tasks.length){
+    card.innerHTML = "<h2>Live Work Queue</h2><div class='subtext'>No active tasks.</div>";
+    return;
+  }
+  const rows = data.tasks.map(task=>`
+    <div class="list-item">
+      <div><strong>${task.name}</strong></div>
+      <div class="subtext">Status: ${task.status} · ETA: ${task.eta} · ${task.progress}% · Urgency ${task.urgency ?? 0}</div>
+      ${task.blocked_by ? `<div class="subtext">Blocked by request: ${task.blocked_by}</div>` : ""}
+      <div class="progress"><span style="width:${task.progress}%"></span></div>
+    </div>
+  `).join("");
+  card.innerHTML = `<h2>Live Work Queue</h2>${rows}`;
+}
+
+function renderAutopilotProofCard(){
+  const card = document.getElementById("home-autopilot-proof");
+  if(!card) return;
+  const data = autopilotMetricsCache;
+  if(!data){
+    card.innerHTML = "<h2>Autopilot Proof</h2><div class='subtext'>No metrics yet.</div>";
+    return;
+  }
+  const onlineBadge = data.online ? "<span class='badge ok'>online</span>" : "<span class='badge warn'>offline</span>";
+  card.innerHTML = `<h2>Autopilot Proof</h2>
+    <div class="metric">${data.success_rate || 0}%</div>
+    <div class="subtext">Success rate (last ${data.window_hours}h)</div>
+    <div class="subtext">Total runs: ${data.total}</div>
+    <div class="subtext">Last run: ${data.last_run || "—"} · ${onlineBadge}</div>
+    <div class="subtext" id="autopilot-trend"></div>`;
+  renderAutopilotTrend();
+}
+
+function renderAutopilotTrend(){
+  const el = document.getElementById("autopilot-trend");
+  if(!el) return;
+  const trend = autopilotTrendCache?.trend || [];
+  if(!trend.length){
+    el.textContent = "Trend: no data.";
+    return;
+  }
+  const summary = trend.map(row=>`${row.day}: ${row.success_rate}%`).join(" · ");
+  el.textContent = `Trend (7d): ${summary}`;
+}
+
+function renderLlmCard(container, data){
+  if(!container) return;
+  const totals = data?.totals || placeholders.llm.totals;
+  const topBackend = (data?.by_backend || [])[0];
+  const topModel = (data?.by_model || [])[0];
+  const last = data?.latest_ts ? new Date(data.latest_ts * 1000).toLocaleString() : "—";
+  container.innerHTML = `<h2>LLM Usage (24h)</h2>
+    <div class="metric">${totals.count || 0} calls</div>
+    <div class="subtext">Errors: ${totals.errors || 0} · Avg latency: ${(totals.avg_latency_ms || 0).toFixed(0)} ms</div>
+    <div class="subtext">Top backend: ${topBackend ? `${topBackend.key} (${topBackend.count})` : "—"}</div>
+    <div class="subtext">Top model: ${topModel ? `${topModel.key} (${topModel.count})` : "—"}</div>
+    <div class="subtext">Last call: ${last}</div>
+    <div style="margin-top:8px;"><button class="copy-btn secondary" data-open-analytics="llm">View analytics</button></div>`;
+}
+
+async function loadAnalytics(){
+  showLoading("analytics-llm");
+  showLoading("analytics-models");
+  const data = await fetchWithFallback("/hud/llm", placeholders.llm);
+  llmAnalyticsCache = data;
+  renderAnalytics(data);
+}
+
+function renderAnalytics(data){
+  const totals = data?.totals || placeholders.llm.totals;
+  const last = data?.latest_ts ? new Date(data.latest_ts * 1000).toLocaleString() : "—";
+  const llmCard = document.getElementById("analytics-llm");
+  if(llmCard){
+    llmCard.innerHTML = `<h2>LLM Runtime (24h)</h2>
+      <div class="metric">${totals.count || 0} calls</div>
+      <div class="subtext">Errors: ${totals.errors || 0} · Avg latency: ${(totals.avg_latency_ms || 0).toFixed(0)} ms</div>
+      <div class="subtext">Last call: ${last}</div>`;
+  }
+  const modelsCard = document.getElementById("analytics-models");
+  if(modelsCard){
+    const backendRows = (data?.by_backend || []).map(row=>`
+      <tr><td>${row.key}</td><td>${row.count}</td><td>${row.errors}</td><td>${(row.avg_latency_ms || 0).toFixed(0)} ms</td></tr>
+    `).join("");
+    const modelRows = (data?.by_model || []).map(row=>`
+      <tr><td>${row.key}</td><td>${row.count}</td><td>${row.errors}</td><td>${(row.avg_latency_ms || 0).toFixed(0)} ms</td></tr>
+    `).join("");
+    modelsCard.innerHTML = `<h2>Backend & Model Breakdown</h2>
+      <div style="display:grid;grid-template-columns:1fr;gap:10px;">
+        <div>
+          <div class="subtext">Backends</div>
+          <table class="table">
+            <tr><th>Backend</th><th>Calls</th><th>Errors</th><th>Avg ms</th></tr>
+            ${backendRows || "<tr><td colspan='4' class='subtext'>No data yet.</td></tr>"}
+          </table>
+        </div>
+        <div>
+          <div class="subtext">Models</div>
+          <table class="table">
+            <tr><th>Model</th><th>Calls</th><th>Errors</th><th>Avg ms</th></tr>
+            ${modelRows || "<tr><td colspan='4' class='subtext'>No data yet.</td></tr>"}
+          </table>
+        </div>
+      </div>`;
+  }
+}
+
+function renderOffersAdmin(offers){
+  const panel = document.getElementById("offers-list");
+  if(!panel) return;
+  if(!offers.length){
+    panel.innerHTML = "<h2>Offers</h2><div class='subtext'>No offers configured. Use /api/offers to add one.</div>";
+    return;
+  }
+  panel.innerHTML = `<h2>Offers</h2>
+    <table class="table">
+      <tr><th>Name</th><th>Platform</th><th>Payout (hrs)</th><th>Category</th><th>Status</th></tr>
+      ${offers.map(offer=>`
+        <tr>
+          <td><a href="${offer.url}" target="_blank">${offer.name}</a></td>
+          <td>${offer.platform}</td>
+          <td>${offer.payout_speed_hours ?? "—"}</td>
+          <td>${offer.category}</td>
+          <td>${offer.active ? "<span class='badge ok'>active</span>" : "<span class='badge warn'>paused</span>"}</td>
+        </tr>`).join("")}
+    </table>`;
+}
+
+function renderFunnelOverview(funnels, offers){
+  const panel = document.getElementById("offers-funnels");
+  if(!panel) return;
+  const offerMap = {};
+  (offers || []).forEach(offer=>{ offerMap[offer.id] = offer; });
+  if(!funnels.length){
+    panel.innerHTML = "<h2>Funnels</h2><div class='subtext'>No funnels connected yet.</div>";
+    return;
+  }
+  panel.innerHTML = `<h2>Funnels</h2>
+    <table class="table">
+      <tr><th>Business</th><th>Offer</th><th>Landing Page</th><th>Traffic</th><th>Status</th><th></th></tr>
+      ${funnels.map(funnel=>{
+        const offer = offerMap[funnel.offer_id] || {};
+        const business = businessIdIndex[funnel.business_id] || {};
+        const slug = business.slug || "";
+        const landingLabel = funnel.landing_page_id || "—";
+        const traffic = (funnel.primary_traffic_sources || []).join(", ");
+        return `<tr>
+          <td>${business.name || funnel.business_id}</td>
+          <td>${offer.name || funnel.offer_id}</td>
+          <td>${landingLabel}</td>
+          <td>${traffic || "—"}</td>
+          <td><span class="badge ${funnel.status === "active" ? "ok" : "warn"}">${funnel.status}</span></td>
+          <td><button class="copy-btn secondary" data-open-funnels="${funnel.business_id}" data-business-slug="${slug}">Manage</button></td>
+        </tr>`;
+      }).join("")}
+    </table>`;
 }
 
 function renderStreams(data){
+  businessIdIndex = {};
+  businessSlugIndex = {};
+  data.list.forEach(row=>{
+    if(row.id) businessIdIndex[row.id] = row;
+    if(row.slug) businessSlugIndex[row.slug] = row;
+  });
   const table = document.getElementById("streams-table");
   table.innerHTML = `
-    <tr><th>Name</th><th>Type</th><th>Status</th><th>Owner</th><th>7d Revenue</th><th>Traffic</th><th>Next Task</th></tr>
+    <tr><th>Name</th><th>Type</th><th>Status</th><th>Email</th><th>Revenue</th><th>Tags</th><th>Landing Pages</th></tr>
   ` + data.list.map(row=>`
     <tr>
       <td>${row.name}</td>
-      <td>${row.type}</td>
+      <td>${row.kind || "business"}</td>
       <td><span class="badge">${row.status}</span></td>
-      <td>${row.owner}</td>
-      <td>$${row.revenue}</td>
-      <td>${row.traffic.join(", ")}</td>
-      <td>${row.nextTask}</td>
+      <td>${row.email_account ? row.email_account.identifier : "Pending setup"}</td>
+      <td>$${(row.revenue || 0).toLocaleString()}</td>
+      <td>${(row.tags || []).join(", ")}</td>
+      <td>${(row.landing_pages || []).length}</td>
     </tr>`).join("");
   const detail = document.getElementById("stream-detail");
   const d = data.detail;
+  currentDetailBusiness = d;
   detail.innerHTML = `<h2>${d.name} – Detail</h2>
     <div class="subtext">${d.offer}</div>
     <div style="margin-top:8px;">ICP: ${d.icp}</div>
     <div style="margin-top:8px;">Key URLs:<br>${d.urls.map(u=>`<a href="${u}" target="_blank">${u}</a>`).join("<br>")}</div>
     <div style="margin-top:8px;">Metrics: Conv ${d.metrics.conversion}, CTR ${d.metrics.ctr}, Cadence ${d.metrics.cadence}</div>
     <div style="margin-top:8px;">Notes:<br>${d.notes.map(n=>`• ${n}`).join("<br>")}</div>`;
+  if(d.email){
+    detail.innerHTML += `<div style="margin-top:8px;">Primary Email: ${d.email.identifier} (${d.email.status})</div>`;
+    detail.innerHTML += `<button class="copy-btn secondary" data-open-email="${d.business_id}">Open Email Dashboard</button>`;
+  }else{
+    detail.innerHTML += `<button class="copy-btn secondary" data-open-email="${d.business_id}">Configure Email Account</button>`;
+  }
+  if((d.landing_pages || []).length){
+    const pageRows = d.landing_pages.map(page=>`
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:6px;">
+        <div>• ${page.slug} (${page.status})</div>
+        <button class="copy-btn secondary" data-open-workshop-page="${page.id || ""}">Open in Workshop</button>
+      </div>`).join("");
+    detail.innerHTML += `<div style="margin-top:8px;"><strong>Landing Pages</strong>${pageRows}</div>`;
+  }
+  if((d.funnels || []).length){
+    const funnelRows = d.funnels.map(funnel=>`
+      <div class="list-item">
+        <div>${funnel.offer_name || funnel.offer_id} → ${funnel.landing_page_id}</div>
+        <div class="subtext">Status: ${funnel.status} · Traffic: ${(funnel.primary_traffic_sources || []).join(", ") || "—"}</div>
+      </div>`).join("");
+    detail.innerHTML += `<div style="margin-top:8px;"><strong>Funnels</strong>${funnelRows}</div>`;
+  }
+  if(d.business_id){
+    detail.innerHTML += `<div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;">
+      <button class="copy-btn" data-open-landing-pages="${d.business_id}" data-business-slug="${d.slug || ""}">Manage landing pages</button>
+      <button class="copy-btn secondary" data-open-funnels="${d.business_id}" data-business-slug="${d.slug || ""}">Manage funnels</button>
+    </div>`;
+  }
   const queue = document.getElementById("stream-queue");
   queue.innerHTML = `<h2>Stream Queue</h2>` + data.queue.map(item=>`
     <div class="list-item">
       <div>#${item.id} – ${item.name}</div>
       <div class="subtext">Status: ${item.status}</div>
     </div>`).join("");
+  if(d && d.business_id){
+    loadBusinessFinancials(d.business_id);
+  }else{
+    renderBusinessFinancials(null);
+  }
+  renderBusinessWorkspace(d);
+  checkHashRoute();
 }
 
 function renderAgents(data){
@@ -451,6 +1594,51 @@ function renderAgents(data){
     ${d.notes.map(note=>`<div class="list-item">${note}</div>`).join("")}
     <div style="margin-top:12px;"><strong>Log Sample</strong></div>
     <div class="log-container">${d.logSample}</div>`;
+}
+
+function renderBusinessFinancials(financialData){
+  const panel = document.getElementById("stream-financials");
+  if(!panel) return;
+  if(!financialData){
+    panel.innerHTML = "<h2>Financials</h2><div class='subtext'>No business selected.</div>";
+    return;
+  }
+  const totals = financialData.totals || placeholders.businessMetrics.totals;
+  const payouts = financialData.payouts || placeholders.businessMetrics.payouts;
+  const platforms = financialData.platform_breakdown || [];
+  const platformList = platforms.length
+    ? platforms.slice(0,4).map(
+        item => `<div class="list-item">${item.source_platform}: ${formatCurrency(item.net_amount)}</div>`
+      ).join("")
+    : "<div class='subtext'>No platform data</div>";
+  panel.innerHTML = `<h2>Financials</h2>
+    <div class="list">
+      <div>Today: ${formatCurrency(totals.today)}</div>
+      <div>Last 7 Days: ${formatCurrency(totals.last_7_days)}</div>
+      <div>Month to Date: ${formatCurrency(totals.month_to_date)}</div>
+    </div>
+    <div style="margin-top:12px;"><strong>Payouts</strong><br>
+      <span class="subtext">Paid: ${formatCurrency(payouts.paid)}</span><br>
+      <span class="subtext">Pending: ${formatCurrency(payouts.pending)}</span>
+    </div>
+    <div style="margin-top:12px;"><strong>Platforms</strong>${platformList}</div>`;
+}
+
+async function loadBusinessFinancials(businessId){
+  const panel = document.getElementById("stream-financials");
+  if(!panel) return;
+  if(!businessId){
+    renderBusinessFinancials(null);
+    return;
+  }
+  showLoading("stream-financials");
+  try{
+    const data = await fetchWithFallback(`/api/metrics/business/${businessId}`, placeholders.businessMetrics);
+    businessMetricsCache = data;
+    renderBusinessFinancials(data);
+  }catch(err){
+    panel.innerHTML = `<h2>Financials</h2><div class="subtext">Unable to load financials: ${err}</div>`;
+  }
 }
 
 function renderLogs(data){
@@ -524,16 +1712,206 @@ async function loadHome(){
   showLoading("home-leads");
   showLoading("home-promos");
   showLoading("home-alerts");
-  const data = await fetchWithFallback("/hud/home", placeholders.home);
-  renderHome(data);
+  showLoading("home-vault");
+  showLoading("home-llm");
+  showLoading("home-master-checklist");
+  const [homeData, metricsData, llmData, checklistData, workQueueData, autopilotMetrics, autopilotTrend] = await Promise.all([
+    fetchWithFallback("/hud/home", placeholders.home),
+    fetchWithFallback("/api/metrics/global", placeholders.metrics),
+    fetchWithFallback("/hud/llm", placeholders.llm),
+    fetchWithFallback("/hud/master_checklist", {core_items:[],generated_at:null}),
+    fetchWithFallback("/hud/work_queue", {tasks:[]}),
+    fetchWithFallback("/hud/autopilot/metrics", {window_hours:24,total:0,success_rate:0,last_run:null}),
+    fetchWithFallback("/hud/autopilot/trend", {trend:[]})
+  ]);
+  llmAnalyticsCache = llmData || placeholders.llm;
+  masterChecklistCache = checklistData;
+  workQueueCache = workQueueData;
+  autopilotMetricsCache = autopilotMetrics;
+  autopilotTrendCache = autopilotTrend;
+  renderHome(homeData, metricsData, llmAnalyticsCache);
+}
+
+async function loadBlitzDashboard(){
+  const summary = document.getElementById("blitz-summary");
+  const offers = document.getElementById("blitz-offers");
+  const channels = document.getElementById("blitz-channels");
+  const tuning = document.getElementById("blitz-tuning");
+  summary.innerHTML = "<div class='subtext'>Loading...</div>";
+  offers.innerHTML = "<div class='subtext'>Loading...</div>";
+  channels.innerHTML = "<div class='subtext'>Loading...</div>";
+  tuning.innerHTML = "<div class='subtext'>Loading...</div>";
+  const [status, report] = await Promise.all([
+    fetchWithFallback("/api/blitz/status", placeholders.blitzStatus),
+    fetchWithFallback("/api/blitz/report", placeholders.blitzReport),
+  ]);
+  renderBlitzDashboard(status, report);
+}
+
+function renderBlitzDashboard(status, report){
+  const summary = document.getElementById("blitz-summary");
+  const target = 10000;
+  const total = status.total_blitz_income || status.total_blitz_income === 0 ? status.total_blitz_income : status.total_deposited_to_boa + status.total_confirmed_third_party;
+  const progress = Math.min(100, Math.round(((total || 0) / target) * 100));
+  summary.innerHTML = `<h2>Blitz Progress</h2>
+    <div>Total Blitz Income: ${formatCurrency(total || 0)}</div>
+    <div class="subtext">Target: ${formatCurrency(target)} (${progress}%)</div>
+    <div class="progress-wrap"><div class="progress-bar" style="width:${progress}%"></div></div>
+    <div class="subtext">Primary deadline: ${new Date(status.primary_deadline).toLocaleString()}</div>
+  `;
+  const offersPanel = document.getElementById("blitz-offers");
+  if(report.per_offer.length === 0){
+    offersPanel.innerHTML = "<h2>Offers</h2><div class='subtext'>No tracked offers yet.</div>";
+  }else{
+    offersPanel.innerHTML = `<h2>Offers</h2>
+      <table class="table">
+        <tr><th>Name</th><th>Platform</th><th>Revenue</th><th>Transactions</th></tr>
+        ${report.per_offer.map(item=>`
+          <tr>
+            <td>${item.name || item.offer_id}</td>
+            <td>${item.platform || "—"}</td>
+            <td>${formatCurrency(item.net_revenue)}</td>
+            <td>${item.transactions}</td>
+          </tr>`).join("")}
+      </table>`;
+  }
+  const channelPanel = document.getElementById("blitz-channels");
+  if(report.per_channel.length === 0){
+    channelPanel.innerHTML = "<h2>Channels</h2><div class='subtext'>No revenue yet.</div>";
+  }else{
+    channelPanel.innerHTML = `<h2>Channels</h2>
+      <table class="table">
+        <tr><th>Channel</th><th>Revenue</th><th>Transactions</th></tr>
+        ${report.per_channel.map(item=>`
+          <tr>
+            <td>${item.channel}</td>
+            <td>${formatCurrency(item.net_revenue)}</td>
+            <td>${item.transactions}</td>
+          </tr>`).join("")}
+      </table>`;
+  }
+  const tuningPanel = document.getElementById("blitz-tuning");
+  const doubles = report.double_down_candidates || [];
+  const under = report.underperformers || [];
+  tuningPanel.innerHTML = `<h2>Tuning Signals</h2>
+    <div><strong>Double Down</strong></div>
+    ${(doubles.length ? doubles : [{name:"None"}]).map(item=>`<div class="list-item">${item.name || item.offer_id || item.channel || "N/A"} – ${formatCurrency(item.net_revenue || item.rev_per_transaction || 0)}</div>`).join("")}
+    <div style="margin-top:10px;"><strong>Underperformers</strong></div>
+    ${(under.length ? under : [{name:"None"}]).map(item=>`<div class="list-item">${item.name || item.offer_id || item.channel || "N/A"}</div>`).join("")}
+  `;
+}
+
+async function pollNotifications(){
+  try{
+    const res = await fetch(`${API_BASE}/api/notifications?limit=20`);
+    const data = await res.json();
+    const items = data.notifications || [];
+    const incoming = [];
+    items.forEach(item=>{
+      if(!latestNotificationIds.has(item.id)){
+        incoming.push(item);
+      }
+    });
+    notificationCache = items;
+    latestNotificationIds = new Set(items.map(n=>n.id));
+    if(incoming.length){
+      incoming.forEach(item=>{
+        playChime();
+        showToast(item.title || "New alert");
+      });
+    }
+    renderNotificationCard();
+  }catch(err){
+    console.warn("Unable to poll notifications", err);
+  }
+}
+
+function handleNotificationStreamPayload(payload){
+  if(!payload || !payload.id) return;
+  notificationCache = [payload, ...notificationCache.filter(n=>n.id !== payload.id)].slice(0, 20);
+  latestNotificationIds.add(payload.id);
+  renderNotificationCard();
+  playChime();
+  showToast(payload.title || "New notification");
+}
+
+function startNotificationStream(){
+  if(typeof EventSource === "undefined" || notificationStreamSource) return;
+  notificationStreamSource = new EventSource(`${API_BASE}/api/notifications/stream`);
+  notificationStreamSource.onmessage = (event)=>{
+    if(!event.data) return;
+    try{
+      const payload = JSON.parse(event.data);
+      handleNotificationStreamPayload(payload);
+    }catch(err){
+      console.warn("Invalid notification payload", err);
+    }
+  };
+  notificationStreamSource.onerror = ()=>{
+    stopNotificationStream();
+    notificationStreamBackoff = Math.min(notificationStreamBackoff * 2, 30000);
+    setTimeout(startNotificationStream, notificationStreamBackoff);
+  };
+  notificationStreamBackoff = 2000;
+}
+
+function stopNotificationStream(){
+  if(notificationStreamSource){
+    notificationStreamSource.close();
+    notificationStreamSource = null;
+  }
+  notificationStreamBackoff = 2000;
+}
+
+async function fetchHumanQueue(){
+  try{
+    const res = await fetch(`${API_BASE}/api/human/queue`);
+    const data = await res.json();
+    humanQueueCache = data.items || [];
+    renderHumanSummary();
+    if(document.getElementById("screen-human").classList.contains("active")){
+      renderHumanQueueTable();
+    }
+  }catch(err){
+    console.warn("Unable to fetch human queue", err);
+  }
+}
+
+async function updateHumanRequest(requestId, status){
+  try{
+    const res = await fetch(`${API_BASE}/api/human/requests/${requestId}/status`,{
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({status})
+    });
+    if(!res.ok){
+      const data = await res.json().catch(()=>({}));
+      throw new Error(data.detail || "Update failed");
+    }
+    await fetchHumanQueue();
+  }catch(err){
+    showToast(`Update failed: ${err.message || err}`);
+  }
 }
 
 async function loadStreams(){
   showLoading("streams-table");
   showLoading("stream-detail");
   showLoading("stream-queue");
+  showLoading("stream-financials");
   const data = await fetchWithFallback("/hud/streams", placeholders.streams);
   renderStreams(data);
+}
+
+async function loadOffersScreen(){
+  showLoading("offers-list");
+  showLoading("offers-funnels");
+  const [offersData, funnelsData] = await Promise.all([
+    fetchWithFallback("/api/offers", placeholders.offers),
+    fetchWithFallback("/api/funnels", placeholders.funnels)
+  ]);
+  renderOffersAdmin(offersData.offers || []);
+  renderFunnelOverview(funnelsData.funnels || [], offersData.offers || []);
 }
 
 async function loadAgents(){
@@ -568,8 +1946,35 @@ document.querySelectorAll(".nav-btn").forEach(btn=>{
     if(screen==="home") loadHome();
     if(screen==="streams") loadStreams();
     if(screen==="agents") loadAgents();
+    if(screen==="offers") loadOffersScreen();
     if(screen==="logs") loadLogs();
+    if(screen==="workshop") loadWorkshop();
+    if(screen==="blitz") loadBlitzDashboard();
+    if(screen==="analytics") loadAnalytics();
+    if(screen==="human") { renderHumanQueueTable(); fetchHumanQueue(); }
     if(screen==="settings") loadSettings();
+  });
+});
+
+const dockClose = document.getElementById("business-dock-close");
+if(dockClose){
+  dockClose.addEventListener("click", ()=>{
+    const dock = document.getElementById("business-dock");
+    if(dock){
+      dock.classList.add("hidden");
+    }
+  });
+}
+document.querySelectorAll(".dock-tab").forEach(btn=>{
+  btn.addEventListener("click", ()=>{
+    document.querySelectorAll(".dock-tab").forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");
+    const tab = btn.dataset.dockTab;
+    const stream = document.getElementById("business-dock-stream");
+    const chat = document.getElementById("business-dock-chat");
+    if(!stream || !chat) return;
+    stream.classList.toggle("hidden", tab !== "stream");
+    chat.classList.toggle("hidden", tab !== "chat");
   });
 });
 
@@ -581,6 +1986,506 @@ document.querySelectorAll(".tab-btn").forEach(btn=>{
   });
 });
 
+document.addEventListener("click", event=>{
+  if(event.target.classList.contains("copy-btn")){
+    const value = event.target.getAttribute("data-copy") || "";
+    navigator.clipboard.writeText(value).then(()=>{
+      const original = event.target.textContent;
+      event.target.textContent = "Copied";
+      setTimeout(()=>event.target.textContent = original, 1200);
+    }).catch(()=>{});
+  }
+});
+
+document.addEventListener("click", event=>{
+  const target = event.target;
+  if(!target || !target.getAttribute) return;
+  if(target.getAttribute("data-open-analytics")){
+    const btn = document.querySelector('.nav-btn[data-screen="analytics"]');
+    if(btn) btn.click();
+  }
+});
+
+document.addEventListener("click", event=>{
+  const target = event.target;
+  if(!target || !target.getAttribute) return;
+  const businessId = target.getAttribute("data-open-email");
+  if(businessId){
+    openEmailDashboard(businessId);
+  }
+  const landingBusiness = target.getAttribute("data-open-landing-pages");
+  if(landingBusiness){
+    const slug = target.getAttribute("data-business-slug") || null;
+    openLandingPagesManager(landingBusiness, slug);
+  }
+  const funnelBusiness = target.getAttribute("data-open-funnels");
+  if(funnelBusiness){
+    const slug = target.getAttribute("data-business-slug") || null;
+    openFunnelsManager(funnelBusiness, slug);
+  }
+  const workshopPage = target.getAttribute("data-open-workshop-page");
+  if(workshopPage){
+    openWorkshopForLandingPage(workshopPage);
+  }
+  const mockupSelect = target.getAttribute("data-select-mockup");
+  if(mockupSelect){
+    selectMockupVariant(mockupSelect);
+  }
+  const humanAction = target.getAttribute("data-human-action");
+  if(humanAction){
+    const requestId = target.getAttribute("data-request-id");
+    if(requestId){
+      updateHumanRequest(requestId, humanAction);
+    }
+  }
+});
+
+document.getElementById("email-dashboard-close").addEventListener("click", ()=>{
+  emailDashboard.classList.add("hidden");
+});
+
+async function openEmailDashboard(businessId){
+  emailState.businessId = businessId;
+  emailDashboard.classList.remove("hidden");
+  emailAccountsPane.innerHTML = "Loading accounts…";
+  emailMessagesPane.innerHTML = "Select an account to view messages.";
+  emailDetailPane.innerHTML = "Message detail";
+  try{
+    const res = await fetch(`${API_BASE}/api/email/business/${businessId}/accounts`);
+    const data = await res.json();
+    if(!res.ok){
+      throw new Error(data.detail || "Unable to load accounts");
+    }
+    if(!data.accounts || data.accounts.length === 0){
+      emailAccountsPane.innerHTML = "<div>No email accounts configured. Mark the primary inbox active in the account registry.</div>";
+      return;
+    }
+    emailAccountsPane.innerHTML = data.accounts.map(account=>`
+      <div class="email-account" data-account-id="${account.id}">
+        <div><strong>${account.display_name}</strong></div>
+        <div class="subtext">${account.identifier} – ${account.status}</div>
+      </div>
+    `).join("");
+  }catch(err){
+    emailAccountsPane.innerHTML = `<div class="subtext">Unable to load accounts: ${err}</div>`;
+  }
+}
+
+emailAccountsPane.addEventListener("click", async (event)=>{
+  const target = event.target.closest ? event.target.closest(".email-account") : null;
+  if(!target) return;
+  emailAccountsPane.querySelectorAll(".email-account").forEach(el=>el.classList.remove("active"));
+  target.classList.add("active");
+  const accountId = target.getAttribute("data-account-id");
+  emailState.accountId = accountId;
+  await loadEmailMessages(accountId);
+});
+
+emailMessagesPane.addEventListener("click", async (event)=>{
+  const row = event.target.closest ? event.target.closest(".email-message") : null;
+  if(!row || !emailState.accountId) return;
+  const msgId = row.getAttribute("data-message-id");
+  await loadEmailDetail(emailState.accountId, msgId);
+});
+
+async function loadEmailMessages(accountId){
+  emailMessagesPane.innerHTML = "Loading messages…";
+  try{
+    const res = await fetch(`${API_BASE}/api/email/account/${accountId}/messages?folder=INBOX&limit=20`);
+    const data = await res.json();
+    if(!res.ok){
+      throw new Error(data.detail || "Unable to fetch messages");
+    }
+    if(!data.messages){
+      emailMessagesPane.innerHTML = "<div>No messages returned.</div>";
+      return;
+    }
+    emailMessagesPane.innerHTML = data.messages.map(msg=>`
+      <div class="email-message" data-message-id="${msg.id}">
+        <div><strong>${msg.subject || "(No subject)"}</strong></div>
+        <div class="subtext">${msg.from_addr} – ${msg.timestamp || ""}</div>
+        <div class="subtext">${msg.snippet || ""}</div>
+      </div>
+    `).join("");
+  }catch(err){
+    emailMessagesPane.innerHTML = `<div class="subtext">Unable to load messages: ${err}</div>`;
+  }
+}
+
+async function loadEmailDetail(accountId, messageId){
+  emailDetailPane.innerHTML = "Loading message…";
+  try{
+    const res = await fetch(`${API_BASE}/api/email/account/${accountId}/messages/${messageId}?folder=INBOX`);
+    const data = await res.json();
+    if(!res.ok){
+      throw new Error(data.detail || "Unable to fetch message");
+    }
+    const msg = data.message;
+    emailDetailPane.innerHTML = `
+      <div><strong>${msg.subject}</strong></div>
+      <div class="subtext">From: ${msg.from_addr}</div>
+      <div class="subtext">To: ${(msg.to_addrs || []).join(", ")}</div>
+      <div class="subtext">Date: ${msg.timestamp}</div>
+      <pre style="white-space:pre-wrap;margin-top:10px;">${msg.body}</pre>
+    `;
+  }catch(err){
+    emailDetailPane.innerHTML = `<div class="subtext">Unable to load message: ${err}</div>`;
+  }
+}
+
+landingPagesClose.addEventListener("click", closeLandingPagesModal);
+landingPagesForm.addEventListener("submit", async (event)=>{
+  event.preventDefault();
+  if(!landingPagesState.businessId) return;
+  const slugValue = landingSlugInput.value.trim();
+  const templateValue = landingTemplateInput.value.trim() || "default_landing_v1";
+  if(!slugValue) return;
+  try{
+    const res = await fetch(`${API_BASE}/api/businesses/${landingPagesState.businessId}/landing-pages`, {
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body: JSON.stringify({slug: slugValue, template_name: templateValue})
+    });
+    const data = await res.json();
+    if(!res.ok){
+      throw new Error(data.detail || "Unable to create landing page");
+    }
+    showToast("Landing page created");
+    await loadLandingPagesForBusiness(landingPagesState.businessId);
+  }catch(err){
+    showToast(`Create failed: ${err.message || err}`);
+  }
+});
+funnelsClose.addEventListener("click", closeFunnelsModal);
+funnelsForm.addEventListener("submit", async (event)=>{
+  event.preventDefault();
+  if(!funnelsState.businessId) return;
+  const offerId = funnelOfferSelect.value;
+  const landingPageId = funnelLandingSelect.value;
+  if(!offerId || !landingPageId) return;
+  const trafficValue = funnelTrafficInput.value || "";
+  const trafficSources = trafficValue.split(",").map(item=>item.trim()).filter(Boolean);
+  try{
+    const res = await fetch(`${API_BASE}/api/businesses/${funnelsState.businessId}/funnels`, {
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body: JSON.stringify({
+        offer_id: offerId,
+        landing_page_id: landingPageId,
+        status: funnelStatusSelect.value || "active",
+        primary_traffic_sources: trafficSources
+      })
+    });
+    const data = await res.json();
+    if(!res.ok){
+      throw new Error(data.detail || "Unable to create funnel");
+    }
+    showToast("Funnel created");
+    funnelTrafficInput.value = "";
+    await loadFunnelsForBusiness(funnelsState.businessId);
+  }catch(err){
+    showToast(`Create failed: ${err.message || err}`);
+  }
+});
+
+workshopLandingButton.addEventListener("click", ()=>{
+  const businessId = workshopState.landingPage?.business_id || currentDetailBusiness?.business_id || landingPagesState.businessId;
+  const slug = workshopState.landingPage?.slug || currentDetailBusiness?.slug || landingPagesState.slug;
+  if(businessId){
+    openLandingPagesManager(businessId, slug || null);
+  }else{
+    showToast("No business context yet.");
+  }
+});
+
+workshopTabs.forEach(btn=>{
+  btn.addEventListener("click", ()=>{
+    setWorkshopTab(btn.dataset.tab);
+  });
+});
+
+workshopSaveButton.addEventListener("click", async ()=>{
+  if(!workshopState.landingPage){
+    showToast("Select a landing page first.");
+    return;
+  }
+  try{
+    const res = await fetch(`${API_BASE}/api/landing-pages/${workshopState.landingPage.id}`, {
+      method:"PUT",
+      headers:{"Content-Type":"application/json"},
+      body: JSON.stringify({content: workshopEditor.value})
+    });
+    const data = await res.json();
+    if(!res.ok){
+      throw new Error(data.detail || "Save failed");
+    }
+    showToast("Landing page saved");
+    await loadLandingPageWorkshop(workshopState.landingPage.id);
+  }catch(err){
+    showToast(`Unable to save: ${err.message || err}`);
+  }
+});
+
+window.addEventListener("hashchange", checkHashRoute);
+
+function closeLandingPagesModal(){
+  landingPagesModal.classList.add("hidden");
+  window.location.hash = "";
+  landingPagesState.businessId = null;
+  landingPagesState.pages = [];
+  landingPagesTable.innerHTML = "";
+}
+
+async function openLandingPagesManager(businessId, slug){
+  if(!businessId) return;
+  landingPagesState.businessId = businessId;
+  landingPagesState.slug = slug || null;
+  landingPagesModal.classList.remove("hidden");
+  landingPagesTable.innerHTML = "<tr><td>Loading…</td></tr>";
+  landingSlugInput.value = `${slug || "page"}-${Date.now().toString(36).slice(-4)}`;
+  landingTemplateInput.value = "default_landing_v1";
+  if(slug){
+    window.location.hash = `#/businesses/${slug}/landing-pages`;
+  }
+  await loadLandingPagesForBusiness(businessId);
+}
+
+async function loadLandingPagesForBusiness(businessId){
+  landingPagesTable.innerHTML = "<tr><td>Loading…</td></tr>";
+  try{
+    const res = await fetch(`${API_BASE}/api/businesses/${businessId}/landing-pages`);
+    const data = await res.json();
+    if(!res.ok){
+      throw new Error(data.detail || "Unable to load landing pages");
+    }
+    landingPagesState.pages = data.landing_pages || [];
+    renderLandingPagesTable();
+  }catch(err){
+    landingPagesTable.innerHTML = `<tr><td class='subtext'>${err}</td></tr>`;
+  }
+}
+
+function renderLandingPagesTable(){
+  if(!landingPagesState.pages.length){
+    landingPagesTable.innerHTML = "<tr><td class='subtext'>No landing pages defined yet.</td></tr>";
+    return;
+  }
+  landingPagesTable.innerHTML = `
+    <tr><th>Slug</th><th>Template</th><th>Status</th><th>Updated</th><th></th></tr>
+    ${landingPagesState.pages.map(page=>`
+      <tr>
+        <td>${page.slug}</td>
+        <td>${page.template_name}</td>
+        <td>${page.status}</td>
+        <td>${page.updated_at ? new Date(Number(page.updated_at)*1000).toLocaleString() : "—"}</td>
+        <td><button class="copy-btn secondary" data-open-workshop-page="${page.id}">Workshop</button></td>
+      </tr>
+    `).join("")}
+  `;
+}
+
+function closeFunnelsModal(){
+  funnelsModal.classList.add("hidden");
+  window.location.hash = "";
+  funnelsState.businessId = null;
+  funnelsState.funnels = [];
+  funnelsState.offers = [];
+  funnelsState.landingPages = [];
+  funnelsTable.innerHTML = "";
+}
+
+async function openFunnelsManager(businessId, slug){
+  if(!businessId) return;
+  funnelsState.businessId = businessId;
+  funnelsState.slug = slug || null;
+  funnelsModal.classList.remove("hidden");
+  funnelsTable.innerHTML = "<tr><td>Loading…</td></tr>";
+  if(slug){
+    window.location.hash = `#/businesses/${slug}/funnels`;
+  }
+  await loadFunnelsForBusiness(businessId);
+}
+
+async function loadFunnelsForBusiness(businessId){
+  funnelsTable.innerHTML = "<tr><td>Loading…</td></tr>";
+  try{
+    const [funnelsRes, landingRes, offersRes] = await Promise.all([
+      fetch(`${API_BASE}/api/businesses/${businessId}/funnels`),
+      fetch(`${API_BASE}/api/businesses/${businessId}/landing-pages`),
+      fetch(`${API_BASE}/api/offers`)
+    ]);
+    const funnelsData = await funnelsRes.json();
+    const landingData = await landingRes.json();
+    const offerData = await offersRes.json();
+    if(!funnelsRes.ok){
+      throw new Error(funnelsData.detail || "Unable to load funnels");
+    }
+    if(!landingRes.ok){
+      throw new Error(landingData.detail || "Unable to load landing pages");
+    }
+    funnelsState.funnels = funnelsData.funnels || [];
+    funnelsState.landingPages = landingData.landing_pages || [];
+    funnelsState.offers = offerData.offers || [];
+    renderFunnelsTable();
+  }catch(err){
+    funnelsTable.innerHTML = `<tr><td class='subtext'>${err}</td></tr>`;
+  }
+}
+
+function renderFunnelsTable(){
+  if(!funnelsState.funnels.length){
+    funnelsTable.innerHTML = "<tr><td class='subtext'>No funnels configured yet. Use the form above.</td></tr>";
+  }else{
+    const offerOptions = funnelsState.offers.reduce((acc, offer)=>({...acc, [offer.id]: offer}), {});
+    funnelsTable.innerHTML = `
+      <tr><th>Offer</th><th>Landing Page</th><th>Status</th><th>Traffic</th></tr>
+      ${funnelsState.funnels.map(funnel=>{
+        const offer = offerOptions[funnel.offer_id] || {};
+        const landing = funnelsState.landingPages.find(page=>page.id === funnel.landing_page_id) || {};
+        return `<tr>
+          <td>${offer.name || funnel.offer_id}</td>
+          <td>${landing.slug || funnel.landing_page_id}</td>
+          <td>${funnel.status}</td>
+          <td>${(funnel.primary_traffic_sources || []).join(", ") || "—"}</td>
+        </tr>`;
+      }).join("")}
+    `;
+  }
+  funnelOfferSelect.innerHTML = funnelsState.offers.length
+    ? funnelsState.offers.map(offer=>`<option value="${offer.id}">${offer.name}</option>`).join("")
+    : "<option value=\"\">No offers</option>";
+  funnelLandingSelect.innerHTML = funnelsState.landingPages.length
+    ? funnelsState.landingPages.map(page=>`<option value="${page.id}">${page.slug}</option>`).join("")
+    : "<option value=\"\">No landing pages</option>";
+}
+
+function checkHashRoute(){
+  const hash = window.location.hash || "";
+  const match = hash.match(/^#\/businesses\/([^\/]+)\/landing-pages/i);
+  if(match){
+    const slug = decodeURIComponent(match[1]);
+    const known = businessSlugIndex[slug];
+    if(known){
+      openLandingPagesManager(known.id || slug, slug);
+    }
+  }
+  const funnelMatch = hash.match(/^#\/businesses\/([^\/]+)\/funnels/i);
+  if(funnelMatch){
+    const slug = decodeURIComponent(funnelMatch[1]);
+    const known = businessSlugIndex[slug];
+    if(known){
+      openFunnelsManager(known.id || slug, slug);
+    }
+  }
+}
+
+function setWorkshopTab(tab){
+  workshopState.selectedTab = tab;
+  workshopTabs.forEach(btn=>btn.classList.toggle("active", btn.dataset.tab === tab));
+  workshopTabContents.forEach(panel=>{
+    panel.classList.toggle("hidden", panel.dataset.tab !== tab);
+  });
+}
+
+async function openWorkshopForLandingPage(pageId){
+  workshopState.context = {type:"landing_page", id: pageId};
+  const btn = document.querySelector(`.nav-btn[data-screen="workshop"]`);
+  if(btn){
+    btn.click();
+  }else{
+    loadWorkshop();
+  }
+}
+
+async function loadWorkshop(){
+  const workshopScreen = document.getElementById("screen-workshop");
+  if(!workshopScreen || !workshopScreen.classList.contains("active")){
+    return;
+  }
+  if(!workshopState.context){
+    workshopContextInfo.textContent = "Select a landing page to begin.";
+    workshopPreviewArea.innerHTML = "No landing page selected.";
+    workshopEditor.value = "";
+    workshopMockupsPane.innerHTML = "Select a landing page to view mockups.";
+    return;
+  }
+  if(workshopState.context.type === "landing_page"){
+    await loadLandingPageWorkshop(workshopState.context.id);
+  }
+}
+
+async function loadLandingPageWorkshop(pageId){
+  workshopPreviewArea.innerHTML = "Loading landing page…";
+  try{
+    const res = await fetch(`${API_BASE}/api/landing-pages/${pageId}`);
+    const data = await res.json();
+    if(!res.ok){
+      throw new Error(data.detail || "Unable to load landing page");
+    }
+    const page = data.landing_page;
+    workshopState.landingPage = page;
+    workshopContextInfo.textContent = `${page.slug} · ${page.status}`;
+    workshopEditor.value = page.content || "";
+    workshopPreviewArea.innerHTML = page.content || "<div class='subtext'>No HTML stored yet.</div>";
+    const summary = `${page.template_name} · Updated ${page.updated_at ? new Date(page.updated_at*1000).toLocaleString() : "n/a"}`;
+    workshopLogStream.innerHTML = `<div>${summary}</div>`;
+    await loadLandingPageMockups(pageId);
+  }catch(err){
+    workshopPreviewArea.innerHTML = `<div class='subtext'>${err}</div>`;
+  }
+}
+
+async function loadLandingPageMockups(pageId){
+  workshopMockupsPane.innerHTML = "Loading mockups…";
+  try{
+    const res = await fetch(`${API_BASE}/api/landing-pages/${pageId}/mockups`);
+    const data = await res.json();
+    if(!res.ok){
+      throw new Error(data.detail || "Unable to load mockups");
+    }
+    workshopState.mockups = data.mockups || [];
+    workshopState.selectedMockupId = data.selected_mockup_id || null;
+    renderMockups();
+  }catch(err){
+    workshopMockupsPane.innerHTML = `<div class='subtext'>${err}</div>`;
+  }
+}
+
+function renderMockups(){
+  if(!workshopState.mockups.length){
+    workshopMockupsPane.innerHTML = "<div class='subtext'>No mockups stored yet.</div>";
+    return;
+  }
+  workshopMockupsPane.innerHTML = workshopState.mockups.map(mockup=>`
+    <div class="mockup-card ${workshopState.selectedMockupId === mockup.id ? "selected" : ""}">
+      <div><strong>${mockup.label}</strong></div>
+      <div class="subtext">${mockup.created_at ? new Date(mockup.created_at*1000).toLocaleString() : ""}</div>
+      <div style="margin-top:6px;">${mockup.preview_html || ""}</div>
+      <button class="copy-btn secondary" data-select-mockup="${mockup.id}">Select Concept</button>
+    </div>
+  `).join("");
+}
+
+async function selectMockupVariant(mockupId){
+  if(!workshopState.context || workshopState.context.type !== "landing_page") return;
+  try{
+    const res = await fetch(`${API_BASE}/api/landing-pages/${workshopState.context.id}/select-mockup`, {
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body: JSON.stringify({mockup_id: mockupId})
+    });
+    const data = await res.json();
+    if(!res.ok){
+      throw new Error(data.detail || "Unable to select mockup");
+    }
+    workshopState.selectedMockupId = mockupId;
+    showToast("Mockup selected");
+    renderMockups();
+  }catch(err){
+    showToast(`Mockup selection failed: ${err.message || err}`);
+  }
+}
+
 loadHome();
 loadStreams();
 loadAgents();
@@ -588,4 +2493,99 @@ loadLogs();
 loadSettings();
 refreshAutopilotPill();
 setInterval(refreshAutopilotPill, 5000);
+pollNotifications();
+fetchHumanQueue();
+startNotificationStream();
+setInterval(pollNotifications, 300000);
+setInterval(fetchHumanQueue, 60000);
+window.addEventListener("click", ()=>{
+  if(audioCtx && audioCtx.state === "suspended"){
+    audioCtx.resume().catch(()=>{});
+  }
+});
+window.addEventListener("beforeunload", ()=>{
+  stopNotificationStream();
+});
 </script>
+<script>
+(function() {
+  const LS_KEY = "gm_consent_v1";
+  const LS_ID = "gm_anon_id";
+  function loadConsent() {
+    try {
+      const raw = localStorage.getItem(LS_KEY);
+      if (!raw) return { decided: false, analytics: false, marketing: false };
+      const parsed = JSON.parse(raw);
+      return { decided: true, analytics: !!parsed.analytics, marketing: !!parsed.marketing };
+    } catch (e) {
+      return { decided: false, analytics: false, marketing: false };
+    }
+  }
+  function saveConsent(consent) {
+    localStorage.setItem(LS_KEY, JSON.stringify(consent));
+  }
+  function ensureAnonId() {
+    let id = localStorage.getItem(LS_ID);
+    if (!id) {
+      id = "anon_" + Math.random().toString(36).slice(2) + Date.now().toString(36);
+      localStorage.setItem(LS_ID, id);
+    }
+    return id;
+  }
+  function sendHudEvent(eventType) {
+    const consent = loadConsent();
+    if (!consent.analytics && !consent.marketing) return;
+    const anonId = ensureAnonId();
+    const payload = {
+      business_slug: "hud",
+      event_type: eventType,
+      anonymous_id: anonId,
+      consent: consent.marketing || consent.analytics,
+      variant: "hud_default",
+      utm_source: "hud",
+      utm_medium: "internal",
+      utm_campaign: "hud_usage"
+    };
+    fetch("/events/track", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    }).catch(()=>{});
+  }
+  function buildBanner() {
+    const banner = document.createElement("div");
+    banner.id = "gm-consent-banner";
+    banner.style.cssText = "position:fixed;bottom:16px;left:16px;right:16px;z-index:9999;background:#0f172a;color:#e2e8f0;padding:16px;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,0.25);display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;";
+    banner.innerHTML = `
+      <div style="flex:1;min-width:220px;font-size:14px;line-height:1.4;">
+        <strong>Consent</strong> – Enable analytics/marketing to improve targeting and offers.
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;">
+        <button id="gm-consent-decline" style="padding:8px 12px;border:1px solid #475569;background:transparent;color:#e2e8f0;border-radius:8px;cursor:pointer;">Decline</button>
+        <button id="gm-consent-accept" style="padding:8px 12px;border:none;background:#10b981;color:#0b1726;border-radius:8px;cursor:pointer;font-weight:600;">Allow analytics & marketing</button>
+      </div>
+    `;
+    document.body.appendChild(banner);
+    document.getElementById("gm-consent-accept").onclick = () => {
+      saveConsent({ decided: true, analytics: true, marketing: true });
+      banner.remove();
+      sendHudEvent("page_view");
+    };
+    document.getElementById("gm-consent-decline").onclick = () => {
+      saveConsent({ decided: true, analytics: false, marketing: false });
+      banner.remove();
+    };
+  }
+  document.addEventListener("DOMContentLoaded", () => {
+    const consent = loadConsent();
+    if (!consent.decided) {
+      buildBanner();
+    } else {
+      sendHudEvent("page_view");
+    }
+    window.gmSendHudEvent = sendHudEvent;
+  });
+})();
+</script>
+</body>
+</html>

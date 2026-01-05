@@ -1,0 +1,14 @@
+{
+  "generated_at": "2026-01-05T00:00:00Z",
+  "states": {
+    "LAUNCH": [
+      {"id": "b1", "name": "AI Growth Toolkit"},
+      {"id": "b3", "name": "Content Engine"}
+    ],
+    "BUILD": [
+      {"id": "b2", "name": "Holiday Micro-Store"},
+      {"id": "b4", "name": "AI Content Sprint"}
+    ],
+    "RANK": []
+  }
+}
